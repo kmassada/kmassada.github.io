@@ -1,2 +1,5 @@
 _site
 .sass-cache
+bower
+compass
+_config.yml
