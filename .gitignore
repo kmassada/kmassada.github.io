@@ -5,4 +5,5 @@ _site
 *.sublime-workspace
 codekit-config.json
 node_modules
-_asset_bundler_cache_config.yml
+_asset_bundler_cache
+_config.yml
