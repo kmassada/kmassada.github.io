@@ -6,6 +6,8 @@ categories: raspberrypi2
 excerpt:
 tags: []
 date: 2015-02-19T23:35:01-05:00
+image:
+  thumb: pi-cartoon.jpeg
 ---
 
 Raspberry pi needs no introduction, regardless of what side of the house you are
