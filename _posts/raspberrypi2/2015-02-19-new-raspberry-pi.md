@@ -195,7 +195,8 @@ DHCPACK from 192.168.0.1
 bound to 192.168.0.11 -- renewal in 1405 seconds.
 {% endhighlight %}
 
-There is a power saving issue with the wifi intermitently going off, 
+#### intermittent  wifi
+There is a power saving issue with the wifi intermittently going off, 
 Here's how to fix it? 
 
 Create and edit a new file in `/etc/modprobe.d/8192cu.conf`
@@ -209,8 +210,9 @@ and paste the following in
 options 8192cu rtw_power_mgnt=0 rtw_enusbss=1 rtw_ips_mode=1
 {% endhighlight %}
 
-Then reboot with sudo reboot
+Then reboot with `sudo reboot`
 
+#### Wifi / HEADLESS
 I intended to use this as a headless server. 
 I run quick nmap scans on my network and I compare the matching MAC Address
 
