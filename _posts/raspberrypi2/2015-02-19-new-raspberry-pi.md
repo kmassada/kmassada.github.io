@@ -12,6 +12,10 @@ Raspberry pi needs no introduction, regardless of what side of the house you are
 If you need a reason to buy one, just look at the specs, 
 The new Raspberry pi 2 comes with the following specs
 
+<figure>
+<img src="/images/pi-cartoon.jpeg">
+</figure>
+
 * A 900MHz quad-core ARM Cortex-A7 CPU
 * 1GB RAM
 * 4 USB ports
