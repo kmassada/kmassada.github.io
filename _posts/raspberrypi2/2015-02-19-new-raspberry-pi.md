@@ -3,7 +3,7 @@ layout: post
 title: "Raspberry Pi2"
 modified:
 categories: raspberrypi2
-excerpt:
+excerpt: "exploration and getting started with the new Raspberry Pi2"
 tags: []
 date: 2015-02-19T23:35:01-05:00
 image:
