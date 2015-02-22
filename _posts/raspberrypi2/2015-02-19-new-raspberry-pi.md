@@ -228,9 +228,10 @@ MAC Address: $MACADDRESS (Kaparel)
 now once dongle is connected on the network I can scan for it. 
 {% highlight bash %}
 $ifconfig
-wlan0     Link encap:Ethernet  HWaddr 00:0b:81:94:ed:70  
+wlan0     Link encap:Ethernet  HWaddr $MACADDRESS  
           inet addr:$IP-PREFIX.7  Bcast:$IP-PREFIX.255  Mask:255.255.255.0
 {% endhighlight %}
 
 TODO:
+
 * learn a way to connect to known netowrks automatically, and cron to keep retrying link when it goes down
