@@ -26,7 +26,7 @@ excerpt: !ruby/object:Hpricot::Doc
 <h3>Picasa:</h3>
 <p>Picasa is a picture manager software, that I love. Every time I am setting up an ubuntu machine I always add picasa. Good thing about picasa install, you can either add the repository for google (deb http://dl.google.com/linux/deb/ stable non-free ) and install it using the synaptic manager,</p>
 <p>or you could install it, using its windows like install called .deb (deb, for Debian/Ubuntu i386:<br /><a href="http://dl.google.com/linux/deb/pool/non-free/p/picasa/picasa_3.0-current_i386.deb">http://dl.google.com/linux/deb/pool/non-free/p/picasa/picasa_3.0-current_i386.deb</a> [3/17/09])</p>
-<div class="separator" style="clear:both;text-align:center;"><a href="http://techronilces.files.wordpress.com/2009/03/ea845-picasa1.png" style="margin-left:1em;margin-right:1em;"><img border="0" height="372" src="/images/wp/ea845-picasa1.png?w=300" width="640" /></a></div>
+<div class="separator" style="clear:both;text-align:center;"><a href="#" style="margin-left:1em;margin-right:1em;"><img border="0" height="372" src="/images/wp/ea845-picasa1.png?w=300" width="640" /></a></div>
 <p>After a while, I noticed, picasa software install on ubuntu from the repository is very similar to the wine(program that allows you to install windows application in Ubuntu) installation. To get the latest version from windows, here are easy steps you can take.</p>
 <p><strong>Install Latest Picasa  in ubuntu</strong></p>
 <p>First you need to make sure You have Picasa already installed from the google repository, as well as WINE.</p>
@@ -59,7 +59,7 @@ excerpt: !ruby/object:Hpricot::Doc
 <p>./googleearth-bin: relocation error: /usr/lib/i686/cmov/libssl.so.0.9.8: symbol BIO_test_flags, version OPENSSL_0.9.8 not defined in file libcrypto.so.0.9.8 with link time reference</p>
 <p>4. cd /opt/google-earth<br />sudo  mv libcrypto.so.0.9.8 libcrypto.so.0.9.8.old</p>
 <p>for more details check this google earth <a href="http://www.google.com/support/forum/p/earth/thread?tid=7b1b524777b9b982&amp;hl=en">community thread</a>
-<div class="separator" style="clear:both;text-align:center;"><a href="http://techronilces.files.wordpress.com/2009/03/d0501-googleearth1.png" style="margin-left:1em;margin-right:1em;"><img border="0" height="400" src="/images/wp/d0501-googleearth1.png?w=300" width="640" /></a></div>
+<div class="separator" style="clear:both;text-align:center;"><a href="#" style="margin-left:1em;margin-right:1em;"><img border="0" height="400" src="/images/wp/d0501-googleearth1.png?w=300" width="640" /></a></div>
 <p><span style="color:olive;"><strong>*Update (5/18/2009):  Here is a recent issue that came up with Google earth the last time i tried to install it.</strong></span></p>
 <p><strong><span style="color:red;">Could not create directory: /root/.googleearth/Cache </span></strong></p>
 <p><span style="text-decoration:underline;"><strong><span style="color:red;">FIX:</span> </strong></span>edit your .config/Google/GoogleEarthPlus.conf replacing /root with your home directory for the following two lines:</p>
