@@ -24,7 +24,7 @@ author:
 excerpt: !ruby/object:Hpricot::Doc
 
 ---
-<div class="separator" style="clear:both;text-align:center;"><a href="http://techronilces.files.wordpress.com/2010/01/6cef1-caution.png" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" height="83" id=":current_picnik_image" src="/images/wp/8c4bb-16605355499_mhr97.jpg" width="100" /></a></div>
+<div class="separator" style="clear:both;text-align:center;"></div>
 <p>In a terminal, run the command below:
 <div>
 <blockquote>rm -rf .gnome .gnome2 .gconf .gconfd .metacity</p></blockquote>
