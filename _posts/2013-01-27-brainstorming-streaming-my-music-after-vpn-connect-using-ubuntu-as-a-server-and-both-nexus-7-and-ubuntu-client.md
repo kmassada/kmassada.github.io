@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "[Brainstorming] Streaming my music after vpn connect using ubuntu as a server
-  and both nexus 7 and Ubuntu client."
+title: "[Brainstorming] Streaming my music after vpn connect using ubuntu as a server and both nexus 7 and Ubuntu client."
 date: 2013-01-27 16:40:00.000000000 -05:00
-categories: []
+categories: [Home, Media]
 tags: []
 status: publish
 type: post

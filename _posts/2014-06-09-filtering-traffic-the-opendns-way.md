@@ -2,7 +2,7 @@
 layout: post
 title: 'Filtering Traffic: The OpenDNS way'
 date: 2014-06-09 15:49:11.000000000 -04:00
-categories: []
+categories: [Home]
 tags: []
 status: publish
 type: post

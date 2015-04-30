@@ -2,8 +2,7 @@
 layout: post
 title: "[ReBlog | Linux Tip] 20 Linux performance analysis tools"
 date: 2014-03-21 13:55:00.000000000 -04:00
-categories:
-- Linux Tip
+categories: [Linux Tip]
 tags: []
 status: publish
 type: post

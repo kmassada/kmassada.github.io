@@ -2,9 +2,7 @@
 layout: post
 title: What's next? What's been on my mind?
 date: 2012-12-12 09:30:00.000000000 -05:00
-categories:
-- About
-- Staff Picks
+categories: [About, Staff Picks]
 tags: []
 status: publish
 type: post

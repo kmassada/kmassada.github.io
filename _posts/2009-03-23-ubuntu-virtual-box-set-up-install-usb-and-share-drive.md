@@ -2,9 +2,7 @@
 layout: post
 title: 'Ubuntu: Virtual Box Set-up, Install, USB and Share Drive'
 date: 2009-03-23 17:03:00.000000000 -04:00
-categories:
-- Tools and Utilities
-- virtualization
+categories: [Tools and Utilities, virtualization]
 tags: []
 status: publish
 type: post

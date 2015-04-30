@@ -2,9 +2,7 @@
 layout: post
 title: 'Ubuntu: Installing Eclipse'
 date: 2009-03-17 17:24:00.000000000 -04:00
-categories:
-- IDE
-- Productivity
+categories: [IDE, Productivity]
 tags: []
 status: publish
 type: post
@@ -13,7 +11,6 @@ meta:
   blogger_blog: www.techronicles.net
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '6562761364746504982'
-
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

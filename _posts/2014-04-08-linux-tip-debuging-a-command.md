@@ -2,8 +2,7 @@
 layout: post
 title: "[Linux Tip] debuging a command"
 date: 2014-04-08 18:53:00.000000000 -04:00
-categories:
-- Linux Tip
+categories: [Linux Tip]
 tags: []
 status: publish
 type: post

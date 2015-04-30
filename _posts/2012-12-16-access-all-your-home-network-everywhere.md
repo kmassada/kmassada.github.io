@@ -2,10 +2,7 @@
 layout: post
 title: Access All your Home Network Everywhere
 date: 2012-12-16 20:30:00.000000000 -05:00
-categories:
-- Android
-- Network
-- Staff Picks
+categories: [Android, Network, Staff Picks]
 tags: []
 status: publish
 type: post

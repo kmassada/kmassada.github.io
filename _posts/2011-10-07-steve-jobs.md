@@ -2,8 +2,7 @@
 layout: post
 title: Steve Jobs
 date: 2011-10-07 19:06:00.000000000 -04:00
-categories:
-- Off Topic
+categories: [Off Topic]
 tags: []
 status: publish
 type: post

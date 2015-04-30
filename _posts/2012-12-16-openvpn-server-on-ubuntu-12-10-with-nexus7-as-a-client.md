@@ -2,10 +2,7 @@
 layout: post
 title: OpenVPN Server on ubuntu 12.10 with Nexus7 as a client
 date: 2012-12-16 20:32:00.000000000 -05:00
-categories:
-- Android
-- Network
-- Staff Picks
+categories: [Android, Network, Staff Picks]
 tags: []
 status: publish
 type: post
