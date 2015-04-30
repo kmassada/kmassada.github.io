@@ -9,12 +9,7 @@ type: post
 published: false
 meta:
   _edit_last: '7257748'
-author:
-  login: kmassada
-  email: kmassada@gmail.com
-  display_name: kmassada
-  first_name: ''
-  last_name: ''
+
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

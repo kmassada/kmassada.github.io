@@ -23,12 +23,7 @@ meta:
   _wpas_skip_google_plus: '1'
   _wpas_skip_tumblr: '1'
   _wpas_skip_facebook: '1'
-author:
-  login: kmassada
-  email: kmassada@gmail.com
-  display_name: kmassada
-  first_name: ''
-  last_name: ''
+
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

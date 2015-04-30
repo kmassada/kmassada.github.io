@@ -17,12 +17,7 @@ meta:
   _edit_last: '7257748'
   geo_public: '0'
   _publicize_pending: '1'
-author:
-  login: kmassada
-  email: kmassada@gmail.com
-  display_name: kmassada
-  first_name: ''
-  last_name: ''
+
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

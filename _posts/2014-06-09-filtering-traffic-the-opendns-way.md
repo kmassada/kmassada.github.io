@@ -12,12 +12,7 @@ meta:
   _publicize_pending: '1'
   geo_public: '0'
   _wp_old_slug: filtering-traffic-the-dns-way
-author:
-  login: kmassada
-  email: kmassada@gmail.com
-  display_name: kmassada
-  first_name: ''
-  last_name: ''
+
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

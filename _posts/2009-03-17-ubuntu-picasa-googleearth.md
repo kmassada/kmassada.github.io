@@ -14,12 +14,7 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '2529098750302628734'
   _oembed_acadb69db0645221ea2bb630b32f0b3a: "{{unknown}}"
-author:
-  login: kmassada
-  email: kmassada@gmail.com
-  display_name: kmassada
-  first_name: ''
-  last_name: ''
+
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

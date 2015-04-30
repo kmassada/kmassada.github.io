@@ -14,12 +14,7 @@ meta:
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '1974829809749011319'
   _edit_last: '7257748'
   _oembed_ba5d68c3c78752e5bc4ff79cac6a0112: "{{unknown}}"
-author:
-  login: kmassada
-  email: kmassada@gmail.com
-  display_name: kmassada
-  first_name: ''
-  last_name: ''
+
 excerpt: !ruby/object:Hpricot::Doc
 
 ---
