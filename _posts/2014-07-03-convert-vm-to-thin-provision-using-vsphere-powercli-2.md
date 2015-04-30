@@ -1,0 +1,125 @@
+---
+layout: post
+title: '"Convert" vm to thin-Provision using vSphere PowerCLI'
+date: 2014-07-03 13:22:21.000000000 -04:00
+categories:
+- virtualization
+tags:
+- powercli
+- vmware
+status: publish
+type: post
+published: true
+meta:
+  _oembed_71b7143244fe16b0a7f4e639ee2b2a95: "{{unknown}}"
+  _oembed_af6a7b38ed7b28bdb7a33085136dcbc0: "{{unknown}}"
+  _oembed_de403bbc320cc82fd8cfec40144a911f: "{{unknown}}"
+  _edit_last: '7257748'
+  geo_public: '0'
+  _publicize_pending: '1'
+author:
+  login: kmassada
+  email: kmassada@gmail.com
+  display_name: kmassada
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+
+---
+<p>Unfortunately at VCenter 5.1 there is no way to move a hard drive attached to a vm from thick provisioned to thin. The hack right now is to move drive into a different datastore, and while moving it change its hard drive type value.</p>
+<p>first a quick way to list all the servers you have that are thin-provisioned.<br />
+<code>get-vm | get-view | select name,@{N='ThinProvisioned';E={$_.config.hardware.Device.Backing.ThinProvisioned } }</code></p>
+<p>or export them<br />
+<code>get-vm | get-view | select name,@{N='ThinProvisioned';E={$_.config.hardware.Device.Backing.ThinProvisioned } } |Export-Csv "c:\ThinProvisioned.csv"</code><br />
+or filter them, to only capture the servers that aren't thin provisioned</p>
+<p><code>$report = @()<br />
+foreach ($vm in Get-VM){<br />
+if ($vm.PowerState -eq 'PoweredOn'){<br />
+$vm.name<br />
+$view = Get-View $vm<br />
+foreach ($item in $view.config.hardware.Device.Backing.ThinProvisioned){<br />
+if ($item -eq $false){<br />
+$row = "" | select Name, Thin<br />
+$row.Name = $vm.Name<br />
+$row.Thin = $view.config.hardware.Device.Backing.ThinProvisioned | Out-String<br />
+$report += $row<br />
+}}}}<br />
+$report | Sort Name |Export-Csv "c:\ThinProvisioned.csv"</code></p>
+<p>we have a vm1, we are trying to move it's hard-drive<br />
+<code><br />
+$vm = 'vm1'<br />
+vSphere PowerCLI&gt; Get-VM $vm | Get-harddisk<br />
+CapacityGB Persistence Filename<br />
+---------- ----------- --------<br />
+34.000 Persistent [server_vmfs02] vm1/vm1.vmdk<br />
+34.000 Persistent [server_vmfs02] vm1/vm1_1.vmdk<br />
+16.000 Persistent [server_vmfs02] vm1/vm1_2.vmdk</code></p>
+<p>vSphere PowerCLI&gt; Get-VM $vm<br />
+Name PowerState Num CPUs MemoryGB<br />
+---- ---------- -------- --------<br />
+vm1 PoweredOn 2 4.000</p>
+<p>as you can see 'vm1' is in my 'vmfs02' datastore, therefore will move it to my vmfs_03 data store and in the process make it thin.<br />
+<strong>warning -Confirm:$false will move without asking you to confirm</strong><br />
+<code>$myDatastore1 = Get-Datastore server1_vmfs_03<br />
+$myDisk = Get-VM -Name $vm | Get-HardDisk<br />
+Move-HardDisk -HardDisk $myDisk -Datastore $myDatastore1 -StorageFormat Thin -Confirm:$false</code></p>
+<p>The code below isn't the best solution, but for now it does the work. I know I only have 4 datastores, and if server isn't one it is the other, the simplest way for now. Later when my stores grow I'll have more targetted rules, especially to preserve affinity rules</p>
+<p><strong>Code does not work for all cases, read below </strong><br />
+<code>Import-Csv C:\ConvertThem2.csv |<br />
+Foreach {<br />
+$vm = $_.name<br />
+$myDisk = Get-VM -Name $vm | Get-HardDisk<br />
+$view = Get-VM -Name $vm | Get-View<br />
+foreach ($item in $view.config.hardware.Device.Backing){<br />
+if ($item.ThinProvisioned -eq $false){<br />
+$datastore = $item.Filename.split('[')[1].split(']')[0]</p>
+<p>if ($datastore -eq "server_vmfs01"){<br />
+$destDatastore = Get-Datastore server_vmfs02<br />
+}<br />
+Elseif ($datastore -eq "server_vmfs02"){<br />
+$destDatastore = Get-Datastore server_vmfs03<br />
+}<br />
+Elseif ($datastore -eq "server_vmfs03"){<br />
+$destDatastore = Get-Datastore server_vmfs04<br />
+}<br />
+Elseif ($datastore -eq "server_vmfs04"){<br />
+$destDatastore = Get-Datastore server_vmfs01<br />
+}</p>
+<p>$myDisk=Get-HardDisk -Datastore $datastore -DatastorePath $item.Filename<br />
+Move-HardDisk -HardDisk $myDisk -Datastore $destDatastore -StorageFormat Thin -Confirm:$false<br />
+}<br />
+}<br />
+}</code></p>
+<p>It is good to learn from one's mistake.<br />
+The code above doesn't always work for a simple reason,<br />
+https://communities.vmware.com/message/1679783 </p>
+<p>When a hard disk is directly retrieved from a datastore there isn't sufficient information to determine whether it's attached to a VM or not. there needs to be a direct retrieval of the disks from the VMs in order to fully support moving a vm. </p>
+<p>Also while digging further, I've found a new way to select vms and their drives.<br />
+<strong>Get-VM -Name $vm | Get-HardDisk | where {$_.StorageFormat -ne 'Thin'} </strong> this allows me to select disk direcly.<br />
+<strong>-RunAsync</strong> watch out for this flag, it will perform task in background and asynchronously.<br />
+<strong>Import-Csv C:\ConvertThem3.csv</strong> as you can see I import the vms from a spreadsheet. all that spreadsheet has is a field called Name and below vms.</p>
+<p><code><br />
+  Import-Csv C:\ConvertThem3.csv |<br />
+  Foreach {<br />
+    $vm = $_.name<br />
+    $thickDisk = Get-VM -Name $vm | Get-HardDisk | where {$_.StorageFormat -ne 'Thin'}<br />
+    $view = Get-VM -Name $vm | Get-View<br />
+    foreach ($disk in $thickDisk){<br />
+      $datastore = $disk.Filename.split('[')[1].split(']')[0]<br />
+      if ($datastore -eq "server_vmfs01"){<br />
+        $destDatastore = Get-Datastore -Name 'server_vmfs02'<br />
+      }<br />
+      Elseif ($datastore -eq "server_vmfs02"){<br />
+        $destDatastore = Get-Datastore -Name 'server_vmfs03'<br />
+      }<br />
+      Elseif ($datastore -eq "server_vmfs03"){<br />
+        $destDatastore = Get-Datastore -Name 'server_vmfs04'<br />
+      }<br />
+      Elseif ($datastore -eq "server_vmfs04"){<br />
+        $destDatastore = Get-Datastore -Name 'server_vmfs01'<br />
+      }</p>
+<p>      $destDatastore<br />
+      Move-HardDisk -HardDisk $Disk -Datastore $destDatastore -StorageFormat Thin -RunAsync -confirm:$false<br />
+    }<br />
+  }<br />
+</code></p>
