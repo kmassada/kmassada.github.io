@@ -24,7 +24,6 @@ author:
   first_name: ''
   last_name: ''
 excerpt: !ruby/object:Hpricot::Doc
-  options: {}
 ---
 <p>There has been a lot of noise made around Google inbox? What is it? It's a task focused inbox.</p>
 <p>http://www.youtube.com/watch?v=bzNTjpUMOp4</p>
