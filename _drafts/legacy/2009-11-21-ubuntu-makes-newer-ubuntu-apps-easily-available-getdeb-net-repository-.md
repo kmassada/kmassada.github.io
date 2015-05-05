@@ -8,7 +8,7 @@ categories:
 tags: []
 status: draft
 type: post
-published: false
+published: true
 meta:
   blogger_blog: www.techronicles.net
   blogger_author: Kenneth Massada

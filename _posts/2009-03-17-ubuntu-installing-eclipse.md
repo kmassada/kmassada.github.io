@@ -11,7 +11,8 @@ meta:
   blogger_blog: www.techronicles.net
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '6562761364746504982'
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <div class="separator" style="clear:both;text-align:center;"><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" src="/images/wp/5ca65-easyeclipse_icon.png" /></a></div>

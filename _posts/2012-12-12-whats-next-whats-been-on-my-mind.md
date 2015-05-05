@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '6070841934059821265'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>When I started using Ubuntu a while back, it was due to my growing frustration with Vista. This was probably the best move I made for my career because it opened up a lot of avenues for me.</p>

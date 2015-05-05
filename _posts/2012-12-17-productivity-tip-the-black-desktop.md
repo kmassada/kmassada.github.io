@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '7663733679179935006'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>Could be in my mind, but I used to have very steep headaches after using computer for an entire day straight, don't know if this is scientifically proven or not but since i've started using dark themes, my eyes are less tired and strained.</p>

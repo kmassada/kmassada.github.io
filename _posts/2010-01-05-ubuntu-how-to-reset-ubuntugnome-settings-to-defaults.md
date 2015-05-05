@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '7924761030817032822'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <div class="separator" style="clear:both;text-align:center;"></div>

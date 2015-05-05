@@ -14,7 +14,8 @@ meta:
   _edit_last: '7257748'
   geo_public: '0'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>Originally recieved this error <b>error while loading shared libraries: libxml2.so.2: cannot open shared object file:</b><br />

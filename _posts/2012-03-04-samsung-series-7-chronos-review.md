@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '822205468106167639'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>Just this past month I got many views this month so I decided to update this post with my latest assessment of the product.</p>

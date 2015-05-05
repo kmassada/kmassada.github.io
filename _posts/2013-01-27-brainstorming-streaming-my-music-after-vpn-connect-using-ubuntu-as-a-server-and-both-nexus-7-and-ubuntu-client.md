@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '8042791122711757412'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <div dir="ltr">Usually I post when a setup is successful, but someone suggested, why don't I also blog my challenges, so here's one. </div>

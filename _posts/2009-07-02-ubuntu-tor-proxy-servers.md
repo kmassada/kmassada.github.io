@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '6071373287496069448'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" height="171" src="/images/wp/9ac2d-go-online-without-getting-snooped-tor-the-onion.jpg?w=300" width="200" /></a>Oki this came to my attention, when I started following the crisis in Iran and was wondering how they did to bypass their government firewalls to keep the story alive in the states... This is also a quick tutorial on how to use Proxy.</p>

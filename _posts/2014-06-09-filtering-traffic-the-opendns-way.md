@@ -13,7 +13,8 @@ meta:
   geo_public: '0'
   _wp_old_slug: filtering-traffic-the-dns-way
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>The classic problem, someone connects to your wi-fi, and tries to download a movie, then you get a nasty email from your ISP making you look like an organized crime ring lord.</p>

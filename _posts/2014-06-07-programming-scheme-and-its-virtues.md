@@ -12,7 +12,8 @@ meta:
   _edit_last: '7257748'
   _publicize_pending: '1'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>I took this class, that was a survey of different programming languages. PHP, Ruby, Perl, Python, Scheme, and Java (Android Development). It was fast, and fun, at the end of everyweek, depending on concept being thought you either knew the languge enough to write symple code about it, or you were thought a programming concept from it.</p>

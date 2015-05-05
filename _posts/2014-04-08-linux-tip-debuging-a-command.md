@@ -14,7 +14,8 @@ meta:
   _edit_last: '7257748'
   _oembed_70b27b65e33c93ac3086b93e513a7780: "{{unknown}}"
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>this is very useful when you are running a script that calls other scripts.

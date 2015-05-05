@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '25957614192075897'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p><a href="#" style="font-weight:normal;"></b><br />I'll leave the job of explaining vpn to <a href="http://lifehacker.com/5900969/build-your-own-vpn-to-pimp-out-your-gaming-streaming-remote-access-and-oh-yeah-security" target="_blank">someone else</a>, and read <a href="http://www.techronicles.net/2012/12/access-all-your-home-network-everywhere.html" target="_blank">this prelude</a> to get familiar with how this can be of help.</p>

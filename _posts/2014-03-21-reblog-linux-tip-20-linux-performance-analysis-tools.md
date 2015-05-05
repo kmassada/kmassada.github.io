@@ -13,7 +13,8 @@ meta:
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '1360630144460978389'
   _edit_last: '7257748'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <div class="separator" style="clear:both;text-align:center;"><a href="#" style="margin-left:1em;margin-right:1em;"><img border="0" src="/images/wp/40db1-bjgzodycaaa8ktt.png" height="476" width="640" /></a></div>

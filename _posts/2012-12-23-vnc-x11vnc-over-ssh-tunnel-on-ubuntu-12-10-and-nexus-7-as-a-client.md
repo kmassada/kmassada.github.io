@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '8572139016306905025'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>Alright, so after I <a href="http://www.techronicles.net/2012/12/openvpn-server-on-ubuntu-1210-with.html" target="_blank">connect to my VPN</a> at home, I can do a lot of different things, <a href="http://www.techronicles.net/2012/12/tighten-security-around-your-ssh-session.html" target="_blank">SSH is one of them</a>. I also needed a solution to control my screen from anywhere. VNC is my answer. Ubuntu has a lot of <a href="https://help.ubuntu.com/community/VNC/Servers" target="_blank">vnc servers</a>, I chose x11vnc, because it works well with lightdm, my default X manager. And I also needed a vnc server that will allow me to connect even before logging in.</p>

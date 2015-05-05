@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '8420100632604883564'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>I woke up one day and decided to view my logs, and I see someone poking hard at my ssh connection, trying to connect with a bunch of bogus usernames and passwords. Here are few tips to fend up the most basic of the attacks.

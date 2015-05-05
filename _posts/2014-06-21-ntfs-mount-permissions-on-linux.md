@@ -18,7 +18,7 @@ meta:
   _wpas_skip_tumblr: '1'
   _wpas_skip_facebook: '1'
 
-excerpt: !ruby/object:Hpricot::Doc
+excerpt_separator: <!--more-->
 
 ---
 <p>If you stumble upon this, you are probably trying to mount ntfs on linux, or have tried to change folder or file permissions but they remain the same. Or you have gone through tutorials for mounting your NTFS partition, created it with your user and group, but it remains root and plugdev. The answer you are looking for is simple</p>

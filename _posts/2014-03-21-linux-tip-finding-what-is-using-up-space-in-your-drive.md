@@ -13,7 +13,8 @@ meta:
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '7976022902269024845'
   _edit_last: '7257748'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>In linux, you have the usual tools <b>(fdisk -l)</b> tells you what drives are present and partitions and this tells you what partitions are mounted where<b> (df -h)</b>, but after that it's not pleaseant task to find missing space, I've seen folks use ls for it.</p>

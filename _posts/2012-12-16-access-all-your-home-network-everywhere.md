@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '3368226676448923996'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>There are a million solutions for accessing files from home Dropbox for files to sync in the cloud, Google Play Music for your music, TeamViewer for viewing your computer, and Chrome syncs all your bookmarks on the go. All started when I thought, I wanted to be able to access everything, just the way they are at home? Here's How?

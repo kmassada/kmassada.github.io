@@ -14,7 +14,8 @@ meta:
   _edit_last: '7257748'
   _oembed_ba5d68c3c78752e5bc4ff79cac6a0112: "{{unknown}}"
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p> downgrade or undo yum/package install in RHEL 6 is fairly straight forward</p>

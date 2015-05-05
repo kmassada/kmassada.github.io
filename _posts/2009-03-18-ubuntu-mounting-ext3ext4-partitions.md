@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '5617978437888682041'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <p>Since I went ahead and got rid of my windows, my partition is strictly just ext3 files. The problem, I encountered was that the partition will not automount. Here I describe the steps taken to fix it.</p>

@@ -12,7 +12,8 @@ meta:
   blogger_author: Kenneth Massada
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '8592956711151015826'
 
-excerpt: !ruby/object:Hpricot::Doc
+
+excerpt_separator: <!--more-->
 
 ---
 <blockquote>Ubuntu 8.10 (Intrepid Ibex) and Ubuntu 8.04 LTS (Hardy Heron)</p>
