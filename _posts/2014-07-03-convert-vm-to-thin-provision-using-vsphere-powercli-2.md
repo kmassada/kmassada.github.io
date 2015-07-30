@@ -113,7 +113,7 @@ Foreach {
 
 <p>It is good to learn from one's mistake.<br />
 The code above doesn't always work for a simple reason,<br />
-[https://communities.vmware.com/message/1679783](https://communities.vmware.com/message/1679783) </p>
+[https://communities.vmware.com/message/1679783/] (https://communities.vmware.com/message/1679783/) </p>
 
 <p>When a hard disk is directly retrieved from a datastore there isn't enough information to determine whether it's attached to a VM or not. there needs to be a direct retrieval of the disks from the VMs to fully support moving a vm. </p>
 
