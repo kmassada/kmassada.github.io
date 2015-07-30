@@ -21,6 +21,7 @@ excerpt_separator: <!--more-->
 <p>This is a fairly simple problem, convert a decimal to a hexadecimal. The code is self explanatory but here's a list of my lessons learned through this excercise.</p>
 <p>Scheme is a <a title="Functions" href="http://htdp.org/2003-09-26/Book/curriculum-Z-H-6.html#node_sec_3.1">Functional </a>Programming language.</p>
 <p>https://gist.github.com/kmassada/6fbcf16d689c6c4c1876</p>
+{% gist 6fbcf16d689c6c4c1876 %}
 <p>1- Types are essential.<br />
 this function accepts a number, or an integer. Both types aren't mutually exclusive, depending on your implementation this fact is gold. the returning type is also what allows for the recursion to take place, hence funtion expecting same input type at every iteration</p>
 <p>2- error checking<br />
