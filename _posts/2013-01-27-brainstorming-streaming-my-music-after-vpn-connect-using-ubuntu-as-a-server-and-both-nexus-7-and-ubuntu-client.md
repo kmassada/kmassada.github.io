@@ -16,8 +16,8 @@ meta:
 excerpt_separator: <!--more-->
 
 ---
-I post when a setup is successful, but someone suggested, why don't I also blog my challenges, so here's one.
-<b>The problem:</b> once in my home environment I want to be able to stream my Music to all the nodes. I want to also be able to stream playlists to my endpoints. <i>Optionally I would love to make playlists remotely and stream. Do not care as much for other types of media.</i>
+I post when a setup is successful, but someone suggested, why don't I also blog my challenges, so here's one.<br>
+<b>The problem:</b> once in my home environment I want to be able to stream my Music to all the nodes. I want to also be able to stream playlists to my endpoints. <i>Optionally I would love to make playlists remotely and stream. Do not care as much for other types of media.</i><br>
 <b>Constraints:</b> i access my environment via vpn only. I refuse to open any other ports to the outside. I also refuse to use windows.
 
 <img border="0" height="200" src="/images/wp/154123-headphones-headphones.jpg" width="320" />
