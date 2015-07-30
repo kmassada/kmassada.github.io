@@ -168,7 +168,7 @@ Sending on   LPF/wlan0/$MACADDRESS
 Sending on   Socket/fallback
 {% endhighlight %}
 
-Feel in the the `$WIFI_SSID` and `$WIFI_PASSWORD`
+Fill in the `$WIFI_SSID` and `$WIFI_PASSWORD`
 
 {% highlight bash %}
 $ vi /etc/network/interfaces

@@ -17,7 +17,7 @@ meta:
 excerpt_separator: <!--more-->
 ---
 
-<p>Unfortunately at VCenter 5.1 there is no way to move a hard drive attached to a vm from thick provisioned to thin. The hack right now is to move drive into a different datastore, and while moving it cha `fcfcv` nge its hard drive type value.</p>
+<p>Unfortunately in VCenter 5.1 there is no way to move a hard drive attached to a vm from thick provisioned to thin. The hack right now is to move drive into a different datastore, and while moving it change its hard drive type value.</p>
 
 <p>first a quick way to list all the servers you have that are thin-provisioned.<br />
 
@@ -31,7 +31,7 @@ get-vm | get-view | select name,@{N='ThinProvisioned';E={$_.config.hardware.Devi
 get-vm | get-view | select name,@{N='ThinProvisioned';E={$_.config.hardware.Device.Backing.ThinProvisioned } } |Export-Csv "c:\ThinProvisioned.csv"
 {% endhighlight %}
 
-or filter them, to only capture the servers that aren't thin provisioned</p>
+or filter them, to solely capture the servers that aren't thin provisioned</p>
 
 {% highlight powershell %}
 $report = @()
@@ -77,12 +77,11 @@ $myDisk = Get-VM -Name $vm | Get-HardDisk
 Move-HardDisk -HardDisk $myDisk -Datastore $myDatastore1 -StorageFormat Thin -Confirm:$false
 {% endhighlight %}
 
-<p>The code below isn't the best solution, but for now it does the work. I know I only have 4 datastores, and if server isn't one it is the other, the simplest way for now. Later when my stores grow I'll have more targetted rules, especially to preserve affinity rules</p>
+<p>The code below isn't the best solution, but for now it does the work. I know I have 4 datastores, and if server isn't one, must be in  another. Later when my stores grow I'll have more targetted rules, like preserving affinity rules</p>
 
 <strong>Code does not work for all cases, read below </strong><br />
 
 {% highlight powershell %}
-
 Import-Csv C:\ConvertThem2.csv |
 Foreach {
     $vm = $_.name
@@ -114,9 +113,9 @@ Foreach {
 
 <p>It is good to learn from one's mistake.<br />
 The code above doesn't always work for a simple reason,<br />
-https://communities.vmware.com/message/1679783 </p>
+[https://communities.vmware.com/message/1679783](https://communities.vmware.com/message/1679783) </p>
 
-<p>When a hard disk is directly retrieved from a datastore there isn't sufficient information to determine whether it's attached to a VM or not. there needs to be a direct retrieval of the disks from the VMs in order to fully support moving a vm. </p>
+<p>When a hard disk is directly retrieved from a datastore there isn't enough information to determine whether it's attached to a VM or not. there needs to be a direct retrieval of the disks from the VMs to fully support moving a vm. </p>
 
 Also while digging further, I've found a new way to select vms and their drives.<br />
 
@@ -154,4 +153,3 @@ Foreach {
     }
 }
 {% endhighlight %}
-
