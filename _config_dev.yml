@@ -2,13 +2,14 @@
 
 title:  kmassada tech blog
 locale: en_US
-url: 'http://localhost:4000'            
+url: 'http://localhost:4000'
 
 
 # Jekyll configuration
 
 permalink:   /:categories/:title/
-markdown:    kramdown
+#markdown:    kramdown
+markdown:    redcarpet
 highlighter: pygments
 sass:
   sass_dir: _sass
@@ -30,17 +31,17 @@ owner:
   name: Kenneth Massada
   avatar: bio-photo.jpg
   bio: ".."
-  email: 
-  disqus-shortname: 
+  email:
+  disqus-shortname:
   twitter: kmassada
   facebook: #kmassada
   google:
     plus: KennethMassada
     analytics: UA-58957717-1
-    verify: 
-    ad-client: 
-    ad-slot: 
-  bing-verify: 
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
   github: kmassada
   stackoverflow: #http://stackoverflow.com/users/123456/username
   linkedin: #username
