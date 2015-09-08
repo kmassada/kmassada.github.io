@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Laravel 5 Workflow"
+title: "Laravel 5 Homestead Workflow"
+categories: [Laravel]
 date: "2015-09-07"
 modified:
 categories:
