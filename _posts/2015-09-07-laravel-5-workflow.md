@@ -134,4 +134,9 @@ composer install
 ./homestead up
 ```
 
-now your project is ready and served at: http://laravel5.dev:
+now your project is ready and served at: `http://localhost:8000`, or `http://localhost:2200` if port 8000 is busy, or if you are fancy, you can edit you /etc/hosts, and include a line for `laravel5.dev`
+
+```bash
+$ sudo vi /etc/hosts
+192.168.33.11 laravel5.dev www.laravel5.dev
+```
