@@ -95,7 +95,7 @@ git clone https://github.com/laravel/homestead.git Homestead
 mkdir -p Homestead/.homestead
 ```
 
-exclude Homestead from .gitignore
+exclude Homestead from .gitignore *this now comes default with L5.1*
 
 ```bash
 echo 'Homestead' >> .gitignore
@@ -109,11 +109,22 @@ OR
 cp Homestead/src/stubs/Homestead.yaml Homestead
 ```
 
-link vendor folder, autoload requires
+inside `Homestead/Vagrantfile` set the Homestead path
 
-```bash
-cd Homestead/
-ln -s ../vendor .
+```ruby
+confDir = $confDir ||= File.expand_path("../Homestead")
+```
+
+and if you intend on keeping several homestead instances like me, do the following and define Homestead's default name
+
+```ruby
+...
+config.vm.define "laravel5dev" do |laravel5dev|
+    end
+
+    if File.exists? afterScriptPath then
+        config.vm.provision "shell", path: afterScriptPath
+    end
 ```
 
 create keys, that will allow you to ssh into vagrant box,
