@@ -85,7 +85,7 @@ Directory structure:
 │   │   │       ├── LocalizedVagrantfile
 │   │   │       ├── after.sh
 │   │   │       └── aliases
-│   │   └── vendor -> ../vendor/ # vendor link required to bootstrap application
+│   │   └── vendor         # vendor required to bootstrap application
 ```
 create homestead folder in the root of your project.
 
