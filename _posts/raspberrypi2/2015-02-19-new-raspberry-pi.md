@@ -75,23 +75,27 @@ df -h
 ~~~
 
 My sdcard mount point is mmcblk0p1, unmount it first
+
 ~~~ bash
 umount /dev/mmcblk0p1
 ~~~
 
 Once you have downloaded an image at [http://www.raspberrypi.org/downloads/](http://www.raspberrypi.org/downloads/) you can unzip the image using this command
+
 ~~~ bash
 unzip 2015-02-16-wheezy-raspbian.zip
 ~~~
 
 Now you are ready to build the image file `2015-02-16-wheezy-raspbian.img`
 **be careful, this is a command that will overwrite a partition if you pick the wrong one, if in doubt refer to official documentation. also note 'mmcblk0' not 'mmcblk0p1,p2'**  
+
 ~~~ bash
 sudo dd bs=4M if=2015-02-16-wheezy-raspbian.img of=/dev/mmcblk0
 ~~~
 
 
-sync, to reload cache, and remove sdcard
+sync, to reload cache, and remove sdcard,
+
 ~~~ bash
 sync
 ~~~
@@ -109,6 +113,7 @@ RASPBIAN setup is self explanatory, it allows you to configure system variables 
 I've ran through most of the options above, notably `ssh` and the keyboard, and os locales. if you've made a mistake, this command is still available passed the initial config at `sudo raspi-config`
 
 Remember to reboot after initial config.
+
 ~~~ bash
 reboot now!
 ~~~
@@ -118,7 +123,7 @@ reboot now!
 The wifi-dongle was automatically detected, I was hoping to compile drivers myself, but not entirely surprised.
 my dongle runs on `RTl8192/8188CUS Chipset`
 
-`lsub` showed the dongle
+but `lsub` showed the dongle
 
 ~~~ bash
 $ lsusb
@@ -128,7 +133,7 @@ Bus 001 Device 003: ID 0424:ec00 Standard Microsystems Corp.
 Bus 001 Device 004: ID 0bda:8176 Realtek Semiconductor Corp. RTL8188CUS 802.11n WLAN Adapter
 ~~~
 
-`lsmod` shows the loaded module including the model for my dongle's chipset
+and `lsmod` shows the loaded module including the model for my dongle's chipset
 
 ~~~ bash
 $ lsmod
