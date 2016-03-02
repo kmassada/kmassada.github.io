@@ -207,24 +207,27 @@ bound to 192.168.0.11 -- renewal in 1405 seconds.
 There is a power saving issue with the wifi intermittently going off,
 Here's how to fix it?
 
-Create and edit a new file in `/etc/modprobe.d/8192cu.conf`
+Create and edit a new file in `/etc/modprobe.d/8192cu.conf`...
+
 ~~~ bash
- sudo nano /etc/modprobe.d/8192cu.conf
+#edit conf
+sudo nano /etc/modprobe.d/8192cu.conf
 ~~~
 
 and paste the following in
+
 ~~~ bash
  # Disable power saving
 options 8192cu rtw_power_mgnt=0 rtw_enusbss=1 rtw_ips_mode=1
 ~~~
 
-Then reboot with `sudo reboot`
+Then reboot with `sudo reboot`,
 
 #### Wifi / HEADLESS
 I intended to use this as a headless server.
 I run quick nmap scans on my network and I compare the matching MAC Address
 
-`sudo nmap -F 192.168.0.0/24`
+`sudo nmap -F 192.168.0.0/24`,
 
 ~~~ bash
 $IP
@@ -233,6 +236,7 @@ MAC Address: $MACADDRESS (Kaparel)
 ~~~
 
 now once dongle is connected on the network I can scan for it.
+
 ~~~ bash
 $ifconfig
 wlan0     Link encap:Ethernet  HWaddr $MACADDRESS  
