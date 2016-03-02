@@ -21,19 +21,19 @@ excerpt_separator: <!--more-->
 
 <p>first a quick way to list all the servers you have that are thin-provisioned.<br />
 
-{% highlight powershell %}
+~~~ powershell
 get-vm | get-view | select name,@{N='ThinProvisioned';E={$_.config.hardware.Device.Backing.ThinProvisioned } }
-{% endhighlight %}
+~~~
 
 <p>or export them<br />
 
-{% highlight powershell %}
+~~~ powershell
 get-vm | get-view | select name,@{N='ThinProvisioned';E={$_.config.hardware.Device.Backing.ThinProvisioned } } |Export-Csv "c:\ThinProvisioned.csv"
-{% endhighlight %}
+~~~
 
 or filter them, to solely capture the servers that aren't thin provisioned</p>
 
-{% highlight powershell %}
+~~~ powershell
 $report = @()
 foreach ($vm in Get-VM){
     if ($vm.PowerState -eq 'PoweredOn'){
@@ -47,11 +47,11 @@ foreach ($vm in Get-VM){
                 $report += $row
 }}}}
 $report | Sort Name |Export-Csv "c:\ThinProvisioned.csv"
-{% endhighlight %}
+~~~
 
 <p>we have a vm1, we are trying to move it's hard-drive
 
-{% highlight powershell %}
+~~~ powershell
 vSphere PowerCLI> $vm = 'vm1'
 vSphere PowerCLI> Get-VM $vm | Get-harddisk
 
@@ -66,22 +66,22 @@ vSphere PowerCLI> Get-VM $vm
 Name PowerState Num CPUs MemoryGB
 ---- ---------- -------- --------
 vm1  PoweredOn      2      4.000
-{% endhighlight %}
+~~~
 
 <p>as you can see 'vm1' is in my 'vmfs02' datastore, therefore will move it to my vmfs_03 data store and in the process make it thin.<br />
 <strong>warning -Confirm:$false will move without asking you to confirm</strong><br />
 
-{% highlight powershell %}
+~~~ powershell
 $myDatastore1 = Get-Datastore server1_vmfs_03
 $myDisk = Get-VM -Name $vm | Get-HardDisk
 Move-HardDisk -HardDisk $myDisk -Datastore $myDatastore1 -StorageFormat Thin -Confirm:$false
-{% endhighlight %}
+~~~
 
 <p>The code below isn't the best solution, but for now it does the work. I know I have 4 datastores, and if server isn't one, must be in  another. Later when my stores grow I'll have more targetted rules, like preserving affinity rules</p>
 
 <strong>Code does not work for all cases, read below </strong><br />
 
-{% highlight powershell %}
+~~~ powershell
 Import-Csv C:\ConvertThem2.csv |
 Foreach {
     $vm = $_.name
@@ -109,7 +109,7 @@ Foreach {
         }
     }
 }
-{% endhighlight %}
+~~~
 
 <p>It is good to learn from one's mistake.<br />
 The code above doesn't always work for a simple reason,<br />
@@ -119,15 +119,15 @@ The code above doesn't always work for a simple reason,<br />
 
 Also while digging further, I've found a new way to select vms and their drives.<br />
 
-{% highlight powershell %}
+~~~ powershell
 Get-VM -Name $vm | Get-HardDisk | where {$_.StorageFormat -ne 'Thin'}
-{% endhighlight %}
+~~~
 
 this allows me to select disk direcly. `RunAsync` watch out for this flag, it will perform task in background and asynchronously.<br />
 
 `Import-Csv C:\ConvertThem3.csv` as you can see I import the vms from a spreadsheet. all that spreadsheet has is a field called Name and below vms.
 
-{% highlight powershell %}
+~~~ powershell
 Import-Csv C:\ConvertThem3.csv |
 Foreach {
     $vm = $_.name
@@ -152,4 +152,4 @@ Foreach {
         Move-HardDisk -HardDisk $Disk -Datastore $destDatastore -StorageFormat Thin -RunAsync -confirm:$false
     }
 }
-{% endhighlight %}
+~~~

@@ -22,32 +22,32 @@ Follow the instruction at [bower's documentation](http://bower.io/) to install b
 
 we then create the `.bowerrc` file, it directs bower where to save the resources
 
-```bash
+~~~ bash
 cd Projectfolder
 touch .bowerrc
-```
-```json
+~~~
+~~~ json
 {
   "directory": "resources/assets/bower"
 }
-```
+~~~
 
 we then initialize bower. answer all the questions, you can leave them all default
 
-```bash
+~~~ bash
 bower init
-```
+~~~
 
 we then install some resources we want to use in our laravel app.
 
-```bash
+~~~ bash
 bower install jquery
 bower install bootstrap
-```
+~~~
 
 as part of my workflow using elixir, I copy the latest JQuery file to `./resources/assets/js/`, elixir looks in that folder for js files, and compiles them
 
-```javascript
+~~~ javascript
 //simple path variable
 var paths = {
   'resources': {
@@ -65,13 +65,13 @@ elixir(function(mix) {
     'other.js',
     ]);
 });
-```
+~~~
 
 at this point you could directly reference JQuery, or all the javascript files you've compiled by including it in a header statement like:
 
-```html
+~~~ html
 <script src="{% raw %}{{ elixir('js/app.js') }}{% endraw %}"></script>
-```
+~~~
 
 ## WayGenerator / Laravel-5-Generators-Extended
 
@@ -81,19 +81,19 @@ In laravel 4 this package allows to generate models and controllers, all this wa
 - make:migration:pivot
 - make:seed
 
-the install guide is very comprehensive and [can be found here](https://github.com/laracasts/Laravel-5-Generators-Extended) 
+the install guide is very comprehensive and [can be found here](https://github.com/laracasts/Laravel-5-Generators-Extended)
 ## Faker
 
 [Faker](https://github.com/fzaninotto/Faker) is an extension of the ruby's Faker package, it generates pretty much any fake data you need in a sample application.
 to install faker, run this at the root of your project
 
-```bash
+~~~ bash
 composer require fzaninotto/faker
-```
+~~~
 
 here's an example of how I user faker to seed data
 
-```php
+~~~ php
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Todo;
@@ -121,4 +121,4 @@ class TodosTableSeeder extends Seeder {
 		}
   }
 }
-```
+~~~

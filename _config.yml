@@ -1,28 +1,54 @@
 # Site wide configuration
 
-title:  kmassada tech blog
-locale: en_US
-url: 'http://blog.kmassada.com'
+title:            kmassada tech blog
+locale:           en_US
+url:              'http://blog.kmassada.com'
 
 
 # Jekyll configuration
 
 permalink:   /:categories/:title/
-#markdown:    kramdown
-markdown:    redcarpet
-highlighter: pygments
+markdown:    kramdown
+highlighter: rouge
+# markdown: redcarpet
+# pygments: true
+# pygments_options: ['lineanchors', 'linenos=table']
+# highlighter: pygments
 sass:
   sass_dir: _sass
   style: compressed
 gems:
   - jekyll-sitemap
+  - jekyll-gist
+
+# Markdown Processors
+# rdiscount:
+#   extensions: []
+
+redcarpet:
+  extensions: ['fenced_code_blocks']
 
 kramdown:
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
-  use_coderay: false
+  # enable_coderay: false
+  # input: GFM
+
+
+# Octopress
+
+# Default extensions
+post_ext: md
+page_ext: md
+
+# Found in _templates/
+post_layout: post
+page_layout: page
+
+# Format titles with titlecase?
+titlecase: true
 
 
 # Site owner
@@ -33,7 +59,7 @@ owner:
   email:
   disqus-shortname:
   twitter: kmassada
-  facebook: #kmassada
+  facebook: #username
   google:
     plus: KennethMassada
     analytics: UA-58957717-1
@@ -42,8 +68,9 @@ owner:
     ad-slot:
   bing-verify:
   github: kmassada
-  stackoverflow: #http://stackoverflow.com/users/123456/username
+  stackoverflow: 1095800/kmassada
   linkedin: #username
+  xing: #username
   instagram: #username
   lastfm: #username
   tumblr: #username
@@ -55,6 +82,8 @@ owner:
   soundcloud: #username
   weibo: #username
   flickr: #username
+  codepen: #username
+
 
   links:
   - title: raspberrypi2
