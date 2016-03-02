@@ -22,12 +22,65 @@ excerpt_separator: <!--more-->
 <p>The previous solution was great, worked perfect. however, the bVNC supports SSL VNC, but doesn't import the certificates like I needed it to. I also decided to do it over SSH because, normal VNC communications aren't encrypted.</p>
 <p><a name="more"></a></p>
 <p><b>On Server</b></p>
-<p>First of all, I’ve installed x11vnc:<br /><span style="font-family:Courier New, Courier, monospace;">sudo apt-get install x11vnc</span></p>
-<p>Set a password:<br /><span style="font-family:Courier New, Courier, monospace;">sudo x11vnc -storepasswd /etc/x11vnc/pass</span></p>
-<p>Its an<br />Then, I’ve created<span style="font-family:Courier New, Courier, monospace;"> /etc/init/x11vnc.conf </span>file:</p>
-<p><span style="font-family:Courier New, Courier, monospace;">start on login-session-start</span><br /><span style="font-family:Courier New, Courier, monospace;">script</span><br /><span style="font-family:Courier New, Courier, monospace;">x11vnc -xkb -noxrecord -noxfixes -noxdamage -display :0 -rfbauth /etc/x11vnc/pass -auth /var/run/lightdm/root/:0 -forever -bg -o /var/log/x11vnc.log -rfbport 5917</span><br /><span style="font-family:Courier New, Courier, monospace;">end script</span></p>
-<p>After restart, x11vnc should listen on vnc standard port – 5917.<br />This script is based on upstart event. <span style="font-family:'Courier New', Courier, monospace;">/var/run/lightdm/root/:0 </span><span style="font-family:inherit;">is because I'm requesting root access to the X manager, if you are using gdm as your default X Manager, try </span><span style="font-family:Courier New, Courier, monospace;"> -auth /var/lib/gdm/:0.Xauth -display :0</span>. Or get on board<span style="font-family:Courier New, Courier, monospace;"> sudo dpkg-reconfigure lightdm </span><span style="font-family:inherit;">and make lightdm your default. </span></p>
-<p>at this point you can reboot server. or just run,<br /><span style="font-family:'Courier New', Courier, monospace;">sudo x11vnc -xkb -noxrecord -noxfixes -noxdamage -display :0 -rfbauth /etc/x11vnc/pass -auth /var/run/lightdm/root/:0 -forever -bg -o /var/log/x11vnc.log -rfbport 5917</span></p>
+<p>First of all, I’ve installed x11vnc:<br />
+
+{% highlight bash %}
+ sudo apt-get install x11vnc
+{% endhighlight %}
+
+</p>
+<p>Set a password:<br />
+
+{% highlight bash %}
+ sudo x11vnc -storepasswd /etc/x11vnc/pass
+{% endhighlight %}
+
+</p>
+<p>Its an<br />Then, I’ve created
+
+{% highlight bash %}
+  /etc/init/x11vnc.conf  
+{% endhighlight %}
+
+file:</p>
+<p>
+
+{% highlight bash %}
+ start on login-session-start
+ {% endhighlight %}
+{% highlight bash %}
+x11vnc -xkb -noxrecord -noxfixes -noxdamage -display :0 -rfbauth /etc/x11vnc/pass -auth /var/run/lightdm/root/:0 -forever -bg -o /var/log/x11vnc.log -rfbport 5917
+{% endhighlight %}
+
+</p>
+<p>After restart, x11vnc should listen on vnc standard port – 5917.<br />This script is based on upstart event. 
+
+{% highlight bash %}
+ /var/run/lightdm/root/:0
+{% endhighlight %}
+
+is because I'm requesting root access to the X manager, if you are using gdm as your default X Manager, try
+
+{% highlight bash %}
+  -auth /var/lib/gdm/:0.Xauth -display :0
+{% endhighlight %}
+
+ . Or get on board
+
+{% highlight bash %}
+ sudo dpkg-reconfigure lightdm  
+{% endhighlight %}
+
+and make lightdm your default. 
+
+</p>
+<p>at this point you can reboot server. or just run,<br />
+
+{% highlight bash %}
+ sudo x11vnc -xkb -noxrecord -noxfixes -noxdamage -display :0 -rfbauth /etc/x11vnc/pass -auth /var/run/lightdm/root/:0 -forever -bg -o /var/log/x11vnc.log -rfbport 5917
+{% endhighlight %}
+
+</p>
 <p><b>On nexus 7</b></p>
 <p>install an app called <a href="https://play.google.com/store/apps/details?id=com.iiordanov.freebVNC" target="_blank">freeb VNC</a></p>
 <p>click on icon to install app.</p>

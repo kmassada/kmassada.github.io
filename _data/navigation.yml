@@ -1,7 +1,10 @@
 # Site navigation links
 
-- title: About
-  url: /about/
-
 - title: Raspberrypi2
   url: /raspberrypi2/new-raspberry-pi/
+
+- title: Projects
+  url: /projects/projects/
+
+- title: About
+  url: /about/
