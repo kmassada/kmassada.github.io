@@ -17,16 +17,18 @@ Recently I started getting notifications:
 ### what it may be?
 
 I have seen this long coming, and have been trying to prepare for it.
+
 - looked at [building my chef server ](https://gist.github.com/kmassada/578bdb2674624a40f18d), to spin smaller instances, with a common base
 - looked at [my own ansbile](https://github.com/kmassada/ansible) to deploy projects.
 - looked at capistrano for smaller projects
-- looked at [Libvirt and Quemu](https://gist.github.com/kmassada/f3d635fb1d4b8219778d) to drive vagrant. |=.=|
+- looked at [Libvirt and Quemu](https://gist.github.com/kmassada/f3d635fb1d4b8219778d) to drive vagrant. **|=.=|**
 
 ### myths! design!
 
 Let me start by debunking a few myths. The prime reason I chose containers was not solely due to cpu/memory utilization. **This is not a tool problem, this is an architecture and a resource utilization paradigm.**
 
 However,
+
 - re-architecting my applications in a way I could apply caps on each versus letting them all run wild on the system,
 - having a fair separation in the libraries, versus using tech that isolate runtime environments,
 - Not tying myself to nodes. Handling my nodes with the same maniability as I treat code,
@@ -64,37 +66,46 @@ This gets it's own section because it is important, and overshadows all the thin
 The big picture: With Docker create an ELK stack that monitory hosts and containers
 
 The Details: Deploy a set of docker containers.
+
 1- elasticsearch with logs stored on host.
+
 ```
 docker run --name elasticsearch  -p 127.0.0.1:9200:9200  -v "/docker/elasticsearch/data":/usr/share/elasticsearch/data -p 127.0.0.1:9300:9300 --restart=always  -d elasticsearch
 ```
 
 2- spin up a kibana dashboard that allows to search elasticsearch node.
+
 ```
 docker run --name kibana -p 127.0.0.1:5601:5601 --link elasticsearch:elasticsearch --restart=always  -d kibana
 ```
 
 3- spin up logstash with gelf (listens to port and sends data it recieves to elastic search)
+
 ```
 docker run --name gelf -p 127.0.0.1:12201:12201/udp --link elasticsearch:elasticsearch -v /docker/gelf:/config-dir --restart=always  -d logstash  logstash -f /config-dir/gelf.conf
 ```
 
 4- configure containers to talk to gelf
 re-deploy each container with the following
+
 ```
 --log-driver=gelf --log-opt gelf-address=udp://127.0.0.1:12201 --log-opt tag="{{.ImageName}}/{{.Name}}/{{.ID}}"
 ```
 
 5- Docker daemon
+
 ```
 sudo mkdir /etc/systemd/system/docker.service.d
 sudo vi /etc/systemd/system/docker.service.d/docker.conf
 ```
+
 docker daemon options
+
 ```
 /usr/bin/docker daemon -H fd:// --log-driver=gelf --log-opt gelf-address=udp://127.0.0.1:12201
 ```
 6- nginx configured for proxy
+
 ```
 server {
     listen 80;
