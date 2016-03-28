@@ -92,6 +92,24 @@ re-deploy each container with the following
 --log-driver=gelf --log-opt gelf-address=udp://127.0.0.1:12201 --log-opt tag="{{.ImageName}}/{{.Name}}/{{.ID}}"
 ```
 
+/docker/gelf/gelf.conf
+```
+input {
+  gelf {
+     host => "0.0.0.0"
+     port => "12201"
+     type => "gelf"
+  }
+}
+
+output {
+  stdout { codec => rubydebug }
+  elasticsearch {
+    hosts => ["elasticsearch:9200"]
+  }
+}
+```
+
 5- Docker daemon
 
 ```
