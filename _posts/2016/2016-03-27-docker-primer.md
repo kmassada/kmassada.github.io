@@ -21,7 +21,7 @@ I have seen this long coming, and have been trying to prepare for it.
 - looked at [building my chef server ](https://gist.github.com/kmassada/578bdb2674624a40f18d), to spin smaller instances, with a common base
 - looked at [my own ansbile](https://github.com/kmassada/ansible) to deploy projects.
 - looked at capistrano for smaller projects
-- looked at [Libvirt and Quemu](https://gist.github.com/kmassada/f3d635fb1d4b8219778d) to drive vagrant. |=.=|
+- looked at [Libvirt and Quemu](https://gist.github.com/kmassada/f3d635fb1d4b8219778d) to drive vagrant. =.=
 
 ### myths! design!
 
