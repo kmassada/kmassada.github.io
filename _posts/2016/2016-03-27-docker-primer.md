@@ -63,7 +63,7 @@ This gets it's own section because it is important, and overshadows all the thin
 ![containers vs vms]({{ site.url }}/images/containers_vs_vms.png)
 
 ### The Run Down
-The big picture: With Docker create an ELK stack that monitory hosts and containers
+The big picture: With Docker create an ELK stack that monitors hosts and containers
 
 The Details: Deploy a set of docker containers.
 
@@ -73,13 +73,13 @@ The Details: Deploy a set of docker containers.
 docker run --name elasticsearch  -p 127.0.0.1:9200:9200  -v "/docker/elasticsearch/data":/usr/share/elasticsearch/data -p 127.0.0.1:9300:9300 --restart=always  -d elasticsearch
 ```
 
-2- spin up a kibana dashboard that allows to search elasticsearch node.
+2- deploy a kibana dashboard that allows to search elasticsearch node.
 
 ```
 docker run --name kibana -p 127.0.0.1:5601:5601 --link elasticsearch:elasticsearch --restart=always  -d kibana
 ```
 
-3- spin up logstash with gelf (listens to port and sends data it recieves to elastic search)
+3- deploy logstash with gelf (listens to port and sends data it receives to elastic search)
 
 ```
 docker run --name gelf -p 127.0.0.1:12201:12201/udp --link elasticsearch:elasticsearch -v /docker/gelf:/config-dir --restart=always  -d logstash  logstash -f /config-dir/gelf.conf
