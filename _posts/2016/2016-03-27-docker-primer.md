@@ -93,6 +93,7 @@ re-deploy each container with the following
 ```
 
 /docker/gelf/gelf.conf
+
 ```
 input {
   gelf {
