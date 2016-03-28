@@ -5,14 +5,14 @@ date: "2016-03-27 11:31"
 excerpt: "My take on docker and how it helps with my personal projects"
 categories: projects
 image:
-  feature: baltimore-skyline-blur.jpg
+  feature: baltimore-skyline-blur.png
 ---
 
 Aside from it being one of the hottest trends in tech today. I truly started looking at docker for **practical** reasons. I had a node in Digital ocean. On that node I run all my private projects, which vary from Node JS api listener for git post hooks to full stack web apps.
 
 Recently I started getting notifications:
 
-![New Relic Alert](/images/2016/03/Screenshot_2016-03-28_10.06.2.png)
+![New Relic Alert]({{ site.url }}/images/2016/03/Screenshot_2016-03-28_10.06.2.png)
 
 ### what it may be?
 
@@ -58,7 +58,7 @@ docker run --name gelf -p 127.0.0.1:12201:12201/udp --link elasticsearch:elastic
 
 This gets it's own section because it is important, and overshadows all the things previously mentioned. Containers are NOT VMs. At this point you are nodding, but take a deep breath, and think about it for a second.
 
-![containers vs vms](/images/2016/03/containers_vs_vms.png)
+![containers vs vms]({{ site.url }}/images/2016/03/containers_vs_vms.png)
 
 ### The Run Down
 The big picture: With Docker create an ELK stack that monitory hosts and containers
@@ -116,4 +116,4 @@ server {
 ```
 7- the result:
 
-![Hour 12](/images/2016/03/Screenshot_2016-03-28_11.59.40.png)
+![Hour 12]({{ site.url }}/images/2016/03/Screenshot_2016-03-28_11.59.40.png)
