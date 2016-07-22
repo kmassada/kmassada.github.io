@@ -2,7 +2,7 @@
 
 title:            kmassada tech blog
 locale:           en_US
-url:
+url:              http://127.0.0.1:4000
 
 
 # Jekyll configuration
