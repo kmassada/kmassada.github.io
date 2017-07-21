@@ -5,7 +5,7 @@ date: 2009-11-21 12:46:00.000000000 -05:00
 categories:
 - Repositories
 - Tools and Utilities
-tags: []
+tags: blogger
 status: draft
 type: post
 published: true
@@ -17,8 +17,8 @@ author:
   login: kmassada
   email: kmassada@gmail.com
   display_name: kmassada
-  first_name: ''
-  last_name: ''
+  first_name: 'Kenneth'
+  last_name: 'Massada'
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

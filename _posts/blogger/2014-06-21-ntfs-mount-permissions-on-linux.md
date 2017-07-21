@@ -3,7 +3,7 @@ layout: post
 title: Ntfs mount permissions on linux
 date: 2014-06-21 10:22:15.000000000 -04:00
 categories: [File System, Linux Tip, System Admin]
-tags: [linux mount, ntfs, partitions]
+tags: linux mount, ntfs, partitions
 status: publish
 type: post
 published: true

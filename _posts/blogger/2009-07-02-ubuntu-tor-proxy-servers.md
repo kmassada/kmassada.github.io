@@ -3,7 +3,7 @@ layout: post
 title: 'Ubuntu: TOR (Proxy Servers)'
 date: 2009-07-02 16:16:00.000000000 -04:00
 categories: [proxy, Tools and Utilities]
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -16,7 +16,7 @@ meta:
 excerpt_separator: <!--more-->
 
 ---
-<p><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" height="171" src="/images/wp/9ac2d-go-online-without-getting-snooped-tor-the-onion.jpg?w=300" width="200" /></a>Oki this came to my attention, when I started following the crisis in Iran and was wondering how they did to bypass their government firewalls to keep the story alive in the states... This is also a quick tutorial on how to use Proxy.</p>
+<p><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" height="171" src="/assets/images/wp/9ac2d-go-online-without-getting-snooped-tor-the-onion.jpg?w=300" width="200" /></a>Oki this came to my attention, when I started following the crisis in Iran and was wondering how they did to bypass their government firewalls to keep the story alive in the states... This is also a quick tutorial on how to use Proxy.</p>
 <p>1. Run the command: <strong>sudo apt-get install tor privoxy</strong><br />2. Run the command: <strong>sudo gedit /etc/privoxy/config</strong><br />3. Add the line (including the period at the end): <strong>forward-socks4a / localhost:9050 .</strong><br />4. Comment out the line: <strong>logfile logfile</strong> (you know with the "#")<br />5. Comment out the line: <strong>jarfile jarfile</strong> (you know with the "#")<br />6. Restart the Privoxy service:<strong> sudo /etc/init.d/privoxy restart</strong></p>
 <p>How to set up Firefox to work with Tor:</p>
 <p>1. Install the torbutton extension.<br />2. Restart Firefox<br />3. In the bottom right corner you’ll have a text blurb saying: Tor Disabled</p>

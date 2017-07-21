@@ -3,9 +3,7 @@ layout: post
 title: "Laravel 5 Homestead Workflow"
 categories: [Laravel]
 date: "2015-09-07"
-modified:
-categories:
-tags: [php,laravel]
+tags: php,laravel
 status: publish
 published: true
 ---

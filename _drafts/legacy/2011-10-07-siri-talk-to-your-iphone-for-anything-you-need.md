@@ -4,7 +4,7 @@ title: 'Siri: Talk to your iPhone for anything you need'
 date: 2011-10-07 18:59:00.000000000 -04:00
 categories:
 - Off Topic
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -16,8 +16,8 @@ author:
   login: kmassada
   email: kmassada@gmail.com
   display_name: kmassada
-  first_name: ''
-  last_name: ''
+  first_name: 'Kenneth'
+  last_name: 'Massada'
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

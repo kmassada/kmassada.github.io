@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "Raspberry Pi2"
-modified:
 categories: raspberrypi2
 excerpt: "exploration and getting started with the new Raspberry Pi2"
-tags: [IoT,gadgets]
+tags: IoT,gadgets
 date: 2015-02-19T23:35:01-05:00
 image:
   thumb: pi-cartoon.jpeg
@@ -15,7 +14,7 @@ If you need a reason to buy one, just look at the specs,
 The new Raspberry pi 2 comes with the following specs:
 
 <figure class="third">
-<img src="/images/pi-cartoon.jpeg">
+<img src="/assets/images/pi-cartoon.jpeg">
 </figure>
 
 * A 900MHz quad-core ARM Cortex-A7 CPU
@@ -107,7 +106,7 @@ Once sd-card inserted. power the Pi by inserting the power cable.
 
 RASPBIAN setup is self explanatory, it allows you to configure system variables before the image fully boots.
 <figure>
-<img src="/images/pi-raspi-config-main.png">
+<img src="/assets/images/pi-raspi-config-main.png">
 </figure>
 
 I've ran through most of the options above, notably `ssh` and the keyboard, and os locales. if you've made a mistake, this command is still available passed the initial config at `sudo raspi-config`

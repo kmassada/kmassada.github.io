@@ -3,7 +3,7 @@ layout: post
 title: Access All your Home Network Everywhere
 date: 2012-12-16 20:30:00.000000000 -05:00
 categories: [Android, Network, Staff Picks]
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -20,7 +20,7 @@ excerpt_separator: <!--more-->
 <div></div>
 <div>When you are beginning these are things people wonder, but never ask. </div>
 <div></div>
-<div class="separator" style="clear:both;text-align:center;"><a href="#" style="margin-left:1em;margin-right:1em;"><img border="0" src="/images/wp/7902f-home-network.jpg" /></a></div>
+<div class="separator" style="clear:both;text-align:center;"><a href="#" style="margin-left:1em;margin-right:1em;"><img border="0" src="/assets/images/wp/7902f-home-network.jpg" /></a></div>
 <div>Its all about concepts here, you need realize that you get a <b>DHCP</b> lease from you <b>Service provider</b>, when you google, "my public IP" you get a funny IP, that's from your ISP. Depending on your location, that <b>IP changes</b>, every time router reboots. You can also tie that IP to a <b>domain name (funny-name.com)</b>, using a <b>Dynamic DNS</b> provider. Here's a Free one: <a href="http://www.dnsdynamic.org/">http://www.dnsdynamic.org/</a>. These Providers tie your IP to a name you can use, instead of having to always enter a public IP. And since your IP can change, I know of people whose never changed in 10 years. But there are solutions to update your IP:  <a href="https://help.ubuntu.com/community/DynamicDNS">Ubuntu Dynamic DNS</a>  and <a href="http://www.ubuntugeek.com/update-ip-addresses-at-dynamic-dns-services-using-ddclient.html">update your ip using ddclient</a> . These days, routers like ASUS will offer you a Dynamic DNS service name, and updating your IP for free. For asus its .asuscomm.com. </div>
 <div></div>
 <div>Now that we got that part sorted. When All the requests come to your Router, it need to know what to do with it. First of all the requests come through <b>Protocols</b> and <b>Ports, </b> now your router takes in all those requests, but you can forward them to the different machines on your network  <a href="http://www.wikihow.com/Set-up-Port-Forwarding-on-a-Router">Setup Port Forwarding on a Router</a> through a concept called <b>PORT FORWARDING, </b>my first post will be on Openvpn, it uses port 1194, so you open the port from your router to 1194 on the server. [Be clever] you can actually open port 84565 and forward it to 65653, I'll elaborate more on security soon. </div>

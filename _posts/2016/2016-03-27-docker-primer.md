@@ -12,7 +12,7 @@ Aside from it being one of the hottest trends in tech today. I truly started loo
 
 Recently I started getting notifications:
 
-![New Relic Alert]({{ site.url }}/images/Screenshot_2016-03-28_10.06.2.png)
+![New Relic Alert]({{ site.url }}/assets/images/Screenshot_2016-03-28_10.06.2.png)
 
 ### what it may be?
 
@@ -44,9 +44,9 @@ I jumped into the subject matter with a hast. Deadline: 12 hrs over the weekend 
 - `iptables.` dodged it like I do, yes brush up on it.
 - `Docker-compose` deploys containers using configuration files. After each container deploy code looks like below, you'd regret.
 
-```
+{% raw %}
 docker run --name gelf -p 127.0.0.1:12201:12201/udp --link elasticsearch:elasticsearch -v /docker/gelf:/config-dir  --log-driver=gelf --log-opt gelf-address=udp://127.0.0.1:12201 --log-opt tag="{{.ImageName}}/{{.Name}}/{{.ID}}" --restart=always  -d logstash  logstash -f /config-dir/gelf.conf
-```
+{% endraw %}
 
 - `DOCKER_OPTS` I have not fully figured it out on centos, but in ubuntu, you can set a series of OPTS that will get appened to your docker runs.
 
@@ -60,7 +60,7 @@ docker run --name gelf -p 127.0.0.1:12201:12201/udp --link elasticsearch:elastic
 
 This gets it's own section because it is important, and overshadows all the things previously mentioned. Containers are NOT VMs. At this point you are nodding, but take a deep breath, and think about it for a second.
 
-![containers vs vms]({{ site.url }}/images/containers_vs_vms.png)
+![containers vs vms]({{ site.url }}/assets/images/containers_vs_vms.png)
 
 ### The Run Down
 The big picture: With Docker create an ELK stack that monitors hosts and containers
@@ -88,9 +88,11 @@ docker run --name gelf -p 127.0.0.1:12201:12201/udp --link elasticsearch:elastic
 4- configure containers to talk to gelf
 re-deploy each container with the following
 
-```
+{% raw %}
+
 --log-driver=gelf --log-opt gelf-address=udp://127.0.0.1:12201 --log-opt tag="{{.ImageName}}/{{.Name}}/{{.ID}}"
-```
+{% endraw %}
+
 
 /docker/gelf/gelf.conf
 
@@ -146,4 +148,4 @@ server {
 ```
 7- the result:
 
-![Hour 12]({{ site.url }}/images/Screenshot_2016-03-28_11.59.40.png)
+![Hour 12]({{ site.url }}/assets/images/Screenshot_2016-03-28_11.59.40.png)

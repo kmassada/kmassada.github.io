@@ -2,9 +2,7 @@
 layout: post
 title: "Author Override"
 author: billy_rick
-modified:
 excerpt: "A post to test author overrides using a data file."
-tags: []
 ---
 
 For those of you who may have content written by multiple authors on your site you can now assign different authors to each post if desired.

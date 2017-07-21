@@ -3,7 +3,7 @@ layout: post
 title: VNC (x11vnc) over SSH Tunnel on Ubuntu 12.10 and nexus 7 as a client
 date: 2012-12-23 22:40:00.000000000 -05:00
 categories: [Network, Staff Picks]
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -84,11 +84,11 @@ and make lightdm your default. 
 <p><b>On nexus 7</b></p>
 <p>install an app called <a href="https://play.google.com/store/apps/details?id=com.iiordanov.freebVNC" target="_blank">freeb VNC</a></p>
 <p>click on icon to install app.</p>
-<div class="separator" style="clear:both;text-align:left;"><a href="https://play.google.com/store/apps/details?id=com.iiordanov.freebVNC" style="margin-left:1em;margin-right:1em;" target="_blank"><img border="0" src="/images/wp/2daef-unnamed.png" /></a></div>
+<div class="separator" style="clear:both;text-align:left;"><a href="https://play.google.com/store/apps/details?id=com.iiordanov.freebVNC" style="margin-left:1em;margin-right:1em;" target="_blank"><img border="0" src="/assets/images/wp/2daef-unnamed.png" /></a></div>
 <p>In app fill in the form. lol.<br />Self Explanatory, ssh port is 5848, VNC port on server is 5917,</p>
-<p><a href="#" style="clear:left;margin-bottom:1em;margin-right:1em;text-align:center;"><img border="0" height="640" src="/images/wp/ebb8e-2012-12-2316-34-19.png?w=187" width="400" /></a></p>
+<p><a href="#" style="clear:left;margin-bottom:1em;margin-right:1em;text-align:center;"><img border="0" height="640" src="/assets/images/wp/ebb8e-2012-12-2316-34-19.png?w=187" width="400" /></a></p>
 <p>click on use key, then manage key, set a password of course, make encryption  4096 bits, then enter a file name, and select export to file name.</p>
-<div class="separator" style="clear:both;text-align:left;"><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" height="640" src="/images/wp/3a115-2012-12-2311-17-03.png?w=187" width="400" /></a></div>
+<div class="separator" style="clear:both;text-align:left;"><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" height="640" src="/assets/images/wp/3a115-2012-12-2311-17-03.png?w=187" width="400" /></a></div>
 <div class="separator" style="clear:both;text-align:left;">That file contains the following format, ssh-rsa KEY pubkeygenerator@mobiledevice, </div>
 <div class="" style="clear:both;text-align:center;"></div>
 <div style="text-align:start;">find a way of appending that string to ~/.ssh/authorized_keys on your server. </div>
@@ -101,10 +101,10 @@ and make lightdm your default. 
 <div style="text-align:start;"></div>
 <div style="text-align:start;">then connect </div>
 <div style="text-align:start;"></div>
-<div style="text-align:start;"><a href="#" style="clear:left;margin-bottom:1em;margin-right:1em;text-align:center;"><img border="0" height="640" src="/images/wp/ebb8e-2012-12-2316-34-19.png?w=187" width="400" /></a></div>
+<div style="text-align:start;"><a href="#" style="clear:left;margin-bottom:1em;margin-right:1em;text-align:center;"><img border="0" height="640" src="/assets/images/wp/ebb8e-2012-12-2316-34-19.png?w=187" width="400" /></a></div>
 <div style="text-align:start;"></div>
 <div style="text-align:start;">I'm in, that's my login screen</p>
-<div class="separator" style="clear:both;text-align:center;"><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" height="640" src="/images/wp/25422-2012-12-2315-05-07.png?w=187" width="400" /></a></div>
+<div class="separator" style="clear:both;text-align:center;"><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" height="640" src="/assets/images/wp/25422-2012-12-2315-05-07.png?w=187" width="400" /></a></div>
 <div>
 <div class="separator" style="clear:both;text-align:center;"></div>
 <p>couple of things to note,</p>

@@ -5,7 +5,7 @@ date: 2009-05-18 20:32:00.000000000 -04:00
 categories:
 - gnome-panel
 - Tools and Utilities
-tags: []
+tags: blogger
 status: draft
 type: post
 published: true
@@ -17,8 +17,8 @@ author:
   login: kmassada
   email: kmassada@gmail.com
   display_name: kmassada
-  first_name: ''
-  last_name: ''
+  first_name: 'Kenneth'
+  last_name: 'Massada'
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

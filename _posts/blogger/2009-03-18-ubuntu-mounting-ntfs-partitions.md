@@ -3,7 +3,7 @@ layout: post
 title: 'Ubuntu: Mounting NTFS Partitions'
 date: 2009-03-18 13:26:00.000000000 -04:00
 categories: [File System, Tools and Utilities]
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -27,7 +27,7 @@ excerpt_separator: <!--more-->
 <div class="line867">Launch <strong>NTFS Configuration Tool</strong> from Applications-&gt;System Tools, or via the terminal:</div>
 <pre>gksudo ntfs-config</pre>
 <p>
-<div class="line867"><span id="goog_423286"></span><span id="goog_423289"></span><img alt="ntfs-config.png" class="attachment" id=":current_picnik_image" src="/images/wp/5863a-16606044586_qvwkt.jpg" title="ntfs-config.png" /><span id="goog_423290"></span><span id="goog_423287"></span></div>
+<div class="line867"><span id="goog_423286"></span><span id="goog_423289"></span><img alt="ntfs-config.png" class="attachment" id=":current_picnik_image" src="/assets/images/wp/5863a-16606044586_qvwkt.jpg" title="ntfs-config.png" /><span id="goog_423290"></span><span id="goog_423287"></span></div>
 <p>
 <div class="line874">If you have at least one internal NTFS partition, it will allow you to check both boxes, otherwise you can only check the box for external devices.</div>
 <p>If your NTFS partition(s) are not yet configured, it will ask you to choose a name that will be used as the mount point (please no spaces). Then enable write support for internal and/or external devices</p></blockquote>

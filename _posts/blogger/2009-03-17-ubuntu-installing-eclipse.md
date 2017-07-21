@@ -3,7 +3,7 @@ layout: post
 title: 'Ubuntu: Installing Eclipse'
 date: 2009-03-17 17:24:00.000000000 -04:00
 categories: [IDE, Productivity]
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -15,7 +15,7 @@ meta:
 excerpt_separator: <!--more-->
 
 ---
-<div class="separator" style="clear:both;text-align:center;"><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" src="/images/wp/5ca65-easyeclipse_icon.png" /></a></div>
+<div class="separator" style="clear:both;text-align:center;"><a href="#" style="clear:left;float:left;margin-bottom:1em;margin-right:1em;"><img border="0" src="/assets/images/wp/5ca65-easyeclipse_icon.png" /></a></div>
 <p>Eclipse is a software we use at school for java programing, for me, its a priority to have eclipse functional.</p>
 <p><a href="http://ubuntuforums.org/showthread.php?t=941461">here is a tutorial that i got from the Ubuntu community.  I copied the text word for word,because  sometimes some of these threads get deleted, just wanted to make sure, I still have a reference to it.</a><br />
 <blockquote>

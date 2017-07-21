@@ -3,7 +3,7 @@ layout: post
 title: 'Ubuntu: Virtual Box Set-up, Install, USB and Share Drive'
 date: 2009-03-23 17:03:00.000000000 -04:00
 categories: [Tools and Utilities, virtualization]
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -95,4 +95,4 @@ excerpt_separator: <!--more-->
 <p><span style="color:red;">net use x: \\vboxsvr\share</span><br />If the client is Linux, run<br /><span style="color:red;">mount -t vboxfs share mountpoint</span><br />For the above command if you get error as<br /><span style="color:red;">mount: unknown filesystem type 'vboxfs'</span><br />Then just change the vboxfs to vboxsf means the command will be<br /><span style="color:red;">mount -t vboxsf share mountpoint</span></p></blockquote>
 <p><strong>SEAMLESS MODE</strong></p>
 <p>There is something call seemless mode that you can enable when your Guest additions are well configured. It integrate the virtual with the host. Look at the screen shot bellow</p>
-<div class="separator" style="clear:both;text-align:center;"><a href="#" style="margin-left:1em;margin-right:1em;"><img border="0" height="400" src="/images/wp/18a35-seamless-mode.png?w=300" width="640" /></a></div>
+<div class="separator" style="clear:both;text-align:center;"><a href="#" style="margin-left:1em;margin-right:1em;"><img border="0" height="400" src="/assets/images/wp/18a35-seamless-mode.png?w=300" width="640" /></a></div>

@@ -3,7 +3,7 @@ layout: post
 title: What's next? What's been on my mind?
 date: 2012-12-12 09:30:00.000000000 -05:00
 categories: [About, Staff Picks]
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true

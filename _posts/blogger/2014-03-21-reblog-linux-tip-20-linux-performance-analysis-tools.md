@@ -3,7 +3,7 @@ layout: post
 title: "[ReBlog | Linux Tip] 20 Linux performance analysis tools"
 date: 2014-03-21 13:55:00.000000000 -04:00
 categories: [Linux Tip]
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -17,5 +17,5 @@ meta:
 excerpt_separator: <!--more-->
 
 ---
-<div class="separator" style="clear:both;text-align:center;"><a href="#" style="margin-left:1em;margin-right:1em;"><img border="0" src="/images/wp/40db1-bjgzodycaaa8ktt.png" height="476" width="640" /></a></div>
+<div class="separator" style="clear:both;text-align:center;"><a href="#" style="margin-left:1em;margin-right:1em;"><img border="0" src="/assets/images/wp/40db1-bjgzodycaaa8ktt.png" height="476" width="640" /></a></div>
 <p>This diagram is really handy, shows you different elements in the linux arch and how to identify the performance of each elements.</p>

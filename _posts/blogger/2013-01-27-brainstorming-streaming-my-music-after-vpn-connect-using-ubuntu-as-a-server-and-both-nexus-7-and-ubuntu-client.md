@@ -3,7 +3,7 @@ layout: post
 title: "[Brainstorming] Streaming my music after vpn connect using ubuntu as a server and both nexus 7 and Ubuntu client."
 date: 2013-01-27 16:40:00.000000000 -05:00
 categories: [Home, Media]
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -20,7 +20,7 @@ I post when a setup is successful, but someone suggested, why don't I also blog 
 <b>The problem:</b> once in my home environment I want to be able to stream my Music to all the nodes. I want to also be able to stream playlists to my endpoints. <i>Optionally I would love to make playlists remotely and stream. Do not care as much for other types of media.</i><br>
 <b>Constraints:</b> i access my environment via vpn only. I refuse to open any other ports to the outside. I also refuse to use windows.
 
-<img border="0" height="200" src="/images/wp/154123-headphones-headphones.jpg" width="320" />
+<img border="0" height="200" src="/assets/images/wp/154123-headphones-headphones.jpg" width="320" />
 
 <a name="more"></a>
 <b>Plausible Solutions:</b><br />

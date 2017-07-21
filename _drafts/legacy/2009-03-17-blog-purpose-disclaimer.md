@@ -4,7 +4,6 @@ title: Blog Purpose & Disclaimer
 date: 2009-03-17 06:45:00.000000000 -04:00
 categories:
 - About
-tags: []
 status: publish
 type: post
 published: true
@@ -16,8 +15,8 @@ author:
   login: kmassada
   email: kmassada@gmail.com
   display_name: kmassada
-  first_name: ''
-  last_name: ''
+  first_name: 'Kenneth'
+  last_name: 'Massada'
 excerpt: !ruby/object:Hpricot::Doc
 
 ---

@@ -3,7 +3,7 @@ layout: post
 title: '"Convert" vm to thin-Provision using vSphere PowerCLI'
 date: 2014-07-03 13:22:21.000000000 -04:00
 categories: [virtualization]
-tags: [powercli, vmware]
+tags: powercli, vmware
 status: publish
 type: post
 published: true

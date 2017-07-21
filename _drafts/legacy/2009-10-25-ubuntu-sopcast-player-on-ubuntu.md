@@ -4,7 +4,7 @@ title: 'Ubuntu: SopCast Player on Ubuntu'
 date: 2009-10-25 16:31:00.000000000 -04:00
 categories:
 - Multimedia
-tags: []
+tags: blogger
 status: publish
 type: post
 published: true
@@ -16,8 +16,8 @@ author:
   login: kmassada
   email: kmassada@gmail.com
   display_name: kmassada
-  first_name: ''
-  last_name: ''
+  first_name: 'Kenneth'
+  last_name: 'Massada'
 excerpt: !ruby/object:Hpricot::Doc
 
 ---
