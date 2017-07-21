@@ -15,7 +15,7 @@ meta:
   blogger_ff04fb872097e84c3f74ac8dafe273de_permalink: '4694137871633198885'
 author:
   login: kmassada
-  email: kmassada@gmail.com
+  email: admin@kmassada.com
   display_name: kmassada
   first_name: 'Kenneth'
   last_name: 'Massada'
