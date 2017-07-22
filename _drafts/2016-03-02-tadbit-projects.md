@@ -3,7 +3,7 @@ layout: post
 title: "tadbit projects"
 date: 2016-03-02 11:31 -0400
 excerpt: "list of tadbit.io projects"
-categories: projects
+categories: [projects]
 image:
   feature: baltimore-skyline.png
   creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
