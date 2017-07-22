@@ -1,7 +1,7 @@
 ---
-layout: "post"
+layout: post
 title: "tadbit projects"
-date: "2016-03-02 11:31"
+date: 2016-03-02 11:31
 excerpt: "list of tadbit.io projects"
 categories: projects
 image:

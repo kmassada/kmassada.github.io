@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Cairo Dock, Compiz, Emerald'
+title: "Ubuntu: Cairo Dock, Compiz, Emerald"
 date: 2009-03-17 18:03:00.000000000 -04:00
 categories:
 - compiz

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Makes Newer Ubuntu Apps Easily Available (GetDeb.Net Repository)'
+title: "Ubuntu: Makes Newer Ubuntu Apps Easily Available (GetDeb.Net Repository)"
 date: 2009-11-21 12:46:00.000000000 -05:00
 categories:
 - Repositories

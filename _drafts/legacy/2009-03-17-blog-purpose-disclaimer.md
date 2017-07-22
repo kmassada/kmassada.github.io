@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Blog Purpose & Disclaimer
+title: "Blog Purpose & Disclaimer"
 date: 2009-03-17 06:45:00.000000000 -04:00
 categories:
 - About

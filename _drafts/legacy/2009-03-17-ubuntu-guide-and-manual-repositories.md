@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Guide and Manual Repositories'
+title: "Ubuntu: Guide and Manual Repositories"
 date: 2009-03-17 15:35:00.000000000 -04:00
 categories:
 - Repositories

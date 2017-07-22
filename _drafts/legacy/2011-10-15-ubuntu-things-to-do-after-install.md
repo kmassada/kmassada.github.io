@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu Things to do after install
+title: "Ubuntu Things to do after install"
 date: 2011-10-15 00:26:00.000000000 -04:00
 categories:
 - Tools and Utilities

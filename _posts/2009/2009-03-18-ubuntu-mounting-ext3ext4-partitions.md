@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Mounting ext3/ext4 Partitions'
+title: "Ubuntu: Mounting ext3/ext4 Partitions"
 date: 2009-03-18 16:10:00.000000000 -04:00
 categories: [File System, Tools and Utilities]
 tags: blogger

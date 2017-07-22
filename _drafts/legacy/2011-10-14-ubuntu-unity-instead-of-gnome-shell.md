@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Unity, instead of Gnome Shell'
+title: "Ubuntu: Unity, instead of Gnome Shell"
 date: 2011-10-14 08:05:00.000000000 -04:00
 categories:
 - Eye Candy

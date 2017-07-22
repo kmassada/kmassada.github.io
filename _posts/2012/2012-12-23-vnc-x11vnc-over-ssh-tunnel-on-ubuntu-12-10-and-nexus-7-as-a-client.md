@@ -1,6 +1,6 @@
 ---
 layout: post
-title: VNC (x11vnc) over SSH Tunnel on Ubuntu 12.10 and nexus 7 as a client
+title: "VNC (x11vnc) over SSH Tunnel on Ubuntu 12.10 and nexus 7 as a client"
 date: 2012-12-23 22:40:00.000000000 -05:00
 categories: [Network, Staff Picks]
 tags: blogger

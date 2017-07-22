@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu Chrome (chromium)
+title: "Ubuntu Chrome (chromium)"
 date: 2011-10-24 06:47:00.000000000 -04:00
 categories:
 - Productivity

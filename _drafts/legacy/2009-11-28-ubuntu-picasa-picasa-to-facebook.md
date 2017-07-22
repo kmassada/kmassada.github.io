@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Picasa, Picasa to Facebook'
+title: "Ubuntu: Picasa, Picasa to Facebook"
 date: 2009-11-28 22:16:00.000000000 -05:00
 categories:
 - Multimedia

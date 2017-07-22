@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: ALL TRAY'
+title: "Ubuntu: ALL TRAY"
 date: 2009-05-18 20:25:00.000000000 -04:00
 categories:
 - gnome-panel

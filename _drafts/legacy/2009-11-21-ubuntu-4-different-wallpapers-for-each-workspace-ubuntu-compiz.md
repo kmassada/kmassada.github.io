@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: 4 different wallpapers for each workspace (Ubuntu & Compiz)'
+title: "Ubuntu: 4 different wallpapers for each workspace (Ubuntu & Compiz)"
 date: 2009-11-21 13:22:00.000000000 -05:00
 categories:
 - compiz

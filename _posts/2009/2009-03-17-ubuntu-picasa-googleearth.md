@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Picasa, GoogleEarth'
+title: "Ubuntu: Picasa, GoogleEarth"
 date: 2009-03-17 17:08:00.000000000 -04:00
 categories: [Multimedia, Ubuntu]
 tags: blogger

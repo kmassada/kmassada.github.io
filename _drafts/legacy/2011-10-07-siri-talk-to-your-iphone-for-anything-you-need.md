@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Siri: Talk to your iPhone for anything you need'
+title: "Siri: Talk to your iPhone for anything you need"
 date: 2011-10-07 18:59:00.000000000 -04:00
 categories:
 - Off Topic

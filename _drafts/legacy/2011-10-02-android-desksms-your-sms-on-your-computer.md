@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Android: DeskSMS, your SMS on your Computer'
+title: "Android: DeskSMS, your SMS on your Computer"
 date: 2011-10-02 09:08:00.000000000 -04:00
 categories:
 - Android

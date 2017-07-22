@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Mounting NTFS Partitions'
+title: "Ubuntu: Mounting NTFS Partitions"
 date: 2009-03-18 13:26:00.000000000 -04:00
 categories: [File System, Tools and Utilities]
 tags: blogger

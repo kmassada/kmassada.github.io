@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu 11.10 Preview
+title: "Ubuntu 11.10 Preview"
 date: 2011-10-15 00:21:00.000000000 -04:00
 categories:
 - Eye Candy

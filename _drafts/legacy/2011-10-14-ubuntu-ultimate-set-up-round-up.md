@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: ULTIMATE SET UP & ROUND UP'
+title: "Ubuntu: ULTIMATE SET UP & ROUND UP"
 date: 2011-10-14 08:07:00.000000000 -04:00
 categories:
 - Eye Candy

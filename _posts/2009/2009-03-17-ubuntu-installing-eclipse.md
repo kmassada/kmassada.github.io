@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Installing Eclipse'
+title: "Ubuntu: Installing Eclipse"
 date: 2009-03-17 17:24:00.000000000 -04:00
 categories: [IDE, Productivity]
 tags: blogger

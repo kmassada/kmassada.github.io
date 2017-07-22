@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Force Quit'
+title: "Ubuntu: Force Quit"
 date: 2009-05-18 20:32:00.000000000 -04:00
 categories:
 - gnome-panel

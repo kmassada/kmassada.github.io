@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: Music & Video'
+title: "Ubuntu: Music & Video"
 date: 2009-03-18 12:31:00.000000000 -04:00
 categories:
 - Multimedia

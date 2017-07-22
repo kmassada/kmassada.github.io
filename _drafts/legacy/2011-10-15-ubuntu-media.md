@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu Media
+title: "Ubuntu Media"
 date: 2011-10-15 01:58:00.000000000 -04:00
 categories:
 - Multimedia

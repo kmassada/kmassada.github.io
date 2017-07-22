@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ubuntu: SopCast Player on Ubuntu'
+title: "Ubuntu: SopCast Player on Ubuntu"
 date: 2009-10-25 16:31:00.000000000 -04:00
 categories:
 - Multimedia

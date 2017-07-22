@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu Social
+title: "Ubuntu Social"
 date: 2011-10-17 17:46:00.000000000 -04:00
 categories:
 - Multimedia
