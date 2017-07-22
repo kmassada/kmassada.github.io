@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Blog Purpose & Disclaimer"
 date: 2009-03-17 06:45 -0400
 categories:

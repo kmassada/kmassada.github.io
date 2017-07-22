@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu Pre-Requirement"
 date: 2011-10-14 08:41 -0400
 categories:

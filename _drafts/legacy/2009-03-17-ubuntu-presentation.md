@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: Presentation"
 date: 2009-03-17 05:44 -0400
 categories:

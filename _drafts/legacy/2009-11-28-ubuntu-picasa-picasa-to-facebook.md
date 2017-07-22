@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: Picasa, Picasa to Facebook"
 date: 2009-11-28 22:16 -0500
 categories:

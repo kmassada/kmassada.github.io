@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Siri: Talk to your iPhone for anything you need"
 date: 2011-10-07 18:59 -0400
 categories:

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu Tweaks"
 date: 2009-05-18 18:49 -0400
 categories:

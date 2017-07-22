@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Android: DeskSMS, your SMS on your Computer"
 date: 2011-10-02 09:08 -0400
 categories:

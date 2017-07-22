@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu Install and Partitioning"
 date: 2011-10-14 09:21 -0400
 categories:

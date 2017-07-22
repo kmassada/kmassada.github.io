@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: Unity Roundup"
 date: 2011-10-02 09:51 -0400
 categories:

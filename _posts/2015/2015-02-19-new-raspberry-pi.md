@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Raspberry Pi2"
 categories: [raspberrypi2]
 excerpt: "exploration and getting started with the new Raspberry Pi2"

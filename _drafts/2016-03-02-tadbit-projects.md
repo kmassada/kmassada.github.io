@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "tadbit projects"
 date: 2016-03-02 11:31 -0400
 excerpt: "list of tadbit.io projects"

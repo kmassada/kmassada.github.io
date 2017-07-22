@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu Social"
 date: 2011-10-17 17:46 -0400
 categories:

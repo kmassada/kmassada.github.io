@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu Things to do after install"
 date: 2011-10-15 00:26 -0400
 categories:

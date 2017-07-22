@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Google inbox - Rethink Email"
 date: 2014-10-23 21:37 -0400
 categories:

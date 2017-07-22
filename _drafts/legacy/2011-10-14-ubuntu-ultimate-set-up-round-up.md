@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: ULTIMATE SET UP & ROUND UP"
 date: 2011-10-14 08:07 -0400
 categories:

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu 11.10 Preview"
 date: 2011-10-15 00:21 -0400
 categories:

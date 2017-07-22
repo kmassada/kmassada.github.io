@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: Force Quit"
 date: 2009-05-18 20:32 -0400
 categories:

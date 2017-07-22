@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: How to Install Adobe Flash Player 64-bit on Ubuntu"
 date: 2009-11-07 21:40 -0500
 categories:

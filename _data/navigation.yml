@@ -1,0 +1,14 @@
+# main links
+main:
+  - title: Home
+    url: /
+  - title: Projects
+    url: /projects/projects/
+  - title: Raspberrypi2
+    url: /raspberrypi2/new-raspberry-pi/
+  - title: Tales
+    url: http://tadbit.cc
+  - title: "Sitemap"
+    url: /sitemap/
+  - title: "About"
+    url: /about

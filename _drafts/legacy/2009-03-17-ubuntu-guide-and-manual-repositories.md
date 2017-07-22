@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: Guide and Manual Repositories"
 date: 2009-03-17 15:35 -0400
 categories:

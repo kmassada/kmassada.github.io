@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: Cairo Dock, Compiz, Emerald"
 date: 2009-03-17 18:03 -0400
 categories:

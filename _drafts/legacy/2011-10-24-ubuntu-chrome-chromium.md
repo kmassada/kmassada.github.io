@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu Chrome (chromium)"
 date: 2011-10-24 06:47 -0400
 categories:

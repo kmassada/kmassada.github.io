@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: Unity, instead of Gnome Shell"
 date: 2011-10-14 08:05 -0400
 categories:

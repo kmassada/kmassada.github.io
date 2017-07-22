@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Filtering Traffic: The OpenDNS way"
 date: 2014-06-09 15:49 -0400
 categories: [Home]

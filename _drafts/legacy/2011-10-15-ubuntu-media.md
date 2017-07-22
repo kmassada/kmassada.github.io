@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu Media"
 date: 2011-10-15 01:58 -0400
 categories:

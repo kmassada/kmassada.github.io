@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: SopCast Player on Ubuntu"
 date: 2009-10-25 16:31 -0400
 categories:

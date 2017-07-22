@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "[ReBlog | Linux Tip] 20 Linux performance analysis tools"
 date: 2014-03-21 13:55 -0400
 categories: [Linux Tip]

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: The Cons and Challenge"
 date: 2009-03-17 06:32 -0400
 categories:

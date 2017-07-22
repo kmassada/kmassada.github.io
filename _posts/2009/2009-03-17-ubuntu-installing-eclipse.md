@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: Installing Eclipse"
 date: 2009-03-17 17:24 -0400
 categories: [IDE, Productivity]

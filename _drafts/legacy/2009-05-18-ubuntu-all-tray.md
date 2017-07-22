@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: ALL TRAY"
 date: 2009-05-18 20:25 -0400
 categories:

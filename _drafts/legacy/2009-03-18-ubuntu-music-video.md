@@ -1,5 +1,5 @@
 ---
-layout: post
+layout:
 title: "Ubuntu: Music & Video"
 date: 2009-03-18 12:31 -0400
 categories:
