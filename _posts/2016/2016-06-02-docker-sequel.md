@@ -4,8 +4,6 @@ title: "Docker Lessons Learned: 3 months in"
 date: "2016-03-27 11:31"
 excerpt: "Tips and Tricks I've acquired after using docker for close to 3 months."
 categories: projects
-image:
-  feature: baltimore-skyline-blur.png
 ---
 
 In my primer my usage was very limited, and there are a few questions i've been able to answer and I'd like to share the top ones. These I think are questions beginners itch to answer as they become intermediates.

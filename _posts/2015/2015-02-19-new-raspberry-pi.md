@@ -5,8 +5,6 @@ categories: raspberrypi2
 excerpt: "exploration and getting started with the new Raspberry Pi2"
 tags: IoT,gadgets
 date: 2015-02-19T23:35:01-05:00
-image:
-  thumb: pi-cartoon.jpeg
 ---
 
 Raspberry pi needs no introduction, regardless of what side of the house you are on.

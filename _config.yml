@@ -2,33 +2,29 @@
 
 title: kmassada tech blog
 locale: en_US
-url: 'http://127.0.0.1:4000'
-bsaseurl: '/'
 email: 'admin@kmassada.com'
-description: ''
-twitter_username: jekyllrb
-github_username:  jekyll
+description: 'Just another tech blog'
+
+# Serving
+url: 'http://127.0.0.1:4000'
+bsaseurl: ''
 
 # Jekyll configuration
 permalink:   /:categories/:title/
+
+# Conversion
 markdown: kramdown
+highlighter: rouge
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-gist
 
-# Default extensions
-post_ext: md
-page_ext: md
-
-# Format titles with titlecase?
-titlecase: true
-
 # Site owner
 owner:
   name: Kenneth Massada
   avatar: bio-photo.jpg
-  bio: ".."
+  bio: "curious engineer seeking answers"
   email: "admin@kmassada.com"
   twitter: kmassada
   facebook: kmassada
@@ -39,3 +35,5 @@ owner:
   stackoverflow: 1095800/kmassada
   linkedin: kennethmassada
   instagram: sndnjmz
+twitter_username: kmassada
+github_username:  kmassada

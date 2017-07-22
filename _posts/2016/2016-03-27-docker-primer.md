@@ -4,8 +4,6 @@ title: "Docker Lessons Learned: Hour 12"
 date: "2016-03-27 11:31"
 excerpt: "My take on docker and how it helps with my personal projects"
 categories: projects
-image:
-  feature: baltimore-skyline-blur.png
 ---
 
 Aside from it being one of the hottest trends in tech today. I truly started looking at docker for **practical** reasons. I had a node in Digital ocean. On that node I run all my private projects, which vary from Node JS api listener for git post hooks to full stack web apps.
