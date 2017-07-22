@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Google inbox - Rethink Email"
-date: 2014-10-23 21:37:22.000000000 -04:00
+date: 2014-10-23 21:37 -0400
 categories:
 - Android
 tags:

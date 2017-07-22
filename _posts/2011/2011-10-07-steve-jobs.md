@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Steve Jobs"
-date: 2011-10-07 19:06:00.000000000 -04:00
+date: 2011-10-07 19:06 -0400
 categories: [Off Topic]
 tags: blogger
 status: publish

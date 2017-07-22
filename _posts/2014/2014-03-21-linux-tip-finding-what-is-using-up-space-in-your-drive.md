@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Linux Tip] Finding what is using up space in your drive"
-date: 2014-03-21 13:52:00.000000000 -04:00
+date: 2014-03-21 13:52 -0400
 categories: [Linux Tip]
 tags: blogger
 status: publish

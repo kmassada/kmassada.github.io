@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Samsung Series 7 Chronos: Review"
-date: 2012-03-04 22:22:00.000000000 -05:00
+date: 2012-03-04 22:22 -0500
 categories: [Review, Staff Picks]
 tags: blogger
 status: publish

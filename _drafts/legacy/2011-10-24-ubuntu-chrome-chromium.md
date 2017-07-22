@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu Chrome (chromium)"
-date: 2011-10-24 06:47:00.000000000 -04:00
+date: 2011-10-24 06:47 -0400
 categories:
 - Productivity
 tags: blogger

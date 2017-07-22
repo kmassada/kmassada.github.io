@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu: How to Reset Ubuntu/Gnome Settings to Defaults"
-date: 2010-01-05 17:41:00.000000000 -05:00
+date: 2010-01-05 17:41 -0500
 categories: [compiz, Eye Candy, Tools and Utilities, Ubuntu]
 tags: blogger
 status: publish

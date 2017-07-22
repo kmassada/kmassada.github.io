@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu 11.10 Preview"
-date: 2011-10-15 00:21:00.000000000 -04:00
+date: 2011-10-15 00:21 -0400
 categories:
 - Eye Candy
 - Tools and Utilities

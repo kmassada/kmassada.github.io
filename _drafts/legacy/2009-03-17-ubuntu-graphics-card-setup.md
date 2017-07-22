@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu: Graphics Card Setup"
-date: 2009-03-17 16:15:00.000000000 -04:00
+date: 2009-03-17 16:15 -0400
 categories:
 - Graphic Card
 - Tools and Utilities

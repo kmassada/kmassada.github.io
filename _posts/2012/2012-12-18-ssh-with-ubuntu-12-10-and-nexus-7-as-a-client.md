@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SSH with Ubuntu 12.10 and nexus 7 as a client"
-date: 2012-12-18 01:25:00.000000000 -05:00
+date: 2012-12-18 01:25 -0500
 categories: [Android, Network, Staff Picks]
 tags: blogger
 status: publish

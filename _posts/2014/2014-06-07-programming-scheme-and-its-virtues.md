@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Programming] Scheme and it's virtues"
-date: 2014-06-07 11:17:55.000000000 -04:00
+date: 2014-06-07 11:17 -0400
 categories: [Coding]
 tags: blogger
 status: publish

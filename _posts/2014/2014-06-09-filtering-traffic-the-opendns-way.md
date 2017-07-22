@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Filtering Traffic: The OpenDNS way"
-date: 2014-06-09 15:49:11.000000000 -04:00
+date: 2014-06-09 15:49 -0400
 categories: [Home]
 tags: blogger
 status: publish

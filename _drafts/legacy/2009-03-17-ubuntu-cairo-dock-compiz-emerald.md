@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu: Cairo Dock, Compiz, Emerald"
-date: 2009-03-17 18:03:00.000000000 -04:00
+date: 2009-03-17 18:03 -0400
 categories:
 - compiz
 - Eye Candy

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu: Force Quit"
-date: 2009-05-18 20:32:00.000000000 -04:00
+date: 2009-05-18 20:32 -0400
 categories:
 - gnome-panel
 - Tools and Utilities

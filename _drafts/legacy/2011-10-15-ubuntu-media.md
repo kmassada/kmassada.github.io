@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu Media"
-date: 2011-10-15 01:58:00.000000000 -04:00
+date: 2011-10-15 01:58 -0400
 categories:
 - Multimedia
 tags: blogger

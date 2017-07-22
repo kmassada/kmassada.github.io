@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu Social"
-date: 2011-10-17 17:46:00.000000000 -04:00
+date: 2011-10-17 17:46 -0400
 categories:
 - Multimedia
 - Ubuntu

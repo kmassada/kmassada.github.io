@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Linux Tip] downgrade or undo yum/package install in RHEL 6"
-date: 2014-04-08 19:13:00.000000000 -04:00
+date: 2014-04-08 19:13 -0400
 categories: [Linux Tip]
 tags: blogger
 status: publish

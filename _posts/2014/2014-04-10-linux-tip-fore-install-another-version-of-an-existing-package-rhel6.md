@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Linux Tip] Force install another version of an existing package RHEL6"
-date: 2014-04-10 18:28:00.000000000 -04:00
+date: 2014-04-10 18:28 -0400
 categories: [Linux Tip]
 tags: blogger
 status: publish

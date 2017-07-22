@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu Pre-Requirement"
-date: 2011-10-14 08:41:00.000000000 -04:00
+date: 2011-10-14 08:41 -0400
 categories:
 - Tools and Utilities
 tags: blogger

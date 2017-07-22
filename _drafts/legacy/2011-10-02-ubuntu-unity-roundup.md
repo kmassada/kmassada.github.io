@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu: Unity Roundup"
-date: 2011-10-02 09:51:00.000000000 -04:00
+date: 2011-10-02 09:51 -0400
 categories:
 - Eye Candy
 - Tools and Utilities

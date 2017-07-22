@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu: Presentation"
-date: 2009-03-17 05:44:00.000000000 -04:00
+date: 2009-03-17 05:44 -0400
 categories:
 - About
 tags:  blogger

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu Install and Partitioning"
-date: 2011-10-14 09:21:00.000000000 -04:00
+date: 2011-10-14 09:21 -0400
 categories:
 - Tools and Utilities
 tags: blogger

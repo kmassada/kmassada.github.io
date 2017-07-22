@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Productivity Tip: The Black Desktop."
-date: 2012-12-17 23:44:00.000000000 -05:00
+date: 2012-12-17 23:44 -0500
 categories: [Productivity, Staff Picks]
 tags: blogger
 status: publish

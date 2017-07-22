@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ubuntu: Music & Video"
-date: 2009-03-18 12:31:00.000000000 -04:00
+date: 2009-03-18 12:31 -0400
 categories:
 - Multimedia
 tags: blogger

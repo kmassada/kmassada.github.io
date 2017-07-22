@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Docker Lessons Learned: Hour 12"
-date: 2016-03-27 11:31
+date: 2016-03-27 11:31 -0400
 excerpt: "My take on docker and how it helps with my personal projects"
 categories: projects
 ---
