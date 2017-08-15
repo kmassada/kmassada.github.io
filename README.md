@@ -6,4 +6,5 @@ This is just another attempt to keep myself uptodate with tech discoveries, expl
 ```
 docker build -t kmassada.github.io .
 docker run --rm -it -p 4000:4000 -v "$PWD":/usr/src/app -w /usr/src/app kmassada.github.io bash
+bundle exec jekyll serve -H 0.0.0.0 --incremental --watch
 ```
