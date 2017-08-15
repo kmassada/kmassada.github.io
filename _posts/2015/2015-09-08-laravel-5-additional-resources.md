@@ -3,7 +3,7 @@ layout:
 title: "Laravel 5 additional resources"
 categories: [Laravel]
 date: 2015-09-07 12:00 -0400
-tags: php,laravel
+tags: php laravel
 status: publish
 published: true
 ---

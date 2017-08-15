@@ -3,7 +3,7 @@ layout:
 title: "Raspberry Pi2"
 categories: [raspberrypi2]
 excerpt: "exploration and getting started with the new Raspberry Pi2"
-tags: IoT,gadgets
+tags: IoT gadgets
 date: 2015-02-19 23:35 -0500
 ---
 

@@ -3,7 +3,7 @@ layout:
 title: "gulp simple workflow"
 categories: [Laravel, JS]
 date: 2015-09-07 12:00 -0400
-tags: php,laravel,js,node
+tags: php laravel js node
 status: publish
 published: true
 ---
