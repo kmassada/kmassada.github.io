@@ -60,7 +60,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : # Open Graph/Twitter default site image
+og_image                 : /assets/images/Technology-detox.jpg # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -70,9 +70,9 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider               : "google" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          :
+    tracking_id          : UA-58957717-1
 
 
 # Site Author
