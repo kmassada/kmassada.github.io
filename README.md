@@ -9,3 +9,17 @@ docker run --rm -it -p 4000:4000 -v "$PWD":/usr/src/app -w /usr/src/app kmassada
 export JEKYLL_ENV=development
 bundle exec jekyll serve -H 0.0.0.0 --incremental --watch
 ```
+
+# mods
+```
+_css
+reset
+variables
+
+_data
+nav
+ui-text
+
+_layouts
+footer
+```
