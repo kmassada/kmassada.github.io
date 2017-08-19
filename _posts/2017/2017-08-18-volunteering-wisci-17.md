@@ -6,7 +6,6 @@ header:
 date: 2017-08-18 14:24 -0400
 ---
 
-# The camp
 WiSci Malawi brought together 100 high school girls from the African continent and the US for a three weeks long camp. The goal of the camp was to empower them to grow their leadership potential, and build camaraderie and networks that will propel them to new opportunities in their desired fields. The theme of WiSci 2017 is using technology to create a safer, more secure world, with a focus on preventing gender-based violence. WiSci partners this year included the UN Foundation’s Girl Up campaign, Intel Corporation, and Google.
 
 # Malawi and MUST
