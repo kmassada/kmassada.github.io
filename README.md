@@ -1,4 +1,4 @@
-#ABOUT
+# ABOUT
 
 This is just another attempt to keep myself uptodate with tech discoveries, explorations, all things I learn, all things I want to learn and some more.
 
@@ -24,6 +24,15 @@ docker build -t kmassada.github.io .
 docker run --rm -it -p 4000:4000 -v "$PWD":/usr/src/app -w /usr/src/app kmassada.github.io bash
 export JEKYLL_ENV=development
 bundle exec jekyll serve -H 0.0.0.0 --incremental --watch
+```
+
+#upgrading 
+```
+git checkout -b jekyll-X.X
+git merge -s ours master
+git checkout master
+git merge jekyll-X.X
+git push origin master
 ```
 
 # mods
