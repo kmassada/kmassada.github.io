@@ -7,8 +7,11 @@ This is just another attempt to keep myself uptodate with tech discoveries, expl
 #Linux jekyll-test 4.10.0-32-generic #36~16.04.1-Ubuntu SMP Wed Aug 9 09:19:02 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
 git clone https://github.com/mmistakes/minimal-mistakes.git
 cd minimal-mistakes
-sudo apt-get install rubygems ruby-dev
-sudo apt-get install linux-headers-$(uname -r) build-essential  zlib1g-dev
+sudo apt-get install -qy rubygems ruby-dev linux-headers-$(uname -r) build-essential  zlib1g-dev locales
+locale-gen en_US.UTF-8
+localedef -i en_US -f UTF-8 en_US.UTF-8
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8" 
 sudo gem install jekyll bundler
 sudo gem install sass --no-user-install
 bundle install
