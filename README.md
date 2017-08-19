@@ -18,7 +18,7 @@ bundle install
 bundle exec jekyll serve -H 0.0.0.0 --incremental --watch
 ```
 
-#Dockerize
+# Dockerize
 ```
 docker build -t kmassada.github.io .
 docker run --rm -it -p 4000:4000 -v "$PWD":/usr/src/app -w /usr/src/app kmassada.github.io bash
@@ -26,7 +26,7 @@ export JEKYLL_ENV=development
 bundle exec jekyll serve -H 0.0.0.0 --incremental --watch
 ```
 
-#upgrading 
+# upgrading 
 ```
 git checkout -b jekyll-X.X
 git merge -s ours master
