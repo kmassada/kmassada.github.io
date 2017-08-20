@@ -3,6 +3,7 @@ layout:
 title: "Volunteering in Malawi at WiSci 17'"
 header:
   image: /assets/images/wisci-2017/MUST.png
+  teaser: /assets/images/wisci-2017/MUST.png
 date: 2017-08-18 14:24 -0400
 ---
 
