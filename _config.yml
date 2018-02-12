@@ -5,9 +5,11 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
+minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+
 # Site Settings
-locale                   : "en"
-title                    : ""
+locale                   : "en-US"
+title                    : "kmassada blog"
 title_separator          : "-"
 name                     : "Kenneth Massada"
 description              : "Just another tech blog."
@@ -18,7 +20,7 @@ teaser                   : # path of fallback teaser image, e.g. "/assets/images
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"  
   disqus:
     shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
@@ -44,14 +46,19 @@ staticman:
       type               : "date"
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
+        reCaptcha:
+          siteKey                :
+          secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
+  search                   : # true, false (default)
+  search_full_content      : # true, false (default)
 
 # SEO Related
 google_site_verification :
 bing_site_verification   :
-alexa_site_verification  :
 yandex_site_verification :
+naver_site_verification  :  
 
 # Social Sharing
 twitter:
@@ -83,6 +90,7 @@ author:
   location         : 
   email            : 
   uri              : 
+  home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
   codepen          :
   dribbble         :
@@ -98,7 +106,7 @@ author:
   linkedin         : "kennethmassada"
   pinterest        :
   soundcloud       :
-  stackoverflow    : "1095800/kmassada" # (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  stackoverflow    : "1095800/kmassada"
   steam            :
   tumblr           :
   twitter          : *kmassada
@@ -175,10 +183,10 @@ sass:
 permalink: /:categories/:title/
 paginate: 10 # amount of posts to show
 paginate_path: /page:num/
-timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
-# Plugins
+# Plugins (previously gems:)
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
