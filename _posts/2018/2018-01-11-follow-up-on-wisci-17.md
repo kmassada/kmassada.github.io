@@ -1,9 +1,9 @@
 ---
 layout:
-title: "Follow up on wisci 17''"
+title: "Follow up on wisci 17'"
 header:
-  image: /assets/images/wisci-2017/MUST.png
-  teaser: /assets/images/wisci-2017/MUST.png
+  image: /assets/images/wisci-2017/IMG_2815.jpg
+  teaser: /assets/images/wisci-2017/IMG_2815.jpg
 date: 2018-01-18 14:24 -0400
 ---
 
