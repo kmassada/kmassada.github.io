@@ -22,7 +22,6 @@ gem "minimal-mistakes-jekyll", :git => "https://github.com/mmistakes/minimal-mis
 group :jekyll_plugins do
    gem "jekyll-feed"
    gem "jekyll-gist"
-   gem "jekyll-data"
    gem "jekyll-sitemap"
    gem "jekyll-paginate"
    gem "jemoji"
