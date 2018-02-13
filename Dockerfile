@@ -5,7 +5,7 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 # packages
 RUN apt-get update -qq
-RUN apt-get install -qy  git rubygems ruby-dev linux-headers-* build-essential  zlib1g-dev locales
+RUN apt-get install -qy  git rubygems ruby-dev linux-headers-* build-essential  zlib1g-dev locales autoconf libltdl-dev libtool
 # Language locales
 RUN locale-gen en_US.UTF-8
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8
