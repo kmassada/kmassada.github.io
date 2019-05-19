@@ -1,9 +1,11 @@
 ---
 layout: single
 title: "Life after WiSci 17'"
+excerpt: "Over last summer, I've been fortunate to be part of all girls camp. I discussed my experience [volunteering at WiSci 17'](http://blog.kmassada.com/volunteering-wisci-17/), here's an account of life after the camp"
 header:
-  image: /assets/images/wisci-2017/IMG_2815.jpg
-  teaser: /assets/images/wisci-2017/IMG_2815.jpg
+  overlay_image: /assets/images/wisci-2017/IMG_2815.jpg
+  overlay_filter: 0.5
+  og_image: /assets/images/wisci-2017/IMG_2815.jpg
 date: 2018-01-18 14:24 -0400
 ---
 

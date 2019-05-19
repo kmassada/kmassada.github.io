@@ -1,9 +1,11 @@
 ---
 layout: single
 title: "Volunteering in Malawi at WiSci 17'"
+excerpt: "WiSci Malawi brought together 100 high school girls from the African continent and the US for a three weeks long camp. Here is my account at this camp."
 header:
-  image: /assets/images/wisci-2017/MUST.png
-  teaser: /assets/images/wisci-2017/MUST.png
+  overlay_image: /assets/images/wisci-2017/MUST.png
+  overlay_filter: 0.5
+  og_image: /assets/images/wisci-2017/MUST.png
 date: 2017-08-18 14:24 -0400
 ---
 
