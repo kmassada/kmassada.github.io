@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Ubuntu: Mounting ext3/ext4 Partitions"
 date: 2009-03-18 16:10 -0400
 categories: [File System, Tools and Utilities]

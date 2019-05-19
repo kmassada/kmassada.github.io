@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "[Linux Tip] downgrade or undo yum/package install in RHEL 6"
 date: 2014-04-08 19:13 -0400
 categories: [Linux Tip]

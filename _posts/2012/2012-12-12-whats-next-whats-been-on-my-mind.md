@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "What's next? What's been on my mind?"
 date: 2012-12-12 09:30 -0500
 categories: [About, Staff Picks]

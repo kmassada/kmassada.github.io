@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Convert vm to thin-Provision using vSphere PowerCLI"
 date: 2014-07-03 13:22 -0400
 categories: [virtualization]

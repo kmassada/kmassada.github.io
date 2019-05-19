@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Steve Jobs"
 date: 2011-10-07 19:06 -0400
 categories: [Off Topic]

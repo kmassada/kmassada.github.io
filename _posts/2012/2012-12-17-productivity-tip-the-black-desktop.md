@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Productivity Tip: The Black Desktop."
 date: 2012-12-17 23:44 -0500
 categories: [Productivity, Staff Picks]

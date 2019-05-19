@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Docker Lessons Learned: 3 months in"
 date: 2016-03-27 11:31 -0400
 excerpt: "Tips and Tricks I've acquired after using docker for close to 3 months."

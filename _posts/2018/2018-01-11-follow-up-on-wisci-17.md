@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Life after WiSci 17'"
 header:
   image: /assets/images/wisci-2017/IMG_2815.jpg

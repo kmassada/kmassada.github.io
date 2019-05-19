@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Ubuntu: How to Reset Ubuntu/Gnome Settings to Defaults"
 date: 2010-01-05 17:41 -0500
 categories: [compiz, Eye Candy, Tools and Utilities, Ubuntu]

@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Ntfs mount permissions on linux"
 date: 2014-06-21 10:22 -0400
 categories: [File System, Linux Tip, System Admin]

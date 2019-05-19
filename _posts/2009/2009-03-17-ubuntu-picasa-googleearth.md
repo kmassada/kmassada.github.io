@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Ubuntu: Picasa, GoogleEarth"
 date: 2009-03-17 17:08 -0400
 categories: [Multimedia, Ubuntu]

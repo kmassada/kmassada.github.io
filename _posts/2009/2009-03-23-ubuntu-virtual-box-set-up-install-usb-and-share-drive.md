@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Ubuntu: Virtual Box Set-up, Install, USB and Share Drive"
 date: 2009-03-23 17:03 -0400
 categories: [Tools and Utilities, virtualization]

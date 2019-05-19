@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Ubuntu: Mounting NTFS Partitions"
 date: 2009-03-18 13:26 -0400
 categories: [File System, Tools and Utilities]

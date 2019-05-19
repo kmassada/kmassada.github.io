@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "[Linux Tip] debuging a command"
 date: 2014-04-08 18:53 -0400
 categories: [Linux Tip]

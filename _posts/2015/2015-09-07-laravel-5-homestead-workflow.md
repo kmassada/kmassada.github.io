@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Laravel 5 Homestead Workflow"
 categories: [Laravel]
 date: 2015-09-07 12:00 -0400

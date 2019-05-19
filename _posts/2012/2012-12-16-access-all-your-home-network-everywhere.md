@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Access All your Home Network Everywhere"
 date: 2012-12-16 20:30 -0500
 categories: [Android, Network, Staff Picks]

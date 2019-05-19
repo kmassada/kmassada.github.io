@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "Volunteering in Malawi at WiSci 17'"
 header:
   image: /assets/images/wisci-2017/MUST.png

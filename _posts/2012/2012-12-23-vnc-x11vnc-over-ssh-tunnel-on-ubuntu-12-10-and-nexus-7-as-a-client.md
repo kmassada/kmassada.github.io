@@ -1,5 +1,5 @@
 ---
-layout:
+layout: single
 title: "VNC (x11vnc) over SSH Tunnel on Ubuntu 12.10 and nexus 7 as a client"
 date: 2012-12-23 22:40 -0500
 categories: [Network, Staff Picks]
