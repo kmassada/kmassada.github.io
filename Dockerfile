@@ -11,7 +11,7 @@ ENV LC_ALL en_US.UTF-8
 # Jekyll setup
 CMD ["ruby","--version"]
 
-FROM kmassada.github.io.dep:latest
+FROM kmassada.github.io.dep:latest AS app
 # Work dir
 RUN mkdir -p /usr/src/app
 COPY . /usr/src/app

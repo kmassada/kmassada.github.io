@@ -16,6 +16,7 @@ services:
     depends_on:
       - kmassada.github.io.dep
     build:
+      target: app
       args:
         - pull=false
       context: ./
