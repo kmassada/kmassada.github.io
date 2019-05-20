@@ -22,10 +22,27 @@ bundle exec jekyll serve -H 0.0.0.0 --incremental --watch
 ## Dockerize
 
 ```bash
+docker build -t kmassada.github.io.dep --target dep .
 docker build -t kmassada.github.io .
 docker run --rm -it -p 4000:4000 -v "$PWD":/usr/src/app -w /usr/src/app kmassada.github.io bash
 export JEKYLL_ENV=development
 bundle exec jekyll serve -H 0.0.0.0 --incremental --watch
+```
+
+## Docker-Compose
+
+Adding docker-compose support, it plays well with [vscode Docker Extension](https://code.visualstudio.com/docs/azure/docker)
+
+Only run build once, `kmassada.github.io.dep` does not preserve state of container properly, and will build everytime.
+
+```bash
+docker-compose -f "docker-compose.yml" up -d --build
+```
+
+generally once build has ran once, `-d --no-build` will do for restarting/starting compose
+
+```bash
+docker-compose -f "docker-compose.yml" up -d --build
 ```
 
 ## upgrading
