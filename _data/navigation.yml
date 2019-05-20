@@ -6,9 +6,11 @@ main:
     url: /projects/projects/
   - title: Raspberrypi2
     url: /raspberrypi2/new-raspberry-pi/
-  - title: Tales
-    url: http://tadbit.cc
+  - title: Docker Primer
+    url: /tags/docker
+  - title: Project Wisci
+    url: /tags/wisci
   - title: "Sitemap"
-    url: /sitemap/
-  - title: "About"
-    url: /about
+    url: /tags/
+  - title: Tales (tabit.cc)
+    url: http://tadbit.cc

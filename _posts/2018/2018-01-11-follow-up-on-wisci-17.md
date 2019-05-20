@@ -7,6 +7,7 @@ header:
   overlay_filter: 0.5
   og_image: /assets/images/wisci-2017/IMG_2815.jpg
 date: 2018-01-18 14:24 -0400
+tags: [wisci]
 ---
 
 Over last summer, I've been fortunate to be part of all girls camp. I discussed my experience [volunteering at WiSci 17'](http://blog.kmassada.com/volunteering-wisci-17/), mostly highlighting the humbling moments where the girls in turn were an our inspiration in eyes of all they've had to overcome. As time passed, I had this unshakable feeling, the eternal dilemma when embarking on a journey for a cause:
