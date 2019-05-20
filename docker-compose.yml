@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  kmassada.github.io.dep:
+    image: kmassada.github.io.dep
+    build:
+      target: dep
+      context: .
+      cache_from: 
+        - debian:latest
+  kmassada.github.io:
+    volumes: 
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    image: kmassada.github.io
+    depends_on:
+      - kmassada.github.io.dep
+    build:
+      args:
+        - pull=false
+      context: ./
+      cache_from:
+        - kmassada.github.io.dep:latest
+    ports:
+      - 4000:4000
