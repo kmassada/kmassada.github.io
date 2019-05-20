@@ -1,8 +1,4 @@
-FROM debian:latest
-# Work dir
-RUN mkdir -p /usr/src/app
-COPY . /usr/src/app
-WORKDIR /usr/src/app
+FROM debian:latest AS dep
 # packages
 RUN apt-get update -qq
 RUN apt-get install -qy  git rubygems ruby-dev linux-headers-* build-essential  zlib1g-dev locales autoconf libltdl-dev libtool
@@ -12,6 +8,14 @@ RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
+# Jekyll setup
+CMD ["ruby","--version"]
+
+FROM kmassada.github.io.dep:latest
+# Work dir
+RUN mkdir -p /usr/src/app
+COPY . /usr/src/app
+WORKDIR /usr/src/app
 # Jekyll setup
 RUN gem install jekyll bundler sass
 RUN gem which bundler
