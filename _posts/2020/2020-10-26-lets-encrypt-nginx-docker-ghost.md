@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Running my ghost blog on GCP"
+title: "Running ghost blog with nginx reverse proxy and let's encrypt"
 excerpt: "I've been using the blog platform ghost for hosting tadbit.cc, and now twdspodcast.com, this is a quick brain dump on how I host the blog. It's simply nginx reverse proxy, ghost platform backed by mysql, and now the reverse proxy gets it's cert from let's encrypt"
 date: 2020-10-20 00:00 -0400
 tags: [ghost, blog]
@@ -39,7 +39,11 @@ data_path="/tmp/data/certbot"
 
 *quick note:* /tmp/ is not a good path for saving data... I eventually create a disk that I mount to /tmp/data, I omit this in this setup.
 
-Now that this is sourced `source .env`, let's move on to running the blog platform itself. 
+```
+source .env
+```
+
+Now that this is sourced , let's move on to running the blog platform itself. 
 
 
 ## Ghost
