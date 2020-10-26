@@ -90,7 +90,7 @@ in my case after the quick fix, restart ghost `docker restart ghost`
 
 ## Nginx + certbot
 
-First we download the recommended ssl configs for nginx provided by certbot and ssl params, then we make a dummy cert that we later delete, we configure nginx and start it with dummy cert. Now when that's complete we use certbot to gain staging cert, when successful we get production certs.
+First we download the recommended ssl configs for nginx provided by certbot and ssl params, then we make a make belief cert that we later delete, we configure nginx and start it with make belief cert. Now when that's complete we use certbot to gain staging cert, when successful we get production certs.
 
 ### Download SSL Conf and ssl-dhparams.pem
 
@@ -102,7 +102,7 @@ curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/c
 curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "$data_path/conf/ssl-dhparams.pem"
 ```
 
-### Duummy certificate
+### make belief certificate
 
 ```shell
 path="/etc/letsencrypt/live/$domains"
@@ -110,7 +110,7 @@ mkdir -p "$data_path/conf/live/$domains"
 mkdir -p "$data_path/conf/nginx"
 ```
 
-use the nginx pod to run openssl for obtaining dummy cert
+use the nginx pod to run openssl for obtaining make belief cert
 
 ```
 docker run  --rm -it \
