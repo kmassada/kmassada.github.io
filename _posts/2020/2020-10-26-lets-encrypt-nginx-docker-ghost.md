@@ -6,7 +6,7 @@ date: 2020-10-20 00:00 -0400
 tags: [ghost, blog]
 ---
 
-I've been using the blog platform ghost for hosting https://tadbit.cc, and now https://twdspodcast.com, this is a quick brain dump on how I host the blog. It's simply nginx reverse proxy, ghost platform backed by mysql, and now the reverse proxy gets it's cert from let's encrypt. This is let's get this to work fast and re-iterate later.
+I've been using the blog platform ghost for hosting [tadbit](https://tadbit.cc), and now [twdspodcast](https://twdspodcast.com), this is a quick brain dump on how I host the blog. It's simply nginx reverse proxy, ghost platform backed by mysql, and now the reverse proxy gets it's cert from let's encrypt. This is let's get this to work fast and re-iterate later.
 
 I create a gcp instance only running container optimized OS, allow http/https with a public IP. This public IP becomes A record in my domain records.
 
@@ -74,7 +74,7 @@ ghost
 
 ### quirk of mysql
 
-I did run into a small issue with how ghost authenticates against mysql, it's well documented: https://github.com/mysqljs/mysql/issues/1507
+I did run into a small issue with how ghost authenticates against mysql, it's well documented: [https://github.com/mysqljs/mysql/issues/1507](https://github.com/mysqljs/mysql/issues/1507)
 
 this was the quick fix
 
