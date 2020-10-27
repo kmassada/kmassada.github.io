@@ -112,7 +112,7 @@ mkdir -p "$data_path/conf/nginx"
 
 use the nginx pod to run openssl for obtaining make belief cert
 
-```
+```shell
 docker run  --rm -it \
   -v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
    nginx sh -c "mkdir -p $path && openssl req -x509 -nodes -newkey rsa:1024 -days 1\
@@ -121,9 +121,65 @@ docker run  --rm -it \
     -subj '/CN=localhost'"
 ```
 
+### configure nginx reverse proxy for ghost w/ ssl
+
+Setup the file
+
+
+```shell
+mkdir -p $data_path/nginx/
+touch site.conf
+```
+
+Few things to know
+- `http://ghost:2368` is the path direct to the ghost container, because they share `znet` network
+- many settings look like they are missing but they come from `options-ssl-nginx.conf`. as we downloaded earlier.
+
+```shell
+server {
+
+    listen 443;
+    server_name example.org;
+
+    # this include is the recommended ssl settings by let's encrypt
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+
+    add_header Strict-Transport-Security    "max-age=31536000; includeSubDomains" always;
+    add_header X-Frame-Options              SAMEORIGIN;
+    add_header X-Content-Type-Options       nosniff;
+    add_header X-XSS-Protection             "1; mode=block";
+
+
+    # this is the dhparam we downloaded from the onset
+    ssl_dhparam                 /etc/letsencrypt/ssl-dhparams.pem;
+    ssl_certificate             /etc/letsencrypt/live/example.org/fullchain.pem;
+    ssl_certificate_key         /etc/letsencrypt/live/example.org/privkey.pem;
+
+    # sometimes exporting this is useful too
+    access_log            /var/log/nginx/example.org.access.log;
+
+    location / {
+
+      proxy_set_header    X-Real-IP           $remote_addr;      
+      proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
+      proxy_set_header    X-Forwarded-Proto   $scheme;
+      proxy_set_header    Host                $host;
+      proxy_set_header    X-Forwarded-Host    $host;
+      proxy_set_header    X-Forwarded-Port    $server_port;
+
+      # Fix the “It appears that your reverse proxy set up is broken" error.
+      proxy_pass          http://ghost:2368;
+      proxy_read_timeout  90;
+
+      proxy_redirect      http://ghost:2368 https://example.org;
+    }
+  }
+```
+
+
 ### start nginx 
 
-this stage is important because here we are testing the vailidity of our nginx reverse proxy settings.
+this stage is important because here we are testing the vailidity of our nginx reverse proxy settings. So we test that the certs are placed in the correct place and that requests to reverse proxy reaches the app.
 
 ```shell
 docker run  --name=nginx --restart=always -d \
@@ -136,7 +192,7 @@ docker run  --name=nginx --restart=always -d \
 
 now we delete the dummies with confidence
 
-```
+```shell
 docker run -it --rm \
 -v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
 nginx sh -c"\
@@ -207,61 +263,6 @@ certonly --webroot \
 
 At this stage I could docker run with a shell command wrapped in sleep to keep validating the cert and auto renew it, but since there'll have to be a subsequent post where I try to automate this, we'll leave it as it for now.
 
-### configure nginx reverse proxy for ghost w/ ssl
-
-Setup the file
-
-
-```shell
-mkdir -p $data_path/nginx/
-touch site.conf
-```
-
-Few things to know
-- `http://ghost:2368` is the path direct to the ghost container, because they share `znet` network
-- many settings look like they are missing but they come from `options-ssl-nginx.conf`. as we downloaded earlier.
-
-```shell
-server {
-
-    listen 443;
-    server_name example.org;
-
-    # this include is the recommended ssl settings by let's encrypt
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-
-    add_header Strict-Transport-Security    "max-age=31536000; includeSubDomains" always;
-    add_header X-Frame-Options              SAMEORIGIN;
-    add_header X-Content-Type-Options       nosniff;
-    add_header X-XSS-Protection             "1; mode=block";
-
-
-    # this is the dhparam we downloaded from the onset
-    ssl_dhparam                 /etc/letsencrypt/ssl-dhparams.pem;
-    ssl_certificate             /etc/letsencrypt/live/example.org/fullchain.pem;
-    ssl_certificate_key         /etc/letsencrypt/live/example.org/privkey.pem;
-
-    # sometimes exporting this is useful too
-    access_log            /var/log/nginx/example.org.access.log;
-
-    location / {
-
-      proxy_set_header    X-Real-IP           $remote_addr;      
-      proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
-      proxy_set_header    X-Forwarded-Proto   $scheme;
-      proxy_set_header    Host                $host;
-      proxy_set_header    X-Forwarded-Host    $host;
-      proxy_set_header    X-Forwarded-Port    $server_port;
-
-      # Fix the “It appears that your reverse proxy set up is broken" error.
-      proxy_pass          http://ghost:2368;
-      proxy_read_timeout  90;
-
-      proxy_redirect      http://ghost:2368 https://example.org;
-    }
-  }
-```
-
-
 ## issues
-[no-resolver-defined-to-resolve](https://community.letsencrypt.org/t/no-resolver-defined-to-resolve-ocsp-int-x3-letsencrypt-org-while-requesting-certificate-status-responder-ocsp-int-x3-letsencrypt-org/21427)
+- [no-resolver-defined-to-resolve](https://community.letsencrypt.org/t/no-resolver-defined-to-resolve-ocsp-int-x3-letsencrypt-org-while-requesting-certificate-status-responder-ocsp-int-x3-letsencrypt-org/21427)
+-  [mysqljs auth error](https://github.com/mysqljs/mysql/issues/1507)
