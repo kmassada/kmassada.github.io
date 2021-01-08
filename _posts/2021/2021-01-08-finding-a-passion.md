@@ -14,9 +14,16 @@ I don’t think I was alone to have felt this shell shock when I realized the wo
 
 There were a few instances prior to the beginning of the shutdown that seeded the question in my mind, but it started to take deeper roots as the spring bloomed. I've been mulling for a while, finding the balance between what I do for a living and what can I do in my community?
 
-That question is why I've always taken advantage of my google badge, at times traveling to Africa to teach computer science ([volunteering at WiSci](http://blog.kmassada.com/volunteering-wisci-17/)), or working locally to host several organizations who focus on access to STEM for underrepresented groups, or volunteered in Google's summer of computer science program. 
+That question is why I've always taken advantage of my google badge, at times traveling to Africa to teach computer science, or working locally to host several organizations who focus on access to STEM for underrepresented groups, or volunteered in Google's summer of computer science program. 
 
 That urge to want to contribute and uplift others also led to my current role of SME/Mentor. Yup! You heard it right! A sizable amount of what I do today is spent mentoring individuals but with the eyes set on scaling the experience I’ve acquired through my journey in our ranks.
+
+<figure class="third">
+	<img src="/assets/images/wisci-2017/IMG_0917.jpg">
+	<img src="/assets/images/wisci-2017/IMG_2818.jpg">
+	<img src="/assets/images/wisci-2017/IMG_20170804_171739.jpg">
+	<figcaption>Classes at MUST.</figcaption>
+</figure>
 
 I must also be honest and say these questions although born out of curiosity also bear a painful truth, I struggled a lot through the pandemic, like many. I say this understanding my struggles were not pegged to my survival. I’m thankful to have been in a field that has not experienced the pandemic in the same way others did.
 
