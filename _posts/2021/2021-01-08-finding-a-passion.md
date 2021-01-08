@@ -39,7 +39,7 @@ Now that I identified something had to give, I needed to make a firm hypothesis 
 
 Then on a long drive, heading out to camp on the oregon coast, my good friend had the idea of starting a podcast... I named it "Things we don't say Podcast", TWDS Podcast [twdspodcast.com](https://twdspodcast.com). It seemed to have all the aspects of the components I wanted, it was creative and didn't have to do with tech? Right? It bridged the human connection I needed and it brought me closer to the community, and it also brought stories, entertainment, lessons to the world. 
 
-{% include video id="y1fSOHBdi0" provider="youtube" %}
+{% include video id="-y1fSOHBdi0" provider="youtube" %}
 
 I launched the project under the disguise of fun conversations with friends that pan all types of topics: Religion, Spirituality, Growth, Geopolitical Economics, Love... Remember the hidden passion for curating music, I found a way to include it by reaching out to up and coming artists to let me feature their music on my show.
 
@@ -51,7 +51,9 @@ Before this Post gets too long I must talk a bit about the "black story". Relax 
 
 As a people, African American, African, Afro-Carribean, Afro indigenous, it is primordial that we tell our stories today because we have a lot of missing pieces throughout history. In an episode, my friend Raymond made a pertinent remark, we are making history today. Although the assiduous task of recovering our history is important, it's even better serving that we don’t allow history to repeat itself. This is why you’ll see a lot of the stories on my platform have the voices and faces you aren’t used to hearing from. 
 
+
 <iframe src="https://open.spotify.com/embed-podcast/show/12ZzuLAPlcYSEwayDsYn03" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
 
 Okay, wait a minute, you thought I was finished? (If there's a [melody](https://youtu.be/otwGb-S0txk?t=95) that comes to your head after I've made that millennial dad joke, kudos to you! "[Cool](https://www.youtube.com/watch?v=A8q8PXoJwVk)" in John Oliver's voice). The hilarious part about this project is, it quickly turned technical..
 
