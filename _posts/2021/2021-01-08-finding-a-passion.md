@@ -39,6 +39,8 @@ Now that I identified something had to give, I needed to make a firm hypothesis 
 
 Then on a long drive, heading out to camp on the oregon coast, my good friend had the idea of starting a podcast... I named it "Things we don't say Podcast", TWDS Podcast [twdspodcast.com](https://twdspodcast.com). It seemed to have all the aspects of the components I wanted, it was creative and didn't have to do with tech? Right? It bridged the human connection I needed and it brought me closer to the community, and it also brought stories, entertainment, lessons to the world. 
 
+{% include video id="y1fSOHBdi0" provider="youtube" %}
+
 I launched the project under the disguise of fun conversations with friends that pan all types of topics: Religion, Spirituality, Growth, Geopolitical Economics, Love... Remember the hidden passion for curating music, I found a way to include it by reaching out to up and coming artists to let me feature their music on my show.
 
 I've debated sharing this in my Professional Networks since a lot of the original conversations revolved around "the person" and not "the techie/professional". But I must also admit, I tried to subtly mention it earlier but I felt a bit of shame around the project, because of the erroneous thinking I've harvested growing up, I’ve convinced myself certain things hold a different value than others. I’ve also convinced myself that my value and contribution to the world didn’t matter unless it was being a doctor, engineer, lawyer or saved the world. 
