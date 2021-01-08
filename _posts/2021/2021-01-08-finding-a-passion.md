@@ -2,6 +2,10 @@
 layout: single
 title: "A covid story and finding a passion"
 excerpt: "This is the story of wrestling with the meaning of all through the pandemic, finding a passion, feeling shame to share the passion, finding pride in what you do, even if it doesn't save the world, being proud of yourself, and a rare occasion to tell my story."
+header:
+  overlay_image: /assets/images/cover-podscast-workstation.png
+  overlay_filter: 0.5
+  og_image: /assets/images/cover-podscast-workstation.png
 date: 2021-01-08 00:00 -0400
 tags: [mystory, blog]
 ---
