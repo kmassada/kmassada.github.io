@@ -51,6 +51,8 @@ Before this Post gets too long I must talk a bit about the "black story". Relax 
 
 As a people, African American, African, Afro-Carribean, Afro indigenous, it is primordial that we tell our stories today because we have a lot of missing pieces throughout history. In an episode, my friend Raymond made a pertinent remark, we are making history today. Although the assiduous task of recovering our history is important, it's even better serving that we don’t allow history to repeat itself. This is why you’ll see a lot of the stories on my platform have the voices and faces you aren’t used to hearing from. 
 
+<iframe src="https://open.spotify.com/embed-podcast/show/12ZzuLAPlcYSEwayDsYn03" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
 Okay, wait a minute, you thought I was finished? (If there's a [melody](https://youtu.be/otwGb-S0txk?t=95) that comes to your head after I've made that millennial dad joke, kudos to you! "[Cool](https://www.youtube.com/watch?v=A8q8PXoJwVk)" in John Oliver's voice). The hilarious part about this project is, it quickly turned technical..
 
 I’m currently working on being my own podcast platform host because I know a thing or two about distributed systems in the cloud. In the process I built a distributed site on GCP, using let's encrypt for auto renewing my certs, debated traefik vs nginx proxy, using facebook developer tools to detect actions and act on them, and built a website analytics pipeline to understand my listenership.
