@@ -105,7 +105,7 @@ curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot
 ### make belief certificate
 
 ```shell
-path="/etc/letsencrypt/live/$domains"
+domain_path="/etc/letsencrypt/live/$domains"
 mkdir -p "$data_path/conf/live/$domains"
 mkdir -p "$data_path/conf/nginx"
 ```
@@ -115,9 +115,9 @@ use the nginx pod to run openssl for obtaining make belief cert
 ```shell
 docker run  --rm -it \
   -v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
-   nginx sh -c "mkdir -p $path && openssl req -x509 -nodes -newkey rsa:1024 -days 1\
-    -keyout '$path/privkey.pem' \
-    -out '$path/fullchain.pem' \
+   nginx sh -c "mkdir -p $domain_path && openssl req -x509 -nodes -newkey rsa:1024 -days 1\
+    -keyout '$domain_path/privkey.pem' \
+    -out '$domain_path/fullchain.pem' \
     -subj '/CN=localhost'"
 ```
 
