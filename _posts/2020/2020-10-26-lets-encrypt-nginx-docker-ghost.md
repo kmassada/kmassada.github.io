@@ -261,6 +261,18 @@ certonly --webroot \
 -d $domain -d www.$domain
 ```
 
+### prod cert renew
+
+```shell
+docker run -it --rm -v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
+certbot/certbot \
+renew --webroot --webroot-path=/var/www/certbot
+```
+
+```shell
+docker exec -it nginx nginx -s reload
+```
+
 At this stage I could docker run with a shell command wrapped in sleep to keep validating the cert and auto renew it, but since there'll have to be a subsequent post where I try to automate this, we'll leave it as it for now.
 
 ## issues
