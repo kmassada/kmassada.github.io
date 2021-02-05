@@ -45,6 +45,7 @@ source .env
 
 Now that this is sourced , let's move on to running the blog platform itself. 
 
+NOTE: mail provider here is mailgun.com, create a domain and get username and password. [More info](https://ghost.org/docs/config/#mail)
 
 ## Ghost
 
@@ -69,6 +70,13 @@ docker run --name=ghost --restart=always -d \
 -e database__connection__user=root \
 -e database__connection__password=$mysql_local_pass \
 -e database__connection__database=ghost \
+-e mail__transport="SMTP" \
+-e mail__from="$mail_name <$mail_username>" \
+-e mail__options__service="SMTP" \
+-e mail__options__host="$mail_provider" \
+-e mail__options__port="587" \
+-e mail__options__auth__user="$mail_username" \
+-e mail__options__auth__pass="$mail_password" \
 ghost
 ```
 
