@@ -283,6 +283,17 @@ docker exec -it nginx nginx -s reload
 
 At this stage I could docker run with a shell command wrapped in sleep to keep validating the cert and auto renew it, but since there'll have to be a subsequent post where I try to automate this, we'll leave it as it for now.
 
+### Temp automated cert renewal
+
+I got tired of having to log in and do this, so this is a good way to fake cron on container optimized os.. 
+
+Run docker, with entrypoint, and sleep..
+
+```
+docker run --name renew -d -v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot --entrypoint="/bin/sh" certbot/certbot -c 'trap exit TERM; while :; do certbot renew --webroot --webroot-p
+ath=/var/www/certbot; sleep 12h & wait ${!}; done;' 
+```
+
 ## issues
 - [no-resolver-defined-to-resolve](https://community.letsencrypt.org/t/no-resolver-defined-to-resolve-ocsp-int-x3-letsencrypt-org-while-requesting-certificate-status-responder-ocsp-int-x3-letsencrypt-org/21427)
 -  [mysqljs auth error](https://github.com/mysqljs/mysql/issues/1507)
