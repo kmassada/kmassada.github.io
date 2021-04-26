@@ -2,7 +2,7 @@
 layout: single
 title: "Running ghost blog on GCP, using GCE"
 excerpt: "I've been using the blog platform ghost for hosting tadbit.cc, and now twdspodcast.com. Using the Ghost 4 launch as an excuse to tidy up how I create the instances and run them on GCP using GCE instances"
-date: 2021-04-26 00:00 -0400
+date: 2021-04-25 00:00 -0400
 tags: [ghost, blog, gcp]
 ---
 
