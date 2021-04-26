@@ -58,7 +58,13 @@ bind custom role
 gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:${NODE_SA_ID} --role=projects/$PROJECT_ID/roles/$CUSTOM_ROLE
 ```
 
-In the future will need logging and storing objects in GCE, might add `roles/storage.objectAdmin` and `roles/logging.logWriter`
+In the future will need logging and storing objects in GCE, might add `roles/logging.logWriter`, but for now only strictly need to write to buckets and read to bucket,  `roles/storage.objectCreator` and `roles/storage.objectViewer` will be sufficient 
+
+
+```shell
+gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:${NODE_SA_ID} --role=roles/storage.objectCreator
+gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:${NODE_SA_ID} --role=roles/storage.objectViewer
+```
 
 create fw rules, certbot uses tcp:80 for the ACME challenge, instead of closing port 80, we'll use nginx to force redirect to https
 
