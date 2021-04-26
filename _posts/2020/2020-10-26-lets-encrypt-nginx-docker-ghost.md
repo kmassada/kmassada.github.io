@@ -14,16 +14,7 @@ I create a gcp instance only running container optimized OS, allow http/https wi
 @      A      1h       ##.##.##.###
 ```
 
-I ssh into the instance in the UI 
-
-## House keeping
-
-We create a network, this network is super helpful so we don't manage ips and routes for container to container
-
-```shell
-docker network create znet
-mkdir -p "$data_path"
-```
+I ssh into the instance in the UI
 
 ## Environment
 
@@ -34,7 +25,7 @@ domains=(example.org www.example.org)
 domain=example.org
 email="admin@example.org" 
 mysql_local_pass=STUFFMAN
-data_path="/tmp/data/certbot"
+data_path="/tmp/data"
 ```
 
 *quick note:* /tmp/ is not a good path for saving data... I eventually create a disk that I mount to /tmp/data, I omit this in this setup.
@@ -46,6 +37,18 @@ source .env
 Now that this is sourced , let's move on to running the blog platform itself. 
 
 NOTE: mail provider here is mailgun.com, create a domain and get username and password. [More info](https://ghost.org/docs/config/#mail)
+
+
+## House keeping
+
+We create a network, this network is super helpful so we don't manage ips and routes for container to container
+
+```shell
+docker network create znet
+mkdir -p "$data_path"
+sudo chown $USER "$data_path"  
+sudo chmod 755 "$data_path"  
+```
 
 ## Ghost
 
@@ -87,11 +90,18 @@ I did run into a small issue with how ghost authenticates against mysql, it's we
 this was the quick fix
 
 ```shell
-docker exec -it YOUR_CONTAINER mysql -u root -p
-Enter password:
-ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '{your password}';
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '{your password}';
+cat << EOF >> 1507-fix.sql 
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '$mysql_local_pass';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$mysql_local_pass';
 SELECT plugin FROM mysql.user WHERE User = 'root';
+commit;
+EOF
+```
+
+run quick fix file
+
+```shell
+docker exec -i mysql sh -c 'mysql -u root -p'"${mysql_local_pass}"'' < 1507-fix.sql
 ```
 
 in my case after the quick fix, restart ghost `docker restart ghost`
@@ -105,27 +115,25 @@ First we download the recommended ssl configs for nginx provided by certbot and 
 Download required files from github.
 
 ```shell
-mkdir -p "$data_path/conf"
-curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf > "$data_path/conf/options-ssl-nginx.conf"
-curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "$data_path/conf/ssl-dhparams.pem"
+mkdir -p "$data_path/ssl"
+curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf > "$data_path/ssl/options-ssl-nginx.conf"
+curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "$data_path/ssl/ssl-dhparams.pem"
 ```
 
 ### make belief certificate
 
 ```shell
-domain_path="/etc/letsencrypt/live/$domains"
-mkdir -p "$data_path/conf/live/$domains"
-mkdir -p "$data_path/conf/nginx"
+mkdir -p "$data_path/ssl/live/$domain"
 ```
 
 use the nginx pod to run openssl for obtaining make belief cert
 
 ```shell
 docker run  --rm -it \
-  -v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
-   nginx sh -c "mkdir -p $domain_path && openssl req -x509 -nodes -newkey rsa:1024 -days 1\
-    -keyout '$domain_path/privkey.pem' \
-    -out '$domain_path/fullchain.pem' \
+  -v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
+   nginx sh -c "mkdir -p /etc/letsencrypt/live/$domain && openssl req -x509 -nodes -newkey rsa:2048 -days 1\
+    -keyout '/etc/letsencrypt/live/$domain/privkey.pem' \
+    -out '/etc/letsencrypt/live/$domain/fullchain.pem' \
     -subj '/CN=localhost'"
 ```
 
@@ -136,52 +144,53 @@ Setup the file
 
 ```shell
 mkdir -p $data_path/nginx/
-touch site.conf
+vi $data_path/nginx/site.conf
 ```
 
 Few things to know
 - `http://ghost:2368` is the path direct to the ghost container, because they share `znet` network
 - many settings look like they are missing but they come from `options-ssl-nginx.conf`. as we downloaded earlier.
+- in the config below please make sure to replace `example.org` by your domain
 
 ```shell
 server {
 
-    listen 443;
-    server_name example.org;
+  listen 443;
+  server_name example.org;
 
-    # this include is the recommended ssl settings by let's encrypt
-    include /etc/letsencrypt/options-ssl-nginx.conf;
+  # this include is the recommended ssl settings by let's encrypt
+  include /etc/letsencrypt/options-ssl-nginx.conf;
 
-    add_header Strict-Transport-Security    "max-age=31536000; includeSubDomains" always;
-    add_header X-Frame-Options              SAMEORIGIN;
-    add_header X-Content-Type-Options       nosniff;
-    add_header X-XSS-Protection             "1; mode=block";
+  add_header Strict-Transport-Security    "max-age=31536000; includeSubDomains" always;
+  add_header X-Frame-Options              SAMEORIGIN;
+  add_header X-Content-Type-Options       nosniff;
+  add_header X-XSS-Protection             "1; mode=block";
 
 
-    # this is the dhparam we downloaded from the onset
-    ssl_dhparam                 /etc/letsencrypt/ssl-dhparams.pem;
-    ssl_certificate             /etc/letsencrypt/live/example.org/fullchain.pem;
-    ssl_certificate_key         /etc/letsencrypt/live/example.org/privkey.pem;
+  # this is the dhparam we downloaded from the onset
+  ssl_dhparam                 /etc/letsencrypt/ssl-dhparams.pem;
+  ssl_certificate             /etc/letsencrypt/live/example.org/fullchain.pem;
+  ssl_certificate_key         /etc/letsencrypt/live/example.org/privkey.pem;
 
-    # sometimes exporting this is useful too
-    access_log            /var/log/nginx/example.org.access.log;
+  # sometimes exporting this is useful too
+  access_log            /var/log/nginx/example.org.access.log;
 
-    location / {
+  location / {
 
-      proxy_set_header    X-Real-IP           $remote_addr;      
-      proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
-      proxy_set_header    X-Forwarded-Proto   $scheme;
-      proxy_set_header    Host                $host;
-      proxy_set_header    X-Forwarded-Host    $host;
-      proxy_set_header    X-Forwarded-Port    $server_port;
+    proxy_set_header    X-Real-IP           $remote_addr;      
+    proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
+    proxy_set_header    X-Forwarded-Proto   $scheme;
+    proxy_set_header    Host                $host;
+    proxy_set_header    X-Forwarded-Host    $host;
+    proxy_set_header    X-Forwarded-Port    $server_port;
 
-      # Fix the “It appears that your reverse proxy set up is broken" error.
-      proxy_pass          http://ghost:2368;
-      proxy_read_timeout  90;
+    # Fix the “It appears that your reverse proxy set up is broken" error.
+    proxy_pass          http://ghost:2368;
+    proxy_read_timeout  90;
 
-      proxy_redirect      http://ghost:2368 https://example.org;
-    }
+    proxy_redirect      http://ghost:2368 https://example.org;
   }
+}
 ```
 
 
@@ -191,7 +200,7 @@ this stage is important because here we are testing the vailidity of our nginx r
 
 ```shell
 docker run  --name=nginx --restart=always -d \
-  -v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
+  -v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
   -v $data_path/nginx:/etc/nginx/conf.d \
   -p 80:80 -p 443:443 \
    --net=znet \
@@ -202,7 +211,7 @@ now we delete the dummies with confidence
 
 ```shell
 docker run -it --rm \
--v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
+-v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
 nginx sh -c"\
   rm -Rf /etc/letsencrypt/live/$domains && \
   rm -Rf /etc/letsencrypt/archive/$domains && \
@@ -215,7 +224,7 @@ Setup the file
 
 ```shell
 mkdir -p $data_path/nginx/
-touch validate.conf
+vi $data_path/nginx/validate.conf
 ```
 
 we configure nginx to allow for a callback to `/.well-known/acme-challenge/`. this will allow the staging command to verify ownership of the domain
@@ -246,7 +255,7 @@ We run through one example in `staging` using `--register-unsafely-without-email
 
 ```shell
 docker run -it --rm \
--v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
+-v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
 certbot/certbot \
 certonly --webroot \
 --webroot-path=/var/www/certbot \
@@ -261,7 +270,7 @@ we now run this finally command to get the actual cert
 
 ```shell
 docker run -it --rm \
--v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
+-v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
 certbot/certbot \
 certonly --webroot \
 --webroot-path=/var/www/certbot \
@@ -272,7 +281,7 @@ certonly --webroot \
 ### prod cert renew
 
 ```shell
-docker run -it --rm -v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
+docker run -it --rm -v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
 certbot/certbot \
 renew --webroot --webroot-path=/var/www/certbot
 ```
@@ -290,7 +299,7 @@ I got tired of having to log in and do this, so this is a good way to fake cron 
 Run docker, with entrypoint, and sleep..
 
 ```
-docker run --name renew -d -v $data_path/conf:/etc/letsencrypt -v $data_path/www:/var/www/certbot --entrypoint="/bin/sh" certbot/certbot -c 'trap exit TERM; while :; do certbot renew --webroot --webroot-p
+docker run --name renew -d -v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot --entrypoint="/bin/sh" certbot/certbot -c 'trap exit TERM; while :; do certbot renew --webroot --webroot-p
 ath=/var/www/certbot; sleep 12h & wait ${!}; done;' 
 ```
 
