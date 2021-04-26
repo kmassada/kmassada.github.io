@@ -6,7 +6,7 @@ date: 2021-04-25 00:00 -0400
 tags: [ghost, blog, gcp]
 ---
 
-I've been using the blog platform ghost for hosting tadbit.cc, and now twdspodcast.com. Using the Ghost 4 launch as an excuse to tidy up how I create the instances and run them on GCP using GCE instances. This guide will go through creating a GCE instance with minimal roles/scopes, trying to keeping instance options to the least priviledged to function on GCP. 
+I've been using the blog platform ghost for hosting tadbit.cc, and now twdspodcast.com. Using the Ghost 4 launch as an excuse to tidy up how I create the instances and run them on GCP using GCE instances. This guide will go through creating a GCE instance with minimal roles/scopes, trying to keeping instance options to the least priviledged and thinking about costs. 
 
 ## Pre-Reqs
 
@@ -60,7 +60,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:${NOD
 
 In the future will need logging and storing objects in GCE, might add `roles/storage.objectAdmin` and `roles/logging.logWriter`
 
-creat fw rules, certbot uses tcp:80 for the ACME challenge, instead of closing port 80, we'll use nginx to force redirect to https
+create fw rules, certbot uses tcp:80 for the ACME challenge, instead of closing port 80, we'll use nginx to force redirect to https
 
 ```shell
 gcloud compute --project=$PROJECT_ID firewall-rules create default-allow-ghostv4 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80,tcp:443 --source-ranges=0.0.0.0/0 --target-tags=$VM_NAME-server
