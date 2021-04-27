@@ -90,7 +90,7 @@ I did run into a small issue with how ghost authenticates against mysql, it's we
 this was the quick fix
 
 ```shell
-cat << EOF >> 1507-fix.sql 
+cat << EOF >> $data_path/1507-fix.sql 
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '$mysql_local_pass';
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$mysql_local_pass';
 SELECT plugin FROM mysql.user WHERE User = 'root';
@@ -101,7 +101,7 @@ EOF
 run quick fix file
 
 ```shell
-docker exec -i mysql sh -c 'mysql -u root -p'"${mysql_local_pass}"'' < 1507-fix.sql
+docker exec -i mysql sh -c 'mysql -u root -p'"${mysql_local_pass}"'' < $data_path/1507-fix.sql
 ```
 
 in my case after the quick fix, restart ghost `docker restart ghost`
@@ -155,7 +155,7 @@ Few things to know
 ```shell
 server {
 
-  listen 443;
+  listen 443 ssl;
   server_name example.org;
 
   # this include is the recommended ssl settings by let's encrypt
@@ -288,6 +288,7 @@ renew --webroot --webroot-path=/var/www/certbot
 
 ```shell
 docker exec -it nginx nginx -s reload
+docker logs nginx -f
 ```
 
 At this stage I could docker run with a shell command wrapped in sleep to keep validating the cert and auto renew it, but since there'll have to be a subsequent post where I try to automate this, we'll leave it as it for now.
