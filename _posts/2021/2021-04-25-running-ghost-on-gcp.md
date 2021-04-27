@@ -52,13 +52,14 @@ gcloud iam service-accounts create $NODE_SA --display-name 'GCE '"${VM_NAME}"' N
 export NODE_SA_ID=`gcloud iam service-accounts list --format='value(email)' --filter='displayName:GCE '"${VM_NAME}"' Node Service Account'`
 ```
 
-bind custom role
+### bind custom role
 
 ```shell
 gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:${NODE_SA_ID} --role=projects/$PROJECT_ID/roles/$CUSTOM_ROLE
 ```
 
-In the future will need logging and storing objects in GCE, might add `roles/logging.logWriter`, but for now only strictly need to write to buckets and read to bucket,  `roles/storage.objectCreator` and `roles/storage.objectViewer` will be sufficient 
+### Storage roles (Option A)
+In the future will need logging and storing objects in GCE, might add `roles/logging.logWriter`, but for now only strictly need to write to buckets and read to bucket,  `roles/storage.objectCreator` and `roles/storage.objectViewer` will be sufficient...
 
 
 ```shell
@@ -66,17 +67,32 @@ gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:${NOD
 gcloud projects add-iam-policy-binding $PROJECT_ID --member=serviceAccount:${NODE_SA_ID} --role=roles/storage.objectViewer
 ```
 
+### Storage roles (Option B)
+
+[UBL](https://cloud.google.com/storage/docs/uniform-bucket-level-access), could actually lock down access further.. 
+
+```
+gsutil iam ch serviceAccount:$NODE_SA_ID:roles/storage.objectViewer gs://_______BUCKET_____NAME_______
+gsutil iam ch serviceAccount:$NODE_SA_ID:roles/storage.objectCreator gs://_______BUCKET_____NAME_______
+```
+
+### Setup Firewall
+
 create fw rules, certbot uses tcp:80 for the ACME challenge, instead of closing port 80, we'll use nginx to force redirect to https
 
 ```shell
 gcloud compute --project=$PROJECT_ID firewall-rules create default-allow-ghostv4 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80,tcp:443 --source-ranges=0.0.0.0/0 --target-tags=$VM_NAME-server
 ```
 
+### Setup Image
+
 we run on COS
 
 ```shell
 COS_STABLE=`gcloud compute images list --format="value(NAME)" --filter="selfLink~cos-cloud AND family~stable" --limit=1`
 ```
+
+### Launch Instance
 
 create an instance with the Service account, later we can add `logging-write,storage-rw` to the scope for the scopes for future use of GCR and GCS
 
@@ -102,3 +118,16 @@ gcloud compute instances create $VM_NAME \
   --service-account=$NODE_SA_ID
 ```
 
+### Verify
+
+When you've accessed the instance, we can run `gcloud auth list` to confirm the caller, it is `$NODE_SA_ID`
+
+```
+$ docker run --rm -ti google/cloud-sdk gcloud auth list
+                    Credentialed Accounts
+ACTIVE  ACCOUNT
+*       $NODE_SA_ID
+
+To set the active account, run:
+    $ gcloud config set account `ACCOUNT`
+```
