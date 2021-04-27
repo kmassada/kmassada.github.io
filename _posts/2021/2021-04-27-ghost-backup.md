@@ -44,11 +44,13 @@ After backing up I have 2 files I can use.
 
 ## Storage 
 
-https://cloud.google.com/free/docs/gcp-free-tier/#storage
+[https://cloud.google.com/free/docs/gcp-free-tier/#storage](https://cloud.google.com/free/docs/gcp-free-tier/#storage)
 
 project is still in testing phase, i'm going to attempt to spend $0 on my backup. With this goal in mind, i'll setup gcs storage bucket, only keep 2 revisions, and delete objects older than 35 days, with the goal of backing up once a month. 
 
-set some environement variables, the location matters, only few locations have free tier. ALSO, knowing this ahead of time, my GCE instance was also built in the same Region as where the storage will reside, in an attempt to get FREE local transfer. 
+The location matters, only few locations have free tier. Knowing this ahead of time, my GCE instance was also built in the same Region as where the storage will reside in an attempt to get FREE local transfer. 
+
+set some environement variables,
 
 ```shell
 PROJECT_ID=<your project>
@@ -80,13 +82,16 @@ create `lifecycle.json` and edit it to contain the following.
 ```
 
 create storage bucket and set the lifecycle policy and versioning. 
+
 ```shell
 gsutil mb -b on -p $PROJECT_ID -c $STORAGE_CLASS -l $BUCKET_LOCATION -b on gs://$PROJECT_ID-ghost-backup 
 gsutil versioning set on gs://$PROJECT_ID-ghost-backup
 gsutil lifecycle set lifecycle.json gs://$PROJECT_ID-ghost-backup
 ```
 
-now let's enable [UBL](https://cloud.google.com/storage/docs/uniform-bucket-level-access), `NODE_SA_ID` is the service account I used to create the instance in [Running Ghost on GCP](/running-ghost-on-gcp), which will allow me to bypass having to deal with credentials.
+now let's enable [UBL](https://cloud.google.com/storage/docs/uniform-bucket-level-access). UBL is this thing that allows you to enforce IAM roles/permissions (`roles/storage.objectViewer`) on a bucket (`gs://$PROJECT_ID-ghost-backup`) restricted only to a GCP service account (`serviceAccount:$NODE_SA_ID`).
+
+`NODE_SA_ID` is the service account I used to create the instance in [Running Ghost on GCP](/running-ghost-on-gcp), which will allow me to bypass having to deal with credentials management.
 
 
 ```shell
@@ -94,7 +99,7 @@ gsutil iam ch serviceAccount:$NODE_SA_ID:roles/storage.objectViewer gs://$PROJEC
 gsutil iam ch serviceAccount:$NODE_SA_ID:roles/storage.objectCreator gs://$PROJECT_ID-ghost-backup
 ```
 
-if you set objectViewer and Creator at the ServiceAccount level, you can undo it by running the following
+if you set `objectViewer` and `objectCreator` at the ServiceAccount level, you can undo it by running the following
 
 ```shell
 gcloud projects remove-iam-policy-binding $PROJECT_ID --member=serviceAccount:${NODE_SA_ID} --role=roles/storage.objectCreator
@@ -125,17 +130,29 @@ docker run --name cloud-sdk -it \
 docker exec -it cloud-sdk /bash/bin/sh
 ```
 
-
 once in the shell setup `gsutils` by running `gcloud init`, follow the prompts. 
 
-this should have the proper caller now. retrieve send the latest backup to the bucket
+of course `gcloud auth list` can verify the caller. 
 
+while we're at it let's test our permissions
+
+```shell
+# gsutil ls
+AccessDeniedException: 403 $NODE_SA does not have storage.buckets.list access to the Google Cloud project.
+```
+
+let's upload the latest backup to the bucket
 
 ```shell
 gsutil cp $data_path/backup/blog-$now.tar.gz gs://$PROJECT_ID-ghost-backup/blog.tar.gz
 gsutil cp $data_path/backup/ghost-$now.sql gs://$PROJECT_ID-ghost-backup/ghost.sql
 ```
 
+now let's verify the backup is there... 
+
+```shell
+gsutil ls gs://$PROJECT_ID-ghost-backup/
+```
 
 ## Retrieve
 
@@ -153,13 +170,6 @@ docker exec -it cloud-sdk /bash/bin/sh
 
 once again setup `gsutils` by running `gcloud init`, follow the prompts. 
 
-
-now let's verify the backup is there... 
-
-```shell
-gsutil ls gs://$PROJECT_ID-ghost-backup/
-```
-
 now let's retrieve the backup
 
 ```shell
@@ -167,17 +177,10 @@ gsutil cp gs://$PROJECT_ID-ghost-backup/blog.tar.gz $data_path/backup/blog-$now.
 gsutil cp gs://$PROJECT_ID-ghost-backup/ghost.sql $data_path/backup/ghost-$now.sql
 ```
 
-while we're at it let's test our permissions
-
-```shell
-# gsutil ls
-AccessDeniedException: 403 $NODE_SA does not have storage.buckets.list access to the Google Cloud project.
-```
-
 now let's cleanup
 
 ```shell
-$ docker rm -f cloud-sdk
+docker rm -f cloud-sdk
 ```
 
 ## Restore
