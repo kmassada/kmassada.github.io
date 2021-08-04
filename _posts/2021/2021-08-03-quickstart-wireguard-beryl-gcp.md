@@ -74,9 +74,9 @@ ip -o -4 route show to default | awk '{print $5}'
 
 Notable configs to keep in mind
 
-1- Address of the server is the range of the IPs that live in the vpn subnet, mine for instance is `10.0.2.1/24`, I've confirmed it using 3 sources, [wireguard quickstart guide](https://www.wireguard.com/quickstart/), [wireguard.how guide](https://wireguard.how/server/google-cloud-platform/) and [serversideup guide](https://serversideup.net/courses/gain-flexibility-and-increase-privacy-with-wireguard-vpn/)
-2- Saveconfig is important for my guide I use it to add peers. It allows you to run commands at the cli and save them to the `wg0.conf`
-3- <YOUR_NETWORK_INTERFACE> is the name of the interface where the traffic is NATted. 
+1. Address of the server is the range of the IPs that live in the vpn subnet, mine for instance is `10.0.2.1/24`, I've confirmed it using 3 sources, [wireguard quickstart guide](https://www.wireguard.com/quickstart/), [wireguard.how guide](https://wireguard.how/server/google-cloud-platform/) and [serversideup guide](https://serversideup.net/courses/gain-flexibility-and-increase-privacy-with-wireguard-vpn/)
+2. Saveconfig is important for my guide I use it to add peers. It allows you to run commands at the cli and save them to the `wg0.conf`
+3. <YOUR_NETWORK_INTERFACE> is the name of the interface where the traffic is NATted. 
 
 ```conf
 # filename: /etc/wireguard/wg0.conf
@@ -114,7 +114,7 @@ sudo systemctl enable wg-quick@wg0
 
 Now let's verify before we move on. 
 
-1- the values of these two must match
+1. the values of these two must match
 
 ```shell
 $ sudo grep -i private  /etc/wireguard/wg0.conf
@@ -123,7 +123,7 @@ $ cat wg-private.key
 <SERVER_PRIVATE_KEY>
 ```
 
-2- the following values for public key must match
+2. the following values for public key must match
 
 ```shell
 $ sudo wg show wg0
@@ -135,7 +135,7 @@ $ cat wg-public.key
 <SERVER_PUBLIC_KEY>
 ```
 
-3- IP address must be check out
+3. IP address must be check out
 
 ```
 $ ip address show dev wg0
@@ -147,7 +147,7 @@ $ sudo grep -i address /etc/wireguard/wg0.conf
 Address = 10.0.2.1/24
 ```
 
-4- Verify the steps for when the interface comes online, watching for iptables routes, mtu, and address set correctly
+4. Verify the steps for when the interface comes online, watching for iptables routes, mtu, and address set correctly
 
 ```shell
 $ sudo wg-quick up wg0
@@ -214,7 +214,7 @@ sudo wg set wg0 peer <PUBLIC CLIENT KEY> allowed-ips 10.0.2.2
 
 Now let's verify 
 
-1- public client key should now be part of the wg0 config. the allowed IPs should show the single IP range of the client, in this case `10.0.2.2/32`.
+1. public client key should now be part of the wg0 config. the allowed IPs should show the single IP range of the client, in this case `10.0.2.2/32`.
 
 ```shell
 $ cat wg-public-client.key
@@ -230,7 +230,7 @@ peer: <CLIENT PUBLIC_KEY>
   allowed ips: 10.0.2.2/32
 ```
 
-2- you've validated that on the GL-iNet side, the following values in the config are the Client's Private Key and the Server's Public key.
+2. you've validated that on the GL-iNet side, the following values in the config are the Client's Private Key and the Server's Public key.
 
 ```shell
 PrivateKey = <CLIENT PRIVATE_KEY>
@@ -243,14 +243,14 @@ In order to connect, you simply go to the Wireguard client and establish connect
 
 Things to remember once the client's connection is established
 
-1- when you've established connection on the GL-iNet side it shows the IP address you've told your server the client would have.
+1. when you've established connection on the GL-iNet side it shows the IP address you've told your server the client would have.
 
 ```shell
 IP Address10.0.2.2
 Upload / Download82.41 MB / 90.19 MB
 ```
 
-2- This command will show you data transfer rates, and the client's endpoint
+2. This command will show you data transfer rates, and the client's endpoint
 
 ```shell
 $ sudo wg show wg0
@@ -265,25 +265,25 @@ peer: <CLIENT PUBLIC_KEY>
 
 ### Making changes
 
-1- edit conf
+1. edit conf
 
 ```shell
 sudo vi /etc/wireguard/wg0.conf
 ```
 
-2- down interface
+2. down interface
 
 ```shell
 sudo wg-quick down wg0
 ```
 
-3- sysctl to up interface
+3. sysctl to up interface
 
 ```shell
 sudo systemctl restart wg-quick@wg0.service
 ```
 
-4- check if changes are live
+4. check if changes are live
 
 ```shell
 ug 03 23:25:57 wireguard wg-quick[1004]: [#] ip link add wg0 type wireguard
@@ -294,22 +294,22 @@ Aug 03 23:25:57 wireguard wg-quick[1004]: [#] iptables -A FORWARD -i wg0 -j ACCE
 Aug 03 23:25:57 wireguard systemd[1]: Started WireGuard via wg-quick(8) for wg0.
 ```
 
-5- show interface
+5. show interface
 
 ```shell
 ip address show dev wg0
 ```
 
-6- show status
+6. show status
 ```shell
 sudo wg show wg0
 ```
 
 ### GCP Troubleshoot
 
-1- it is very important that the instance `--can-ip-forward`, and that the Natting and Masquerade rules are set. 
+1. it is very important that the instance `--can-ip-forward`, and that the Natting and Masquerade rules are set. 
 
-2- GCP's firewall rules allows to enable logging, to log when you 
+2. GCP's firewall rules allows to enable logging, to log when you 
 
 this Cloud Logging query 
 
@@ -329,9 +329,9 @@ src_port: xxxxx
 }
 ```
 
-3- GCP instances MTU, I've set the server side to 1360 and the client to 1480. this actually helped me increase my performance on the instance. 
+3. GCP instances MTU, I've set the server side to 1360 and the client to 1480. this actually helped me increase my performance on the instance. 
 
-4- This is a quick way to verify that you static IP was indeed attached to the node
+4. This is a quick way to verify that you static IP was indeed attached to the node
 
 ```shell
 curl zx2c4.com/ip
