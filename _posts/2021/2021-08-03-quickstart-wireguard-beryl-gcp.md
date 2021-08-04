@@ -335,7 +335,7 @@ xx.xx.xx.xx
 
 ## Linux / NetTools Troubleshooting
 
-once I can confirm traffic is reaching the vm's nic, I can run this to be sure 
+once we can confirm traffic is reaching the vm's nic, we can run this to be sure 
 
 ```shell
 $ sudo tcpdump -i YOUR INTERFACE NAME dst port 51820
@@ -348,7 +348,7 @@ $ sudo tcpdump -i YOUR INTERFACE NAME dst port 51820
 0 packets dropped by kernel
 ```
 
-I can also confirm pings from client to server
+wecan also confirm pings from client to server
 
 ```shell
 $ sudo tcpdump -i wg0 icmp
@@ -356,9 +356,38 @@ $ sudo tcpdump -i wg0 icmp
 04:24:48.700364 IP 10.0.2.1 > 10.0.2.2: ICMP echo reply, id 48775, seq 0, length 64
 ```
 
-I can also troubleshoot dns lookups by sending an nlookup on my client 
+wecan also troubleshoot dns lookups by sending an nlookup on my client 
 
 ```shell
 04:29:12.956849 IP 10.0.2.2.54136 > one.one.one.one.domain: 56514+ A? google.com. (28)
 04:29:12.965835 IP one.one.one.one.domain > 10.0.2.2.54136: 56514 1/0/0 A 142.250.217.110 (44)
+```
+
+We can similarly check for IP Leaks. As expected region was us-west1 and we expect the location to not be my current location but where the IP was registered.
+
+```shell
+$ curl https://ipleak.net/json/
+{
+    "country_code": "US",
+    "country_name": "United States",
+    "region_code": "OR",
+    "region_name": "Oregon",
+    "continent_code": "NA",
+    "continent_name": "North America",
+    "city_name": "The Dalles",
+    "postal_code": null,
+    "postal_confidence": null,
+    "latitude": 45.5999,
+    "longitude": -121.1871,
+    "accuracy_radius": 1000,
+    "time_zone": "America\/Los_Angeles",
+    "metro_code": 820,
+    "level": "min",
+    "cache": 1628053227,
+    "ip": "xx.xx.xx.xx",
+    "reverse": "",
+    "query_text": "xx.xx.xx.xx",
+    "query_type": "myip",
+    "query_date": 1628053227
+}
 ```
