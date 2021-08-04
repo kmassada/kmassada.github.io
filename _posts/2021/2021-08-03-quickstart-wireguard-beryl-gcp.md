@@ -137,7 +137,7 @@ $ cat wg-public.key
 
 3. IP address must be check out
 
-```
+```shell
 $ ip address show dev wg0
 9: wg0: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1380 qdisc noqueue state UNKNOWN group default qlen 1000
     link/none
@@ -313,7 +313,7 @@ sudo wg show wg0
 
 this Cloud Logging query 
 
-```
+```s
 logName:(projects/<YOUR PROJECT>/logs/compute.googleapis.com%2Ffirewall) AND jsonPayload.rule_details.reference:("network:default/firewall:allow-wireguard")
 ```
 
