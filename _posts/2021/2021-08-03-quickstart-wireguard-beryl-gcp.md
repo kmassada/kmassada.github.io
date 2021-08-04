@@ -266,25 +266,21 @@ peer: <CLIENT PUBLIC_KEY>
 ### Making changes
 
 1. edit conf
-
 ```shell
 sudo vi /etc/wireguard/wg0.conf
 ```
 
 2. down interface
-
 ```shell
 sudo wg-quick down wg0
 ```
 
 3. sysctl to up interface
-
 ```shell
 sudo systemctl restart wg-quick@wg0.service
 ```
 
 4. check if changes are live
-
 ```shell
 ug 03 23:25:57 wireguard wg-quick[1004]: [#] ip link add wg0 type wireguard
 Aug 03 23:25:57 wireguard wg-quick[1004]: [#] wg setconf wg0 /dev/fd/63
@@ -295,7 +291,6 @@ Aug 03 23:25:57 wireguard systemd[1]: Started WireGuard via wg-quick(8) for wg0.
 ```
 
 5. show interface
-
 ```shell
 ip address show dev wg0
 ```
