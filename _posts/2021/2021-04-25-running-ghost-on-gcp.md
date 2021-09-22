@@ -45,7 +45,7 @@ create a service account
 ```shell
 export VM_NAME=ghostv4
 export NODE_SA=gce-$VM_NAME-node-sa
-export ZONE=us-west1-b
+export ZONE=us-west1-a
 
 gcloud iam service-accounts create $NODE_SA --display-name 'GCE '"${VM_NAME}"' Node Service Account' \
 && sleep 10 && \

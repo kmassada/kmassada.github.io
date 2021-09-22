@@ -21,20 +21,20 @@ I ssh into the instance in the UI
 First I create a `.env` file to keep all the variables I need for my setup. 
 
 ```
-domains=(example.org www.example.org)
 domain=example.org
-email="admin@example.org" 
+email="admin@$domain" 
 mysql_local_pass=STUFFMAN
 data_path="/tmp/data"
+domain_short=$(echo $domain | tr '.-' '_')
 ```
 
-*quick note:* /tmp/ is not a good path for saving data... I eventually create a disk that I mount to /tmp/data, I omit this in this setup.
+*quick note:* /tmp/ is not a good path for saving data... in [Running Ghost on GCP](/running-ghost-on-gcp) I create a disk that I mount to /mnt/disks/$VM_NAME-data, I omit this in this setup.
 
 ```
 source .env
 ```
 
-Now that this is sourced , let's move on to running the blog platform itself. 
+Now that this is sourced, let's move on to running the blog platform itself. 
 
 NOTE: mail provider here is mailgun.com, create a domain and get username and password. [More info](https://ghost.org/docs/config/#mail)
 
@@ -48,6 +48,8 @@ docker network create znet
 mkdir -p "$data_path"
 sudo chown $USER "$data_path"  
 sudo chmod 755 "$data_path"  
+mkdir -p "$data_path/${domain_short}_ghost"
+mkdir -p "$data_path/mysql"
 ```
 
 ## Ghost
@@ -57,14 +59,15 @@ Run an instance of mysql first.
 ```shell
 docker run --name=mysql --restart=always -d -p 3306:3306 \
  --net=znet \
+ -v $data_path/mysql:/var/lib/mysql \
 -e MYSQL_ROOT_PASSWORD=$mysql_local_pass mysql
 ```
 
 use those credentials to then run the blog 
 
 ```shell
-docker run --name=ghost --restart=always -d \
--v $data_path/blog:/var/lib/ghost/content \
+docker run --name=${domain_short}_ghost --restart=always -d \
+-v $data_path/${domain_short}_ghost:/var/lib/ghost/content \
 -p 3001:2368 \
  --net=znet \
 -e url=http://$domain \
@@ -72,7 +75,7 @@ docker run --name=ghost --restart=always -d \
 -e database__connection__host=mysql \
 -e database__connection__user=root \
 -e database__connection__password=$mysql_local_pass \
--e database__connection__database=ghost \
+-e database__connection__database=${domain_short}_ghost \
 -e mail__transport="SMTP" \
 -e mail__from="$mail_name <$mail_username>" \
 -e mail__options__service="SMTP" \
@@ -104,7 +107,24 @@ run quick fix file
 docker exec -i mysql sh -c 'mysql -u root -p'"${mysql_local_pass}"'' < $data_path/1507-fix.sql
 ```
 
-in my case after the quick fix, restart ghost `docker restart ghost`
+in my case after the quick fix, restart ghost `docker restart ${domain_short}_ghost`
+
+there's a new problem that occurs in the newer versions of ghost. It thinks we have performed a migration, here's a quick fix for it.
+
+```shell
+cat << EOF >> $data_path/migration-lock-fix.sql 
+USE ${domain_short}_ghost;
+UPDATE migrations_lock set locked=0 where lock_key='km01';
+commit;
+EOF
+```
+run quick fix file
+
+```shell
+docker exec -i mysql sh -c 'mysql -u root -p'"${mysql_local_pass}"'' < $data_path/migration-lock-fix.sql
+```
+
+in my case after the quick fix, restart ghost `docker restart ${domain_short}_ghost`
 
 ## Nginx + certbot
 
@@ -144,13 +164,14 @@ Setup the file
 
 ```shell
 mkdir -p $data_path/nginx/
-vi $data_path/nginx/site.conf
+vi $data_path/nginx/$domain_short.conf
 ```
 
 Few things to know
-- `http://ghost:2368` is the path direct to the ghost container, because they share `znet` network
-- many settings look like they are missing but they come from `options-ssl-nginx.conf`. as we downloaded earlier.
-- in the config below please make sure to replace `example.org` by your domain
+
+* `http://${domain_short}_ghost:2368` is the path direct to the ghost container, because they share `znet` network
+* many settings look like they are missing but they come from `options-ssl-nginx.conf`. as we downloaded earlier.
+* in the config below please make sure to replace `example.org` by your domain and `example_org` by your domain short
 
 ```shell
 server {
@@ -161,7 +182,7 @@ server {
   # this include is the recommended ssl settings by let's encrypt
   include /etc/letsencrypt/options-ssl-nginx.conf;
 
-  add_header Strict-Transport-Security    "max-age=31536000; includeSubDomains" always;
+  add_header Strict-Transport-Security    "max-age=31536000; includeSubDomain" always;
   add_header X-Frame-Options              SAMEORIGIN;
   add_header X-Content-Type-Options       nosniff;
   add_header X-XSS-Protection             "1; mode=block";
@@ -185,10 +206,10 @@ server {
     proxy_set_header    X-Forwarded-Port    $server_port;
 
     # Fix the “It appears that your reverse proxy set up is broken" error.
-    proxy_pass          http://ghost:2368;
+    proxy_pass          http://example_org_ghost:2368;
     proxy_read_timeout  90;
 
-    proxy_redirect      http://ghost:2368 https://example.org;
+    proxy_redirect      http://example_org_ghost:2368 https://example.org;
   }
 }
 ```
@@ -210,12 +231,9 @@ docker run  --name=nginx --restart=always -d \
 now we delete the dummies with confidence
 
 ```shell
-docker run -it --rm \
--v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot \
-nginx sh -c"\
-  rm -Rf /etc/letsencrypt/live/$domains && \
-  rm -Rf /etc/letsencrypt/archive/$domains && \
-  rm -Rf /etc/letsencrypt/renewal/$domains.conf"
+docker exec -it nginx sh -c "rm -Rvf /etc/letsencrypt/live/$domain && \
+  rm -Rvf /etc/letsencrypt/archive/$domain && \
+  rm -Rvf /etc/letsencrypt/renewal/$domain.conf"
 ```
 
 ### configure nginx pre-stage
@@ -300,8 +318,7 @@ I got tired of having to log in and do this, so this is a good way to fake cron 
 Run docker, with entrypoint, and sleep..
 
 ```
-docker run --name renew -d -v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot --entrypoint="/bin/sh" certbot/certbot -c 'trap exit TERM; while :; do certbot renew --webroot --webroot-p
-ath=/var/www/certbot; sleep 12h & wait ${!}; done;' 
+docker run --name renew -d -v $data_path/ssl:/etc/letsencrypt -v $data_path/www:/var/www/certbot --entrypoint="/bin/sh" certbot/certbot -c 'trap exit TERM; while :; do certbot renew --webroot --webroot-path=/var/www/certbot; sleep 12h & wait ${!}; done;' 
 ```
 
 ## issues
