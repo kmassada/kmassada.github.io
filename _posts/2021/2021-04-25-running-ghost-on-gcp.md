@@ -45,7 +45,7 @@ create a service account
 ```shell
 export VM_NAME=ghostv4
 export NODE_SA=gce-$VM_NAME-node-sa
-export ZONE=us-west1-a
+export ZONE=us-west1-b
 
 gcloud iam service-accounts create $NODE_SA --display-name 'GCE '"${VM_NAME}"' Node Service Account' \
 && sleep 10 && \
@@ -81,7 +81,7 @@ gsutil iam ch serviceAccount:$NODE_SA_ID:roles/storage.objectCreator gs://______
 create fw rules, certbot uses tcp:80 for the ACME challenge, instead of closing port 80, we'll use nginx to force redirect to https
 
 ```shell
-gcloud compute --project=$PROJECT_ID firewall-rules create default-allow-ghostv4 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80,tcp:443 --source-ranges=0.0.0.0/0 --target-tags=$VM_NAME-server
+gcloud compute --project=$PROJECT_ID firewall-rules create default-allow-$VM_NAME --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80,tcp:443 --source-ranges=0.0.0.0/0 --target-tags=$VM_NAME-server
 ```
 
 ### Setup Image
@@ -116,6 +116,105 @@ gcloud compute instances create $VM_NAME \
   --network-tier STANDARD \
   --network=default \
   --service-account=$NODE_SA_ID
+```
+
+### Launch an Instance with an External SSD 
+
+alternatively here's a slightly increased performance version 
+* with a 32GB ssd to preserve data
+* e2-small instead of e2-micro for 2G of ram
+
+```shell
+gcloud compute instances create $VM_NAME \
+  --image=$COS_STABLE \
+  --image-project=cos-cloud \
+  --zone=$ZONE \
+  --boot-disk-size=10G \
+  --boot-disk-type=pd-standard \
+  --machine-type=e2-small \
+  --scopes=compute-rw\
+  --tags $VM_NAME-server \
+  --network-tier STANDARD \
+  --network=default \
+  --service-account=$NODE_SA_ID \
+ --create-disk=mode=rw,size=32,type=projects/$PROJECT_ID/zones/$ZONE/diskTypes/pd-ssd,name=$VM_NAME-data,device-name=$VM_NAME-data
+```
+
+TLDR on folllowing the guide to [mount a disk on a container-optimized-os instance](https://cloud.google.com/container-optimized-os/docs/concepts/disks-and-filesystem)
+
+You can find `DEVICE_NAME` by running `lsblk`. in our case the output looks like this
+
+```shell
+~ $ lsblk
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda         8:0    0   10G  0 disk 
+|-sda1      8:1    0  5.9G  0 part /mnt/stateful_partition
+|-sda2      8:2    0   16M  0 part 
+|-sda3      8:3    0    2G  0 part 
+| `-vroot 253:0    0    2G  1 dm   /
+|-sda4      8:4    0   16M  0 part 
+|-sda5      8:5    0    2G  0 part 
+|-sda6      8:6    0  512B  0 part 
+|-sda7      8:7    0  512B  0 part 
+|-sda8      8:8    0   16M  0 part /usr/share/oem
+|-sda9      8:9    0  512B  0 part 
+|-sda10     8:10   0  512B  0 part 
+|-sda11     8:11   0    8M  0 part 
+`-sda12     8:12   0   32M  0 part 
+sdb         8:16   0   32G  0 disk
+```
+
+we then use `sdb` in our script to format disk
+
+```shell
+DEVICE_NAME=sdb
+MOUNT_DIR=$HOSTNAME-data
+sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/$DEVICE_NAME
+sudo mkdir -p /mnt/disks/$MOUNT_DIR
+sudo mount -o discard,defaults /dev/$DEVICE_NAME /mnt/disks/$MOUNT_DIR
+sudo chmod a+w /mnt/disks/$MOUNT_DIR
+```
+
+here's the cloud config that will auto mount the disk, the equivalent of doing an `fstab` on debian
+
+```shell
+cat << EOF >> $HOME/$VM_NAME-cloud-config.yaml
+#cloud-config
+
+bootcmd:
+- fsck.ext4 -tvy /dev/sdb
+- mkdir -p /mnt/disks/$VM_NAME-data
+- mount -t ext4 -o discard,defaults /dev/sdb /mnt/disks/$VM_NAME-data
+EOF
+```
+
+modify instance to have cloud-config
+
+```shell
+gcloud compute instances add-metadata $VM_NAME \
+    --metadata-from-file user-data=$VM_NAME-cloud-config.yaml
+```
+
+you can check by rebooting and observing `lsblk`, in our case it's mounted
+
+```shell
+~ $ lsblk
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda         8:0    0   10G  0 disk 
+|-sda1      8:1    0  5.9G  0 part /mnt/stateful_partition
+|-sda2      8:2    0   16M  0 part 
+|-sda3      8:3    0    2G  0 part 
+| `-vroot 253:0    0    2G  1 dm   /
+|-sda4      8:4    0   16M  0 part 
+|-sda5      8:5    0    2G  0 part 
+|-sda6      8:6    0  512B  0 part 
+|-sda7      8:7    0  512B  0 part 
+|-sda8      8:8    0   16M  0 part /usr/share/oem
+|-sda9      8:9    0  512B  0 part 
+|-sda10     8:10   0  512B  0 part 
+|-sda11     8:11   0    8M  0 part 
+`-sda12     8:12   0   32M  0 part 
+sdb         8:16   0   32G  0 disk /mnt/disks/$VM_NAME-data
 ```
 
 ### Verify
