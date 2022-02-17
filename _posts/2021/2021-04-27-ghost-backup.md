@@ -11,8 +11,9 @@ I've been using the blog platform ghost for hosting tadbit.cc, and now twdspodca
 The TLDR is I build a gce instance that runs 2 containers, one for ghost and one for nginx. I use nginx as a reverse proxy to the ghost container. Recently I've added the complexity of saving the ghost data in mysql instead of a volume attached to the ghost container. Also, I now use let's encrypt to generate or manage my certificates.
 
 Few important assumptions to note for this post
+
 * I created my instance in `us-west1-a` and I created my storage bucket in `us-west1` to reduce cost.
-* I created my instance with a service account, that service account and it's scope is what allows me to backup to GCS without having to download keys. 
+* I created my instance with a service account, that service account and it's scope is what allows me to backup to GCS without having to download keys.
 
 ## Backup
 
@@ -21,17 +22,27 @@ now=$(date +'%Y-%m-%d_%H-%M')
 mkdir -p /tmp/data/$now
 ```
 
-when we created the blog, we saved the blog files at `$data_path/blog`, we'll tar the relevant files in that folder. I do use `data/redirect.json` and `settings/routes.yaml` quite a bit, and I have purchased 2 themes `{Massively-master,hue}`, this should exclude `logs`, `themes/casper` 
+when we created the blog, we saved the blog files at `$data_path/blog`, we'll tar the relevant files in that folder. I do use `data/redirect.json` and `settings/routes.yaml` quite a bit, and I have purchased 2 themes `{Massively-master,hue}`, this should exclude `logs`, `themes/casper`
 
 ```shell
 cd $data_path
-tar -zcvf /tmp/data/blog-$now.tar.gz blog/images blog/data blog/settings blog/themes/{Massively-master,hue}
+tar -zcvf /tmp/data/$now/blog-$now.tar.gz blog/images blog/data blog/settings blog/themes/{Massively-master,hue}
 ```
 
 when we launched the mysql container, we used **mysql** as the name, therefore `docker exec mysql` will exec into our container
 
+Note `ghost_sitename` is the name of the table. In we picked `${domain_short}_ghost` as a convention for our db names.
+
+this can be verified by running
+
 ```shell
-docker exec mysql sh -c 'exec mysqldump ghost -uroot -p"$MYSQL_ROOT_PASSWORD"' > /tmp/data/ghost-$now.sql
+ docker exec -t mysql sh -c 'mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "SHOW DATABASES;"'
+```
+
+Now we actually backup the data
+
+```shell
+docker exec mysql sh -c 'exec mysqldump ghost_sitename -uroot -p"$MYSQL_ROOT_PASSWORD"' > /tmp/data/$now/ghost_sitename-$now.sql
 ```
 
 After backing up I have 2 files I can use.
@@ -39,16 +50,16 @@ After backing up I have 2 files I can use.
 ```shell
 /tmp/data $ sudo du -sh *
 37M     blog-2021-04-26_01-31.tar.gz
-3.4M    ghost_prod-2021-04-26_01-31.sql
+3.4M    ghost_sitename_prod-2021-04-26_01-31.sql
 ```
 
-## Storage 
+## Storage
 
 [https://cloud.google.com/free/docs/gcp-free-tier/#storage](https://cloud.google.com/free/docs/gcp-free-tier/#storage)
 
-project is still in testing phase, i'm going to attempt to spend $0 on my backup. With this goal in mind, i'll setup gcs storage bucket, only keep 2 revisions, and delete objects older than 35 days, with the goal of backing up once a month. 
+project is still in testing phase, i'm going to attempt to spend $0 on my backup. With this goal in mind, i'll setup gcs storage bucket, only keep 2 revisions, and delete objects older than 35 days, with the goal of backing up once a month.
 
-The location matters, only few locations have free tier. Knowing this ahead of time, my GCE instance was also built in the same Region as where the storage will reside in an attempt to get FREE local transfer. 
+The location matters, only few locations have free tier. Knowing this ahead of time, my GCE instance was also built in the same Region as where the storage will reside in an attempt to get FREE local transfer.
 
 set some environement variables,
 
@@ -57,6 +68,7 @@ PROJECT_ID=<your project>
 STORAGE_CLASS=STANDARD
 BUCKET_LOCATION=us-west1
 ```
+
 create `lifecycle.json` and edit it to contain the following.
 
 ```json
@@ -81,7 +93,7 @@ create `lifecycle.json` and edit it to contain the following.
 }
 ```
 
-create storage bucket and set the lifecycle policy and versioning. 
+create storage bucket and set the lifecycle policy and versioning.
 
 ```shell
 gsutil mb -b on -p $PROJECT_ID -c $STORAGE_CLASS -l $BUCKET_LOCATION -b on gs://$PROJECT_ID-ghost-backup 
@@ -92,7 +104,6 @@ gsutil lifecycle set lifecycle.json gs://$PROJECT_ID-ghost-backup
 now let's enable [UBL](https://cloud.google.com/storage/docs/uniform-bucket-level-access). UBL is this thing that allows you to enforce IAM roles/permissions (`roles/storage.objectViewer`) on a bucket (`gs://$PROJECT_ID-ghost-backup`) restricted only to a GCP service account (`serviceAccount:$NODE_SA_ID`).
 
 `NODE_SA_ID` is the service account I used to create the instance in [Running Ghost on GCP](/running-ghost-on-gcp), which will allow me to bypass having to deal with credentials management.
-
 
 ```shell
 gsutil iam ch serviceAccount:$NODE_SA_ID:roles/storage.objectViewer gs://$PROJECT_ID-ghost-backup
@@ -118,7 +129,7 @@ sudo chown $USER "$data_path"
 sudo chmod 755 "$data_path" 
 ```
 
-Now run the following 
+Now run the following
 
 ```shell
 docker run --name cloud-sdk -it \
@@ -130,9 +141,9 @@ docker run --name cloud-sdk -it \
 docker exec -it cloud-sdk /bash/bin/sh
 ```
 
-once in the shell setup `gsutils` by running `gcloud init`, follow the prompts. 
+once in the shell setup `gsutils` by running `gcloud init`, follow the prompts.
 
-of course `gcloud auth list` can verify the caller. 
+of course `gcloud auth list` can verify the caller.
 
 while we're at it let's test our permissions
 
@@ -148,7 +159,7 @@ gsutil cp $data_path/backup/blog-$now.tar.gz gs://$PROJECT_ID-ghost-backup/blog.
 gsutil cp $data_path/backup/ghost-$now.sql gs://$PROJECT_ID-ghost-backup/ghost.sql
 ```
 
-now let's verify the backup is there... 
+now let's verify the backup is there...
 
 ```shell
 gsutil ls gs://$PROJECT_ID-ghost-backup/
@@ -168,7 +179,7 @@ docker run --name cloud-sdk -it \
 docker exec -it cloud-sdk /bash/bin/sh
 ```
 
-once again setup `gsutils` by running `gcloud init`, follow the prompts. 
+once again setup `gsutils` by running `gcloud init`, follow the prompts.
 
 now let's retrieve the backup
 
@@ -185,7 +196,7 @@ docker rm -f cloud-sdk
 
 ## Restore
 
-In [Running ghost blog with nginx reverse proxy and let’s encrypt](/lets-encrypt-nginx-docker-ghost), we created a mysql container and a ghost container to start the setup. 
+In [Running ghost blog with nginx reverse proxy and let’s encrypt](/lets-encrypt-nginx-docker-ghost), we created a mysql container and a ghost container to start the setup.
 
 ### DB
 
