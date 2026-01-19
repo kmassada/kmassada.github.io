@@ -8,7 +8,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 4.1"
+gem "jekyll", "~> 4.4.1"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 # gem "minima", "~> 2.0"
@@ -25,12 +25,16 @@ group :jekyll_plugins do
    gem "jekyll-sitemap"
    gem "jekyll-paginate"
    gem 'jekyll-archives'
+   gem 'jekyll-include-cache'
    gem "jemoji"
 end
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", platforms: [:windows, :jruby]
 
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
+
+# To avoid issues with WEBrick not being included in Ruby 3.0+
+gem "webrick", "~> 1.9"
