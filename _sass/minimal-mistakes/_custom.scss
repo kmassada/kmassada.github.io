@@ -1,0 +1,60 @@
+/* Customizations */
+
+/* "add gray matter" */
+:root {
+  --gray-color: #7a8288;
+  --gray-color-dark: #202020;
+  --gray-color-light: #dcdcdc;
+  --primary-color: var(--gray-color-dark);
+  --link-color: var(--gray-color);
+}
+
+.author__urls.social-icons .svg-inline--fa,
+.page__footer-follow .social-icons .svg-inline--fa {
+  color: var(--gray-color) !important;
+}
+
+.social-icons {
+  .fa-instagram,
+  .fa-twitter,
+  .fa-facebook,
+  .fa-linkedin,
+  .fa-github,
+  .fa-youtube,
+  .fa-behance,
+  .fa-bitbucket,
+  .fa-dribbble,
+  .fa-flickr,
+  .fa-foursquare,
+  .fa-gitlab,
+  .fa-keybase,
+  .fa-lastfm,
+  .fa-mastodon,
+  .fa-pinterest,
+  .fa-reddit,
+  .fa-rss,
+  .fa-soundcloud,
+  .fa-stack-exchange,
+  .fa-stack-overflow,
+  .fa-tumblr,
+  .fa-x-twitter,
+  .fa-vimeo,
+  .fa-vine,
+  .fa-xing {
+    color: var(--gray-color) !important;
+  }
+}
+
+/* "smaller fonts" */
+body {
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1.25em;
+}
+
+/* "opaque author" */
+.author__avatar:hover {
+  opacity: 1;
+}
