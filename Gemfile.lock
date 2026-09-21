@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/mmistakes/minimal-mistakes.git
-  revision: ffa59904e2cc8da8071d4a6771758c75a8db4349
+  revision: 7c68402e079564981274be1d07da0387e3ebdf97
   branch: master
   specs:
-    minimal-mistakes-jekyll (4.27.3)
+    minimal-mistakes-jekyll (4.28.1)
       jekyll (>= 3.7, < 5.0)
       jekyll-feed (~> 0.1)
       jekyll-gist (~> 1.5)

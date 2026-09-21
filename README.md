@@ -1,114 +1,130 @@
-# ABOUT
+# kmassada.github.io
 
-These are the instructions to manage my personal/learning blog using Jekyll.
+Instructions to manage and maintain this personal blog using Jekyll and
+Podman.
 
-**Note:** This guide uses `podman` and `podman-compose`. We can simply substitute `podman` with `docker` and `podman-compose` with `docker-compose` in the commands below.
+**Note:** This guide uses `podman` and `podman-compose`. Commands can be
+interchanged with `docker` and `docker-compose`.
 
-## Containerize
+## Container Setup
 
-From repo root:
+### 1. Build Container Images
+
+From the repository root:
 
 ```bash
+# Build base dependencies image
 podman build -t kmassada.github.io.dep --target dep .
+
+# Build application image
 podman build -t kmassada.github.io --target app .
-podman run --rm -it -p 4000:4000 -v "$PWD":/usr/src/app -w /usr/src/app kmassada.github.io bash
 ```
 
-From inside the container:
+### 2. Run Local Development Server
+
+Run the container mounting the workspace root:
 
 ```bash
-export JEKYLL_ENV=development
-bundle exec jekyll serve -H 0.0.0.0 --incremental --watch --drafts
+podman run --rm -it -p 4000:4000 -v "$PWD":/usr/src/app:z -w /usr/src/app kmassada.github.io bundle exec jekyll serve -H 0.0.0.0 --incremental --watch --drafts
 ```
 
-## Podman Compose
+Open [http://localhost:4000](http://localhost:4000) in your browser.
 
-Using compose simplifies runtime.
-
-Only run build once, `kmassada.github.io.dep` does not preserve state of container properly, and will build everytime.
-
-```bash
-podman compose up -d --build
-```
-
-Generally once build has ran once, `-d` will do for restarting/starting compose:
+*(Optional)* Using Podman Compose:
 
 ```bash
 podman compose up -d
 ```
 
-## Upgrading
+## Upgrading the Theme
 
-Updating the site involves refreshing the core theme files from the upstream repository and updating the Ruby gems.
+Upgrades refresh the core `minimal-mistakes` theme files directly from upstream
+and re-apply local customizations on a temporary `jekyll-upgrade` branch.
 
-### Reset Core Files
+### 1. Create a Fresh Upgrade Branch
 
-This strategy resets the core files to match the latest upstream `minimal-mistakes` state while keeping the git history intact. We will then re-apply the customizations.
-
-```bash
-# Ensure upstream is set
-git remote add upstream https://github.com/mmistakes/minimal-mistakes.git
-git fetch upstream
-
-# Create a fresh branch for the upgrade
-git checkout -b jekyll-upgrade
-
-# Merge upstream changes using 'ours' strategy.
-# This tells Git: "Record a merge, but keep my files exactly as they are for now."
-git merge -s ours upstream/master
-
-# Pull the latest content from upstream.
-# This forces the files to match the upstream repository, effectively "resetting" them.
-# We will likely need to resolve conflicts here.
-git pull upstream master
-
-# Re-apply the customizations (see the "mods" list below)
-```
-
-### Update Dependencies
-
-To ensure the `Gemfile.lock` is updated correctly for the container environment, run the update command using the base image.
+Always start from an up-to-date `master` branch:
 
 ```bash
-# Update the lockfile on the host using the container's ruby environment
-podman run --rm -v "$PWD":/usr/src/app -w /usr/src/app kmassada.github.io.dep bundle update
-
-# Rebuild the application image to include the updated gems
-podman compose build
-```
-
-### Verify and Merge
-
-Test the site locally to ensure the upgrade didn't break anything.
-
-```bash
-# Start the site
-podman compose up
-
-# If everything looks good, merge the changes back to master
 git checkout master
-git merge jekyll-upgrade
-git branch -d jekyll-upgrade
-git push origin master
+git pull origin master
+
+# Create or reset the dedicated temporary upgrade branch
+git checkout -B jekyll-upgrade master
 ```
 
-## Customizations (Mods)
+### 2. Fetch Upstream and Refresh Core Theme Files
 
-After the merge, the custom files may be overwritten or reset. `git checkout` can restore the specific customizations from the `master` branch.
+Ensure the upstream remote is configured:
 
 ```bash
-# Example: Restore the custom configurations and assets from the master branch
+# Set up upstream remote (one-time setup)
+git remote add upstream https://github.com/mmistakes/minimal-mistakes.git 2>/dev/null || true
+git fetch upstream
+```
+
+Replace core theme directories with the latest files from upstream:
+
+```bash
+# Checkout theme files directly from upstream/master
+git checkout upstream/master -- _includes _layouts _sass assets/js assets/css
+```
+
+### 3. Restore Local Customizations
+
+Restore your site-specific overrides and configs from `master`:
+
+```bash
 git checkout master -- \
   _sass/minimal-mistakes/_custom.scss \
   _sass/minimal-mistakes.scss \
   _data/navigation.yml \
   _data/ui-text.yml \
-  includes/footer.html \
+  _includes/footer.html \
   assets/images/ \
   _config.yml
 ```
 
-**Checklist:**
-*   `_sass/minimal-mistakes.scss`: Verify `@import "minimal-mistakes/custom";` is present.
-*   `_sass/_custom.scss`: Verify has our preferred customizations required.
-*   `_config.yml`: Ensure site title, author, and gem versions are correct.
+### 4. Update Dependencies
+
+Update `Gemfile.lock` using the container's Ruby environment:
+
+```bash
+podman run --rm -v "$PWD":/usr/src/app:z -w /usr/src/app kmassada.github.io.dep bundle update
+```
+
+### 5. Verify Locally
+
+Clear the build cache and verify that the site renders properly:
+
+```bash
+rm -rf _site .jekyll-metadata .sass-cache
+
+# Run server and inspect http://localhost:4000
+podman run --rm -it -p 4000:4000 -v "$PWD":/usr/src/app:z -w /usr/src/app kmassada.github.io bundle exec jekyll serve -H 0.0.0.0 --incremental --watch --drafts
+```
+
+**Verification Checklist:**
+
+* `_sass/minimal-mistakes.scss`: Verify `@import "minimal-mistakes/custom";` is
+  present.
+* `_sass/minimal-mistakes/_custom.scss`: Verify custom styles, icon greying, and
+  typography rules are intact.
+* `_config.yml`: Verify author profile, social links, and analytics settings.
+
+### 6. Commit and Merge to Master
+
+Once verified, commit the upgrade, merge it into `master`, and delete the
+temporary branch:
+
+```bash
+git add .
+git commit -m "chore: upgrade minimal-mistakes theme"
+
+git checkout master
+git merge jekyll-upgrade
+git branch -d jekyll-upgrade
+
+# Push changes to origin
+git push origin master
+```
